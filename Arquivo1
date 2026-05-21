@@ -60,7 +60,7 @@ settings
   introMessage = <div style="border-left: 4px solid #ff00cc; border-top: 1px solid #ff00cc; border-right: 1px solid #ff00cc; border-bottom: 1px solid #ff00cc; background: #1a0015; color: #e8e6e2; border-radius:4px; padding:18px; font-family:'Outfit',sans-serif;"><div style="font-weight:700; font-size:1.1em; margin-bottom:8px; color:#ff00cc;">✨ CREATIVE MODE ACTIVATED</div><div style="font-size:0.9em; line-height:1.6; color:#ddd;">Select a mode to begin: <strong>TEXT→IMAGE</strong>, <strong>IMAGE→TEXT</strong>, <strong>IMAGE→IMAGE</strong>, or <strong>HYPERREAL MODE</strong> for exclusive human-only generation.</div></div>
   underImagesMessage = <div style="font-family: 'Outfit', sans-serif; margin: 15px auto; max-width: 600px; overflow: hidden; border-left: 4px solid #ff00cc; border-top: 1px solid #ff00cc; border-right: 1px solid #ff00cc; border-bottom: 1px solid #ff00cc; background: #1a0015; color: #e8e6e2; padding: 14px 16px; border-radius: 3px;">Your creative output is ready. Save to gallery or generate again.</div>
   numImages = [input.numImages]
-  socialFeatures = button // or 'button' or 'enabled' or 'disabled'
+  socialFeatures = button
  
   galleryOptions
     gallery = true
@@ -71,19 +71,15 @@ settings
     bannedUsers = [bannedUsersList]
     bannedWords = [bannedWordsList]
     bannedPromptPhrase
-      // coercion / trafficking / consent issues
       /\b(traffick(ed|ing))\b/i
       /\b(bribe(d|s)?\s+for)\b/i
       /\b(not\s+able\s+to\s+consent)\b/i
-      // incest (family abuse prevention)
       /\b(mom|dad|mother|father|sister|brother|daughter|son)\b/i
       /\b(step\s*(mom|dad|sister|brother|daughter|son))\b/i
-      // hate/bigotry prevention
       /\b(racist|racism|white\s*supremacy)\b/i
       /\b(nazi|hitler|holocaust)\b/i
       /\b(slur)\b/i
       /\b(pick\w*\s+cotton)\b/i
-      // extreme violence / torture
       /\b(gore|snuff|dismember(ed|ment))\b/i
       /\b(behead(ed|ing))\b/i
       /\b(rape|rapist)\b/i
@@ -93,7 +89,6 @@ settings
       /\b(israel|israeli)\b/i
       /\b(palestine|palestinian)\b/i
       /\b(hamas)\b/i
-      // minors, underage, youth-coded exploitation
       /\b(child|minor|underage|kids?)\b/i
       /\b(teen|teens)\b/i
       /\b(loli|shota|shōta|shoto)\b/i
@@ -103,7 +98,6 @@ settings
       /\b(adolescent|preteen|tween|pubescen(t|ce))\b/i
       /\b(fresh\s*faced)\b/i
       /\b(youthful\s+body)\b/i
-      // age-dodging creep terms
       /\b(barely\s*legal)\b/i
       /\b(teeny|tiny\s+girl)\b/i
       /\b(petite\s+(girl|doll))\b/i
@@ -113,8 +107,6 @@ settings
       /\b(legal\s+age\s+I\s+promise)\b/i
       /\b(foster\s*(kid|child))\b/i
       /\b(pediatric)\b/i
-      // bestiality / animal exploitation
-      // bestiality / animal exploitation (contextual, not standalone)
       /\b(bestiality|zoophilia|zoophile)\b/i
   
   showFeedback = true
@@ -168,9 +160,9 @@ settings
     prompt = [input.description]  [input.gGen.prompt] [input.gGenP.prompt] [input.gGenV.prompt] [input.gmyC.prompt] [input.emyC.prompt] [input.jmyC.prompt] [input.hmyC.prompt] [input.cmyC.prompt] [input.hMode.prompt]
     negativePrompt = [input.negative][input.imageFix2.prompt] [input.artStyle.negative]
     saveTitle = [input.imagename != "" ? input.imagename : [input.videoGameStyle.getName != "No Style" ? input.videoGameStyle.getName : [input.artStyle.getName != "No Style" ? input.artStyle.getName : "Creative Output"]]]
-    saveTitle2 = [input.imagename==""? date().utc().format("MMM Do YYYY") : input.imagename]
-    saveDescription = [input.userName==""?"":"Author: " + input.userName.slice(0, 50) + ","] [new Date().toUTCString()], Used: [input.videoGameStyle.getName != "No Style" ? input.videoGameStyle.getName : "default"] + Style, Mode: [input.creativeMode.getName]
-    saveDescription2 = [input.userName==""?"":"Author: " + input.userName.slice(0, 50) + ","] [input.imagename==""? date().utc().format("UTC HH:mm") : date().utc().format("MMM Do YYYY, UTC HH:mm")]
+    saveTitle2 = [input.imagename\=\=\=""? date().utc().format("MMM Do YYYY") : input.imagename]
+    saveDescription = [input.userName\=\=\=""?"":"Author: " + input.userName.slice(0, 50) + ","] [new Date().toUTCString()], Used: [input.videoGameStyle.getName != "No Style" ? input.videoGameStyle.getName : "default"] + Style, Mode: [input.creativeMode.getName]
+    saveDescription2 = [input.userName\=\=\=""?"":"Author: " + input.userName.slice(0, 50) + ","] [input.imagename\=\=\=""? date().utc().format("UTC HH:mm") : date().utc().format("MMM Do YYYY, UTC HH:mm")]
     resolution = [input.shape]
     guidanceScale = [input.gScale]
     width = [input.width]
@@ -178,7 +170,6 @@ settings
 
   userInputs
   
-    // CREATIVE MODE SELECTOR
     creativeMode
       label = <div style="display:inline-block;width:250px;background:linear-gradient(90deg,#2a0040,#5a0080,#2a0040);border:1px solid #ff00cc;border-left:4px solid #ff33ff;font-family:'Outfit',sans-serif;margin:5px;"><div style="padding:8px 12px; font-size:0.75em; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#ff00cc;">CREATIVE MODE</div></div>
       type = select
@@ -186,19 +177,18 @@ settings
       options
         🎨 Text→Image = t2iMode
           prompt = Create an image based on the detailed description provided
-        📸 Image→Text = i2tMode
+        📷 Image→Text = i2tMode
           prompt = Analyze the uploaded image and provide a detailed description
         🔄 Image→Image = i2iMode
           prompt = Transform and enhance the uploaded image according to specifications
         ⭐ HyperReal Mode = hyperrealMode
           prompt = Generate exclusively photorealistic humans with hyperdetailed facial features, natural skin microstructure, and anatomically accurate proportions
     
-    // HYPERREAL MODE TOGGLE
     hMode
       label = <div style="display:inline-block;width:250px;background:linear-gradient(90deg,#1a0a2a,#3a0a5a,#1a0a2a);border:1px solid #cc00ff;border-left:4px solid #ff00ff;font-family:'Outfit',sans-serif;margin:5px;"><div style="padding:8px 12px; font-size:0.75em; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#cc00ff;">HYPERREAL TRAITS</div></div>
       type = select
       remember = true
-      visible() => return input.creativeMode == "hyperrealMode"
+      visible() => return input.creativeMode \=\= "hyperrealMode"
       options
         None = {|}
         Extreme Detail = hyperDetail
@@ -282,7 +272,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #aa88cc;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#aa88cc;">GENDER</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.gGen]
@@ -291,7 +281,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #aa88cc;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#aa88cc;">GENDER P</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.gGenP]
@@ -300,7 +290,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #aa88cc;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#aa88cc;">GENDER V</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.gGenV]
@@ -309,7 +299,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #01cdfe;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#01cdfe;">AGE</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.age]
@@ -318,7 +308,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #01cdfe;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#01cdfe;">ETHNICITY</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.ethnicity]
@@ -327,7 +317,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #01cdfe;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#01cdfe;">SPECIES</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.species]
@@ -336,7 +326,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #01cdfe;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#01cdfe;">SKIN</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.skinColor]
@@ -345,7 +335,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #01cdfe;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#01cdfe;">EYES</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.eyeColors]
@@ -354,7 +344,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #01cdfe;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#01cdfe;">FACE</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.facialExpressions]
@@ -363,7 +353,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #01cdfe;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#01cdfe;">BODY</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.bodyType]
@@ -372,7 +362,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #01cdfe;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#01cdfe;">UPPER</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.upperBodyShape]
@@ -381,7 +371,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #01cdfe;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#01cdfe;">NIPPLE</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.nippleShape]
@@ -390,7 +380,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #01cdfe;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#01cdfe;">REAR</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "body"
+      visible() => return input.tabController \=\= "body"
       options
         meta:import
           from = [charAppearance.rearShape]
@@ -399,7 +389,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #e07090;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#e07090;">MAKEUP</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "clothing"
+      visible() => return input.tabController \=\= "clothing"
       options
         meta:import
           from = [cosmetics.eyeMakeUp]
@@ -408,7 +398,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #e07090;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#e07090;">HAIR</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "clothing"
+      visible() => return input.tabController \=\= "clothing"
       options
         meta:import
           from = [cosmetics.hairStyle]
@@ -417,7 +407,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #e07090;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#e07090;">COLOR</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "clothing"
+      visible() => return input.tabController \=\= "clothing"
       options
         meta:import
           from = [cosmetics.hairColor]
@@ -426,7 +416,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #4488ff;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#4488ff;">LINGERIE</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "clothing"
+      visible() => return input.tabController \=\= "clothing"
       options
         meta:import
           from = [clothing.completeLing]
@@ -435,7 +425,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #4488ff;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#4488ff;">OUTFIT</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "clothing"
+      visible() => return input.tabController \=\= "clothing"
       options
         meta:import
           from = [clothing.completeOutfits]
@@ -444,7 +434,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #4488ff;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#4488ff;">DRESS</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "clothing"
+      visible() => return input.tabController \=\= "clothing"
       options
         meta:import
           from = [clothing.dresses]
@@ -453,7 +443,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #4488ff;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#4488ff;">UNIFORM</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "clothing"
+      visible() => return input.tabController \=\= "clothing"
       options
         meta:import
           from = [clothing.uniforms]
@@ -462,7 +452,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #4488ff;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#4488ff;">BODYSUIT</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "clothing"
+      visible() => return input.tabController \=\= "clothing"
       options
         meta:import
           from = [clothing.bodysuitsJumpsuits]
@@ -471,7 +461,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #4488ff;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#4488ff;">SWIM</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "clothing"
+      visible() => return input.tabController \=\= "clothing"
       options
         meta:import
           from = [clothing.swimwear]
@@ -480,7 +470,7 @@ settings
       label = <div style="display:inline-block;width:145px;background:#0a0a15;border:1px solid #222;border-left:4px solid #4488ff;font-family:'Outfit',sans-serif;padding:0;margin:5px;"><div style="padding:6px 10px; font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#4488ff;">SLEEP</div></div>
       type = select
       remember = true
-      visible() => return input.tabController == "clothing"
+      visible() => return input.tabController \=\= "clothing"
       options
         meta:import
           from = [clothing.sleepwear]

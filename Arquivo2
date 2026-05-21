@@ -150,7 +150,7 @@ body {
   color: #fff;
 }
 
-/* ══════════════��═══════════════════════
+/* ══════════════════════════════════════
    SITE HEADER
    ══════════════════════════════════════ */
 .site-header-container {
@@ -267,7 +267,7 @@ body {
   opacity: 0;
 }
 
-/* ══════════════════════════════════════
+/* ═════════════════════���════════════════
    CONTENT UTILITY CLASSES
    ══════════════════════════════════════ */
 .ix-box {
@@ -381,6 +381,62 @@ body {
   background: linear-gradient(135deg, #6a00a0, #8a00c0);
   box-shadow: 0 0 35px rgba(255, 0, 204, 0.8);
   border-color: #ff66ff;
+  color: #ff66ff;
+}
+
+.mode-info-panel {
+  background: rgba(255,0,204,0.05);
+  border: 1px solid #660066;
+  border-radius: 4px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.mode-info-title {
+  color: #ff33ff;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+.mode-info-desc {
+  color: #d0a0e0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95em;
+  line-height: 1.6;
+  margin: 15px 0;
+}
+
+.mode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.mode-card {
+  background: rgba(255,0,204,0.1);
+  padding: 15px;
+  border-left: 3px solid #ff00cc;
+  text-align: left;
+}
+
+.mode-card-title {
+  color: #ff33ff;
+  font-weight: 700;
+  font-size: 0.85em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.mode-card-desc {
+  color: #d0a0e0;
+  font-size: 0.85em;
+  line-height: 1.4;
 }
 
 </style>
@@ -390,7 +446,7 @@ body {
      ══════════════════════════════════════ -->
 <div class="creative-modes-container" id="modesContainer">
   <button class="mode-button active" data-mode="t2i">🎨 Text→Image</button>
-  <button class="mode-button" data-mode="i2t">📸 Image→Text</button>
+  <button class="mode-button" data-mode="i2t">📷 Image→Text</button>
   <button class="mode-button" data-mode="i2i">🔄 Image→Image</button>
   <button class="mode-button" data-mode="hyper">⭐ HyperReal</button>
 </div>
@@ -398,31 +454,33 @@ body {
 <!-- ══════════════════════════════════════
      INFO SECTION
      ══════════════════════════════════════ -->
-<div id="modeInfoPanel" style="background: rgba(255,0,204,0.05); border: 1px solid #660066; border-radius: 4px; padding: 20px; margin: 20px auto; max-width: 800px; text-align: center;">
-  <h2 style="color: #ff33ff; font-family: 'Outfit', sans-serif; letter-spacing: 2px; text-transform: uppercase; margin-top: 0;">✨ MODES ACTIVATED ✨</h2>
-  <p id="modeDescription" style="color: #d0a0e0; font-family: 'Outfit', sans-serif; font-size: 0.95em; line-height: 1.6; margin: 15px 0;"></p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
-    <div style="background: rgba(255,0,204,0.1); padding: 15px; border-left: 3px solid #ff00cc; text-align: left;">
-      <div style="color: #ff33ff; font-weight: 700; font-size: 0.85em; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px;">Text→Image</div>
-      <div style="color: #d0a0e0; font-size: 0.85em; line-height: 1.4;">Generate images from your detailed descriptions. Perfect for creating custom visuals.</div>
+<div class="mode-info-panel">
+  <h2 class="mode-info-title">✨ MODES ACTIVATED ✨</h2>
+  <p class="mode-info-desc" id="modeDescription"></p>
+  <div class="mode-grid">
+    <div class="mode-card">
+      <div class="mode-card-title">Text→Image</div>
+      <div class="mode-card-desc">Generate images from your detailed descriptions. Perfect for creating custom visuals.</div>
     </div>
-    <div style="background: rgba(255,0,204,0.1); padding: 15px; border-left: 3px solid #ff00cc; text-align: left;">
-      <div style="color: #ff33ff; font-weight: 700; font-size: 0.85em; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px;">Image→Text</div>
-      <div style="color: #d0a0e0; font-size: 0.85em; line-height: 1.4;">Upload an image and get detailed analysis and descriptions instantly.</div>
+    <div class="mode-card">
+      <div class="mode-card-title">Image→Text</div>
+      <div class="mode-card-desc">Upload an image and get detailed analysis and descriptions instantly.</div>
     </div>
-    <div style="background: rgba(255,0,204,0.1); padding: 15px; border-left: 3px solid #ff00cc; text-align: left;">
-      <div style="color: #ff33ff; font-weight: 700; font-size: 0.85em; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px;">Image→Image</div>
-      <div style="color: #d0a0e0; font-size: 0.85em; line-height: 1.4;">Transform and enhance existing images with AI-powered modifications.</div>
+    <div class="mode-card">
+      <div class="mode-card-title">Image→Image</div>
+      <div class="mode-card-desc">Transform and enhance existing images with AI-powered modifications.</div>
     </div>
-    <div style="background: rgba(255,0,204,0.1); padding: 15px; border-left: 3px solid #ff00cc; text-align: left;">
-      <div style="color: #ff33ff; font-weight: 700; font-size: 0.85em; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px;">HyperReal Mode</div>
-      <div style="color: #d0a0e0; font-size: 0.85em; line-height: 1.4;">Generates photorealistic humans ONLY. No animations, drawings, or creatures.</div>
+    <div class="mode-card">
+      <div class="mode-card-title">HyperReal Mode</div>
+      <div class="mode-card-desc">Generates photorealistic humans ONLY. No animations, drawings, or creatures.</div>
     </div>
   </div>
 </div>
 
 <script>
 (function() {
+  'use strict';
+  
   const modes = {
     't2i': {
       title: 'Text→Image',
@@ -446,20 +504,22 @@ body {
   const descPanel = document.getElementById('modeDescription');
 
   buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', function() {
       buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      this.classList.add('active');
       
-      const mode = btn.dataset.mode;
+      const mode = this.dataset.mode;
       const modeData = modes[mode];
       descPanel.textContent = modeData.desc;
       
-      console.log('Mode ativado:', mode);
+      console.log('Modo ativado:', mode, modeData);
     });
   });
 
   // Set initial description
-  descPanel.textContent = modes['t2i'].desc;
+  if (descPanel) {
+    descPanel.textContent = modes['t2i'].desc;
+  }
 })();
 </script>
 
