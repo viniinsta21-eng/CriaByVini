@@ -10,10 +10,10 @@
      ══════════════════════════════════════ -->
 <div id="introModal" class="intro-overlay">
   <div class="intro-window">
-    <h1 class="intro-title">The CreativeStudio</h1>
-    <p class="intro-subtitle">AI Creative Suite</p>
+    <h1 class="intro-title">The Imaginarium</h1>
+    <p class="intro-subtitle">Creative AI Image Generator</p>
     <p class="intro-text">
-      Choose your creative path: Generate images from text, analyze existing images, transform and enhance, or use HyperReal mode for photorealistic humans.<br><br>
+      This generator features a broad range of creative content across many categories. Some sections explore themes intended for select audiences.<br><br>
       By entering, you confirm you are of legal age in your jurisdiction. Viewer discretion is advised.
     </p>
     <button id="introAccept" class="intro-btn">Enter</button>
@@ -27,7 +27,7 @@
   <div class="site-header-box">
     <div class="site-header-accent-line top"></div>
     <div class="site-header-inner">
-      <h1 class="site-title">THE CREATIVE STUDIO</h1>
+      <h1 class="site-title">THE IMAGINARIUM</h1>
       <div class="site-header-divider"></div>
     </div>
     <div class="site-header-accent-line bottom"></div>
@@ -42,26 +42,26 @@
 
 /* ── THEME VARIABLES ── */
 :root {
-  --bg-panel:       #1a0515;
-  --bg-surface:     #250721;
-  --bg-deep:        #0f0208;
-  --bg-hover:       #3a1030;
-  --bg-active:      #4a1a50;
-  --bg-inset:       rgba(255,0,204,0.1);
-  --accent:         #ff00cc;
-  --accent-light:   #ff33ff;
-  --accent-lighter: #ff66ff;
-  --accent-bright:  #ff44ff;
-  --accent-muted:   #cc0099;
-  --accent-dim:     #660066;
-  --text-primary:   #f0e0f8;
-  --text-secondary: #d0a0e0;
-  --text-muted:     #9080a0;
-  --text-dim:       #705080;
-  --border:         #4a0066;
-  --border-accent:  #ff00cc;
-  --border-subtle:  #2a1535;
-  --alert:          #ff3366;
+  --bg-panel:       #111114;
+  --bg-surface:     #1e1e22;
+  --bg-deep:        #0e0e12;
+  --bg-hover:       #2a2030;
+  --bg-active:      #2a1a40;
+  --bg-inset:       rgba(0,0,0,0.3);
+  --accent:         #8855cc;
+  --accent-light:   #aa88cc;
+  --accent-lighter: #c4a0e8;
+  --accent-bright:  #aa77ee;
+  --accent-muted:   #5a3a7a;
+  --accent-dim:     #3a1860;
+  --text-primary:   #e8e6e2;
+  --text-secondary: #9a8aaa;
+  --text-muted:     #7a7a80;
+  --text-dim:       #5a4a70;
+  --border:         #3a1860;
+  --border-accent:  #8855cc;
+  --border-subtle:  #222226;
+  --alert:          #cc4444;
 }
 
 body {
@@ -70,7 +70,7 @@ body {
   font-family: 'Outfit', sans-serif;
   color: var(--text-primary);
   overflow-x: hidden;
-  background: linear-gradient(270deg, #0f0208 0%, #3a0066 25%, #0f0208 50%, #4a0088 75%, #0f0208 100%);
+  background: linear-gradient(270deg, #18181a 0%, #3a1860 25%, #18181a 50%, #2a0e48 75%, #18181a 100%);
   background-size: 600% 600%;
   animation: bgShift 36s ease infinite;
 }
@@ -83,13 +83,14 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+
 /* ══════════════════════════════════════
    INTRO MODAL
    ══════════════════════════════════════ */
 .intro-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.95);
+  background: rgba(0,0,0,0.92);
   display: none;
   justify-content: center;
   align-items: center;
@@ -101,7 +102,7 @@ body {
   background: var(--bg-panel);
   padding: 36px 32px;
   border: 1px solid var(--accent);
-  box-shadow: 0 0 40px rgba(255,0,204,0.3), 0 8px 40px rgba(0,0,0,0.9);
+  box-shadow: 0 0 40px rgba(136,85,204,0.25), 0 8px 40px rgba(0,0,0,0.9);
   text-align: center;
   position: relative;
   animation: introFadeIn 0.4s ease forwards;
@@ -149,6 +150,7 @@ body {
   background: var(--accent);
   color: #fff;
 }
+
 
 /* ══════════════════════════════════════
    SITE HEADER
@@ -267,7 +269,8 @@ body {
   opacity: 0;
 }
 
-/* ═════════════════════���════════════════
+
+/* ══════════════════════════════════════
    CONTENT UTILITY CLASSES
    ══════════════════════════════════════ */
 .ix-box {
@@ -341,186 +344,1804 @@ body {
   font-size: 0.9em;
 }
 
-/* ══════════════════════════════════════
-   CREATIVE MODES PANEL
-   ══════════════════════════════════════ */
-.creative-modes-container {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin: 20px auto;
-  max-width: 100%;
-  flex-wrap: wrap;
-  padding: 0 10px;
-}
-
-.mode-button {
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #2a0050, #4a0080);
-  border: 2px solid #ff00cc;
-  color: #ff33ff;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 700;
-  font-size: 0.9em;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(255, 0, 204, 0.2);
-}
-
-.mode-button:hover {
-  background: linear-gradient(135deg, #4a0080, #6a00a0);
-  box-shadow: 0 0 25px rgba(255, 0, 204, 0.5);
-  transform: translateY(-2px);
-  color: #ff66ff;
-}
-
-.mode-button.active {
-  background: linear-gradient(135deg, #6a00a0, #8a00c0);
-  box-shadow: 0 0 35px rgba(255, 0, 204, 0.8);
-  border-color: #ff66ff;
-  color: #ff66ff;
-}
-
-.mode-info-panel {
-  background: rgba(255,0,204,0.05);
-  border: 1px solid #660066;
-  border-radius: 4px;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 800px;
-  text-align: center;
-}
-
-.mode-info-title {
-  color: #ff33ff;
-  font-family: 'Outfit', sans-serif;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-top: 0;
-}
-
-.mode-info-desc {
-  color: #d0a0e0;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.95em;
-  line-height: 1.6;
-  margin: 15px 0;
-}
-
-.mode-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.mode-card {
-  background: rgba(255,0,204,0.1);
-  padding: 15px;
-  border-left: 3px solid #ff00cc;
-  text-align: left;
-}
-
-.mode-card-title {
-  color: #ff33ff;
-  font-weight: 700;
-  font-size: 0.85em;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-
-.mode-card-desc {
-  color: #d0a0e0;
-  font-size: 0.85em;
-  line-height: 1.4;
-}
-
 </style>
 
 <!-- ══════════════════════════════════════
-     MODE SELECTOR BUTTONS
+     CONTEST COMPONENT
+     Drop this below or above #imag-changelog-component
      ══════════════════════════════════════ -->
-<div class="creative-modes-container" id="modesContainer">
-  <button class="mode-button active" data-mode="t2i">🎨 Text→Image</button>
-  <button class="mode-button" data-mode="i2t">📷 Image→Text</button>
-  <button class="mode-button" data-mode="i2i">🔄 Image→Image</button>
-  <button class="mode-button" data-mode="hyper">⭐ HyperReal</button>
+<div id="imag-contest-component">
+
+  <button id="imag-ct-trigger">🏆 <span id="imag-ct-text">Contest</span></button>
+
+  <div id="imag-ct-modal" class="imag-ct-hidden">
+    <div class="imag-ct-modal-content">
+
+      <div class="imag-ct-header">
+        <span class="imag-ct-title">🏆 THE IMAGINARIUM CONTEST</span>
+        <button id="imag-ct-close">✕</button>
+      </div>
+
+      <div class="imag-ct-tabs">
+        <button class="imag-ct-tab active" data-tab="info">📋 Contest</button>
+        <button class="imag-ct-tab" data-tab="winners">🥇 Hall of Fame</button>
+      </div>
+
+      <!-- ── CONTEST INFO PANEL ── -->
+      <div class="imag-ct-body" id="imag-ct-panel-info">
+
+        <div class="imag-ct-section-label">Current Contest</div>
+
+        <div class="imag-ct-theme-box">
+          <div class="imag-ct-theme-label">Theme</div>
+          <div class="imag-ct-theme-name">Festival Lights</div>
+          <div class="imag-ct-theme-desc">Festivals after dark — paper lanterns strung overhead, glowing food stalls, fireworks blooming above the rooftops, warm light spilling across the crowd. Summer matsuri energy welcome.</div>
+        </div>
+
+        <div class="imag-ct-deadline-bar">
+          <span class="imag-ct-dl-label">⏳ ENDS</span>
+          <span class="imag-ct-dl-val">June 30, 2026</span>
+          <span class="imag-ct-dl-note">· winner becomes the site's Perchance pic for the month</span>
+        </div>
+
+        <div class="imag-ct-section-label" style="margin-top:16px;">Rules</div>
+        <ul class="imag-ct-rules">
+          <li><span class="imag-ct-rn">01</span><span>Image must be <strong>square</strong> — set your image ratio to 1:1 before generating.</span></li>
+          <li><span class="imag-ct-rn">02</span><span>Content must be <strong>SFW</strong> — safe for work, all audiences.</span></li>
+          <li><span class="imag-ct-rn">03</span><span><strong>The Imaginarium</strong> text must be visible and <strong>spelled correctly</strong> in the image.</span></li>
+          <li><span class="imag-ct-rn">04</span><span>Enter your name in the <strong>User Name</strong> box before saving. <span class="imag-ct-rule-warn">No name = no credit.</span></span></li>
+          <li><span class="imag-ct-rn">05</span><span>Naming your image is optional but encouraged — use the <strong>Image Title</strong> field.</span></li>
+          <li><span class="imag-ct-rn">06</span><span>Save your image to the <strong>contest</strong> gallery. <span class="imag-ct-rule-warn">Must be lowercase.</span> Do not use Public — those entries will not count.</span></li>
+        </ul>
+
+        <div class="imag-ct-section-label" style="margin-top:16px;">How to View Entries</div>
+        <div class="imag-ct-how-box">
+          <div class="imag-ct-how-step"><span class="imag-ct-rn">1</span><span>Click the <strong>Gallery</strong> button in the <strong>lower right</strong> of the page.</span></div>
+          <div class="imag-ct-how-step"><span class="imag-ct-rn">2</span><span>In the gallery filter, select or type <strong>contest</strong> (lowercase) as the sub-gallery.</span></div>
+          <div class="imag-ct-how-step"><span class="imag-ct-rn">3</span><span>Browse all submissions. <strong>Winner is hand-picked</strong> by the creator at month's end.</span></div>
+        </div>
+
+      </div>
+
+      <!-- ── HALL OF FAME PANEL ── -->
+      <div class="imag-ct-body imag-ct-hidden" id="imag-ct-panel-winners">
+        <div class="imag-ct-section-label">Hall of Fame</div>
+        <div id="imag-ct-winners-list"></div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <style>
+    /* ══════════════════════════════════════
+       CONTEST COMPONENT STYLES
+       ══════════════════════════════════════ */
+    #imag-contest-component {
+      display: block;
+      width: 200px;
+      margin: 6px auto 0;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* TRIGGER BUTTON */
+    #imag-ct-trigger {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+      box-sizing: border-box;
+      background: #1c1200;
+      border: 1px solid #b07d00;
+      border-left: 4px solid #f0c030;
+      color: #f0c030;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      padding: 13px 16px;
+      position: relative;
+      overflow: hidden;
+      transition: opacity 0.2s, background 0.2s;
+      animation: ctBtnPulse 3.5s ease-in-out infinite;
+    }
+    #imag-ct-trigger::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -80%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(105deg, transparent 25%, rgba(240,192,48,0.22) 50%, transparent 75%);
+      animation: ctShimmer 3.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes ctShimmer {
+      0%   { left: -80%; }
+      55%  { left: 150%; }
+      100% { left: 150%; }
+    }
+    @keyframes ctBtnPulse {
+      0%   { box-shadow: 0 0 0 rgba(240,192,48,0); }
+      50%  { box-shadow: 0 2px 18px rgba(240,192,48,0.4); }
+      100% { box-shadow: 0 0 0 rgba(240,192,48,0); }
+    }
+    #imag-ct-trigger:hover {
+      background: #2a1c00;
+      color: #ffe060;
+      border-color: #ffe060;
+      box-shadow: 0 2px 24px rgba(240,192,48,0.55);
+      animation: none;
+    }
+    #imag-ct-trigger:hover::before { animation: none; left: 150%; }
+
+    /* MODAL OVERLAY */
+    #imag-ct-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.88);
+      z-index: 99999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .imag-ct-hidden { display: none !important; }
+
+    /* MODAL WINDOW */
+    .imag-ct-modal-content {
+      width: 600px;
+      max-width: 93%;
+      max-height: 84vh;
+      background: var(--bg-panel);
+      border: 1px solid #b07d00;
+      border-top: 2px solid #f0c030;
+      box-shadow:
+        0 0 0 1px rgba(240,192,48,0.08),
+        0 0 40px rgba(200,150,10,0.2),
+        0 0 80px rgba(136,85,204,0.12);
+      display: flex;
+      flex-direction: column;
+      animation: ctModalIn 0.28s ease forwards;
+    }
+    @keyframes ctModalIn {
+      from { opacity: 0; transform: scale(0.96) translateY(10px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* HEADER */
+    .imag-ct-header {
+      background: linear-gradient(90deg, #2a1a00 0%, #4a3200 40%, #3a2400 70%, #2a1a00 100%);
+      border-bottom: 1px solid #b07d00;
+      padding: 11px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .imag-ct-header::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -80%; width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent 25%, rgba(240,192,48,0.12) 50%, transparent 75%);
+      animation: ctShimmer 4s 0.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .imag-ct-title {
+      color: #f0c030;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+    #imag-ct-close {
+      background: transparent;
+      border: 1px solid #b07d00;
+      color: #f0c030;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 2px 8px;
+      font-family: 'Outfit', sans-serif;
+      transition: background 0.1s;
+      position: relative;
+      z-index: 1;
+    }
+    #imag-ct-close:hover { background: rgba(240,192,48,0.12); }
+
+    /* TABS */
+    .imag-ct-tabs {
+      display: flex;
+      background: var(--bg-deep);
+      border-bottom: 1px solid #b07d00;
+      flex-shrink: 0;
+    }
+    .imag-ct-tab {
+      flex: 1;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 10px 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .imag-ct-tab:hover { color: #f0c030; background: rgba(240,192,48,0.04); }
+    .imag-ct-tab.active {
+      color: #f0c030;
+      border-bottom-color: #f0c030;
+      background: rgba(240,192,48,0.07);
+    }
+
+    /* SCROLLABLE BODY */
+    .imag-ct-body {
+      padding: 18px 20px 22px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #b07d00 var(--bg-panel);
+    }
+    .imag-ct-body::-webkit-scrollbar { width: 5px; }
+    .imag-ct-body::-webkit-scrollbar-track { background: var(--bg-panel); }
+    .imag-ct-body::-webkit-scrollbar-thumb { background: #b07d00; }
+
+    /* SECTION LABEL */
+    .imag-ct-section-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #b07d00;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(176,125,0,0.3);
+      padding-bottom: 5px;
+      margin-bottom: 12px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* THEME BOX */
+    .imag-ct-theme-box {
+      background: rgba(200,150,10,0.06);
+      border: 1px solid rgba(176,125,0,0.3);
+      border-left: 4px solid #f0c030;
+      padding: 14px 16px;
+    }
+    .imag-ct-theme-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #b07d00;
+      text-transform: uppercase;
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 4px;
+    }
+    .imag-ct-theme-name {
+      font-size: 1.15em;
+      font-weight: 700;
+      color: #f0c030;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .imag-ct-theme-desc {
+      font-size: 0.88em;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* RULES LIST */
+    .imag-ct-rules {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .imag-ct-rules li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.87em;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding: 8px 10px;
+      background: var(--bg-inset);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid rgba(176,125,0,0.45);
+      transition: border-left-color 0.15s;
+    }
+    .imag-ct-rules li:hover { border-left-color: #f0c030; }
+    .imag-ct-rules li strong { color: #f0c030; }
+    .imag-ct-rn {
+      font-size: 9px;
+      font-weight: 700;
+      color: #b07d00;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+      padding-top: 2px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+
+    /* DEADLINE BAR */
+    .imag-ct-deadline-bar {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+      background: rgba(240,192,48,0.08);
+      border: 1px solid rgba(176,125,0,0.4);
+      border-left: 4px solid #f0c030;
+      padding: 10px 12px;
+    }
+    .imag-ct-dl-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #b07d00;
+      text-transform: uppercase;
+      font-family: 'Outfit', sans-serif;
+      flex-shrink: 0;
+    }
+    .imag-ct-dl-val {
+      font-size: 1em;
+      font-weight: 700;
+      color: #f0c030;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+    }
+    .imag-ct-dl-note {
+      font-size: 0.78em;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    /* RULE WARNING INLINE */
+    .imag-ct-rule-warn {
+      color: var(--alert);
+      font-weight: 700;
+    }
+
+    /* HOW-TO BOX */
+    .imag-ct-how-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .imag-ct-how-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.87em;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding: 8px 10px;
+      background: var(--bg-inset);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid rgba(176,125,0,0.45);
+    }
+    .imag-ct-how-step strong { color: #f0c030; }
+
+    /* WINNER CARDS */
+    #imag-ct-winners-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .imag-ct-winner-card {
+      background: var(--bg-surface);
+      border: 1px solid rgba(176,125,0,0.3);
+      border-left: 4px solid #b07d00;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      transition: border-left-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    a.imag-ct-winner-card { cursor: pointer; }
+    .imag-ct-winner-card:hover {
+      border-left-color: #f0c030;
+      box-shadow: 0 0 14px rgba(240,192,48,0.15);
+    }
+    a.imag-ct-winner-card:hover .imag-ct-winner-thumb {
+      filter: brightness(1.1);
+    }
+    .imag-ct-winner-thumb {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.2s;
+    }
+    .imag-ct-winner-placeholder {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-deep);
+      font-size: 1.9em;
+      border-right: 1px solid rgba(176,125,0,0.2);
+    }
+    .imag-ct-winner-info {
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
+      flex: 1;
+      min-width: 0;
+    }
+    .imag-ct-winner-name {
+      font-size: 0.88em;
+      font-weight: 700;
+      color: #f0c030;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .imag-ct-winner-title {
+      font-size: 0.82em;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+    .imag-ct-winner-date {
+      font-size: 0.74em;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      font-family: 'Outfit', sans-serif;
+      margin-top: 2px;
+    }
+    .imag-ct-winner-ext {
+      align-self: center;
+      padding: 0 14px 0 4px;
+      font-size: 14px;
+      color: #b07d00;
+      flex-shrink: 0;
+      transition: color 0.2s, transform 0.2s;
+    }
+    a.imag-ct-winner-card:hover .imag-ct-winner-ext {
+      color: #f0c030;
+      transform: translateX(2px);
+    }
+    .imag-ct-empty {
+      text-align: center;
+      padding: 36px 16px;
+      color: var(--text-dim);
+      font-size: 0.86em;
+      letter-spacing: 1px;
+      line-height: 1.8;
+    }
+    .imag-ct-empty-icon { font-size: 2.2em; margin-bottom: 10px; }
+  </style>
+
+
+  <script>
+  (function(){
+
+    // ════════════════════════════════════════
+    // WINNERS — add entries here as needed
+    // Fields: name (required), date (required),
+    //         title (optional), img (optional URL)
+    // ════════════════════════════════════════
+    const WINNERS = [
+      { name: 'VoidSinner', date: 'May 2026', title: 'Doggo Parade', img: 'https://files.catbox.moe/tsg2h4.png' },
+    ];
+
+    // ════════════════════════════════════════
+    // BUTTON TEXT CYCLE — edit as desired
+    // ════════════════════════════════════════
+    const CYCLE_TEXTS = ['Contest', 'Enter Now', 'HoF'];
+
+    // ── DOM refs ──
+    const btn       = document.getElementById('imag-ct-trigger');
+    const btnTxt    = document.getElementById('imag-ct-text');
+    const modal     = document.getElementById('imag-ct-modal');
+    const closeBtn  = document.getElementById('imag-ct-close');
+    const tabs      = document.querySelectorAll('#imag-contest-component .imag-ct-tab');
+    const panelInfo = document.getElementById('imag-ct-panel-info');
+    const panelWin  = document.getElementById('imag-ct-panel-winners');
+    const winList   = document.getElementById('imag-ct-winners-list');
+
+    // ── Render winners ──
+    if (WINNERS.length === 0) {
+      winList.innerHTML =
+        `<div class="imag-ct-empty">
+          <div class="imag-ct-empty-icon">🏆</div>
+          No winners yet.<br>Be the first to claim the crown.
+        </div>`;
+    } else {
+      WINNERS.forEach(w => {
+        // If image URL exists, render as <a> linking to image; otherwise plain div
+        const card = document.createElement(w.img ? 'a' : 'div');
+        card.className = 'imag-ct-winner-card';
+        if (w.img) {
+          card.href = w.img;
+          card.target = '_blank';
+          card.rel = 'noopener noreferrer';
+          card.title = 'Open full image in new tab';
+        }
+        const thumb = w.img
+          ? `<img class="imag-ct-winner-thumb" src="${w.img}" alt="${w.name}">`
+          : `<div class="imag-ct-winner-placeholder">🏆</div>`;
+        card.innerHTML = `
+          ${thumb}
+          <div class="imag-ct-winner-info">
+            <div class="imag-ct-winner-name">🥇 ${w.name}</div>
+            ${w.title ? `<div class="imag-ct-winner-title">"${w.title}"</div>` : ''}
+            <div class="imag-ct-winner-date">${w.date}</div>
+          </div>
+          ${w.img ? '<div class="imag-ct-winner-ext">↗</div>' : ''}`;
+        winList.appendChild(card);
+      });
+    }
+
+    // ── Tab switching ──
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const isInfo = tab.dataset.tab === 'info';
+        panelInfo.classList.toggle('imag-ct-hidden', !isInfo);
+        panelWin.classList.toggle('imag-ct-hidden',  isInfo);
+      });
+    });
+
+    // ── Open / close ──
+    btn.addEventListener('click', () => modal.classList.remove('imag-ct-hidden'));
+    closeBtn.addEventListener('click', () => modal.classList.add('imag-ct-hidden'));
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.classList.add('imag-ct-hidden');
+    });
+
+    // ── Button text cycle ──
+    let idx = 0;
+    btnTxt.style.transition = 'opacity 0.2s';
+    setInterval(() => {
+      idx = (idx + 1) % CYCLE_TEXTS.length;
+      btnTxt.style.opacity = '0';
+      setTimeout(() => {
+        btnTxt.textContent = CYCLE_TEXTS[idx];
+        btnTxt.style.opacity = '1';
+      }, 200);
+    }, 3000);
+
+  })();
+  </script>
+
 </div>
+<!-- ══ END CONTEST COMPONENT ══ -->
 
 <!-- ══════════════════════════════════════
-     INFO SECTION
+     INFO / TIPS / TRICKS SECTION
      ══════════════════════════════════════ -->
-<div class="mode-info-panel">
-  <h2 class="mode-info-title">✨ MODES ACTIVATED ✨</h2>
-  <p class="mode-info-desc" id="modeDescription"></p>
-  <div class="mode-grid">
-    <div class="mode-card">
-      <div class="mode-card-title">Text→Image</div>
-      <div class="mode-card-desc">Generate images from your detailed descriptions. Perfect for creating custom visuals.</div>
+<div id="vhs-guide-container">
+
+  <button class="vhs-btn tier-1">INFO | TIPS | TRICKS</button>
+<div class="vhs-panel">
+
+    <div style="text-align:center; padding:8px; color:var(--text-dim); font-size:0.8em; letter-spacing:2px; border-bottom:1px solid var(--border); margin-bottom:5px; font-family:'Outfit',sans-serif; text-transform:uppercase;">
+      Scroll within sections to read more
     </div>
-    <div class="mode-card">
-      <div class="mode-card-title">Image→Text</div>
-      <div class="mode-card-desc">Upload an image and get detailed analysis and descriptions instantly.</div>
+
+    <button class="vhs-btn tier-2">🧬 Anatomy of a Prompt</button>
+    <div class="vhs-panel content-box">
+      <div class="vhs-inner-content">
+        <div class="ix-box a">
+          <h3 class="ix-h">🧠 The Logic Gate</h3>
+          <p class="ix-t">I'm not here to dictate your discovery. However, understanding the <strong class="ix-s">Sequence of Events</strong> is key to controlling the outcome.</p>
+          <p class="ix-tm" style="margin-top:10px;">This is the exact order in which the system assembles your prompt before sending it to the AI:</p>
+        </div>
+        <div class="ix-box b">
+          <h3 class="ix-h">📉 Signal Flow</h3>
+          <ul style="color:var(--accent-lighter); font-family:'Outfit',sans-serif; font-size:0.95em; padding-left:20px; line-height:1.8; margin-bottom:0; list-style-type:none;">
+            <li><span style="color:var(--accent); font-weight:700;">[1]</span> Description Box</li>
+            <li><span style="color:var(--accent); font-weight:700;">[2]</span> Gender</li>
+            <li><span style="color:var(--accent); font-weight:700;">[3]</span> Characters</li>
+            <li><span style="color:var(--accent); font-weight:700;">[4]</span> Traits (Body/Hair)</li>
+            <li><span style="color:var(--accent); font-weight:700;">[5]</span> Clothes</li>
+            <li><span style="color:var(--accent); font-weight:700;">[6]</span> Scenes / Poses</li>
+            <li><span style="color:var(--accent); font-weight:700;">[7]</span> Art Styles</li>
+            <li><span style="color:var(--accent); font-weight:700;">[8]</span> Camera Settings</li>
+            <li><span style="color:var(--accent); font-weight:700;">[9]</span> Image Enhancements</li>
+          </ul>
+          <p class="ix-td" style="margin-top:15px; font-style:italic;">Knowing this order helps you strategize where to input your data.</p>
+        </div>
+        <div class="ix-box c">
+          <h3 class="ix-h hb">⚠️ Redundancy Error</h3>
+          <p class="ix-t"><strong class="ix-s">Avoid "Double Prompting."</strong></p>
+          <p class="ix-tm" style="margin-top:10px;">If you describe a dress in the <span style="color:var(--accent-light);">Description Box</span> (Step 1) and then select a dress from the <span style="color:var(--accent-light);">Clothes Dropdown</span> (Step 5), the system gets confused.</p>
+          <div class="ix-callout c">
+            <p style="font-size:0.9em; margin:0; color:var(--text-muted);"><span style="color:var(--accent-lighter);">Result:</span> Flux doesn't know which one to prioritize, often resulting in a glitchy mess.</p>
+          </div>
+        </div>
+        <div class="ix-divider" style="text-align:center;">
+          <p style="color:var(--text-muted); font-size:0.9em;">Remember the Prime Directive:<br><span style="color:var(--accent); font-weight:bold; font-size:1.1em; letter-spacing:2px;">LESS TEXT = BETTER RESULTS</span></p>
+        </div>
+      </div>
     </div>
-    <div class="mode-card">
-      <div class="mode-card-title">Image→Image</div>
-      <div class="mode-card-desc">Transform and enhance existing images with AI-powered modifications.</div>
+
+    <button class="vhs-btn tier-2">🎞️ Blockbuster Video</button>
+    <div class="vhs-panel content-box">
+      <div class="vhs-inner-content">
+        <div class="ix-banner">MAKE IT A BLOCKBUSTER NIGHT</div>
+        <div class="ix-box a">
+          <h3 class="ix-h">🎞️ Motion Archive</h3>
+          <p class="ix-t">This section is a curated collection of short videos created exclusively from <strong class="ix-s">my own generations</strong>.</p>
+          <p class="ix-td" style="font-style:italic;">(I do not use external or other users' images for these clips.)</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:15px;">
+            <div style="background:var(--bg-inset); padding:8px; border-left:3px solid var(--accent); text-align:center;"><strong style="color:var(--accent-light);">ENGINE</strong><br><span style="color:var(--text-primary);">Google Veo</span></div>
+            <div style="background:var(--bg-inset); padding:8px; border-left:3px solid var(--accent); text-align:center;"><strong style="color:var(--accent-light);">RUNTIME</strong><br><span style="color:var(--text-primary);">&lt; 10 Seconds</span></div>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:15px;"><p style="color:var(--accent-light); font-size:1.0em;">Just a fun side project to bring the static into the kinetic.</p><div style="font-size:1.5em; letter-spacing:5px; margin-top:5px;">📼🍿🥤</div></div>
+      </div>
     </div>
-    <div class="mode-card">
-      <div class="mode-card-title">HyperReal Mode</div>
-      <div class="mode-card-desc">Generates photorealistic humans ONLY. No animations, drawings, or creatures.</div>
+
+    <button class="vhs-btn tier-2">🛡️ Community Moderation</button>
+    <div class="vhs-panel content-box">
+      <div class="vhs-inner-content">
+        <div class="ix-box alt">
+          <h3 class="ix-h halt">⚠️ System Limitation</h3>
+          <p class="ix-t"><strong style="color:var(--alert);">Perchance's moderation for galleries don't exist.</strong></p>
+          <p class="ix-tm" style="margin-top:5px;">Perchance gallery moderation tools are nonexistent for generator admins. I cannot delete images from the public gallery myself.</p>
+        </div>
+        <div class="ix-box b">
+          <h3 class="ix-h">🛡️ Defense Protocol</h3>
+          <p class="ix-t">It is up to the <strong class="ix-s">Community</strong> to police the void.</p>
+          <div class="ix-callout b">
+            <p style="font-size:0.95em; margin:0; color:var(--text-primary);"><strong>THE ACTION:</strong> If you see something that violates Perchance Terms:<br><br><span style="color:var(--accent-light); font-weight:700;">HIT THE HIDE BUTTON</span><br>(Located under the thumbs down icon)</p>
+          </div>
+          <p class="ix-td" style="margin-top:10px; font-style:italic;">"If it's against Perchance Terms, it's corrupted data. Purge it."</p>
+        </div>
+        <div class="ix-box a">
+          <h3 class="ix-h hac">💾 Why Help?</h3>
+          <p class="ix-t">If you appreciate the work put into this generator, I need your help to protect it.</p>
+          <ul style="color:var(--text-muted); font-size:0.9em; margin-top:10px; padding-left:20px;">
+            <li>Prohibited content puts the entire page at risk of deletion.</li>
+            <li>The more people that report, the faster bad actors get banned.</li>
+            <li><strong class="ix-s">Keep The Imaginarium online.</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <button class="vhs-btn tier-2">🖼️ Galleries</button>
+    <div class="vhs-panel content-box">
+      <div class="vhs-inner-content">
+        <div class="ix-box b">
+          <h3 class="ix-h">📝 System Update: Metadata</h3>
+          <p class="ix-tm" style="margin-bottom:0; line-height:1.5;">I added the ability to place a <strong class="ix-s">Title</strong> and <strong class="ix-s">User Name</strong> when saving to the gallery.<br><br><span style="color:var(--accent-light);">ℹ️ NOTE:</span> You have to enter these fields <strong class="ix-s">before</strong> you generate your image. They will show up when you save to the gallery. It will also record the actual <strong class="ix-s">Style</strong> used (unless it's set to random).</p>
+        </div>
+        <div style="border-left:4px solid var(--accent-light); padding-left:15px; margin-bottom:20px;">
+          <h3 class="ix-h">🖼️ Access the Archive</h3>
+          <p class="ix-tm" style="margin-bottom:10px;">Explore the community creations. Galleries can be accessed via:</p>
+          <ul style="list-style:square; padding-left:20px; color:var(--text-secondary); font-size:0.9em;">
+            <li style="margin-bottom:5px;">The <strong class="ix-s">Gallery Section</strong> inside the Chat window.</li>
+            <li>The <strong class="ix-s">Gallery Button</strong> located in the lower left corner.</li>
+          </ul>
+        </div>
+        <div class="ix-box c">
+          <strong style="color:var(--accent-lighter); text-transform:uppercase; font-family:'Outfit',sans-serif; letter-spacing:1px;">⚠️ Signal Interruption</strong>
+          <p class="ix-tm" style="margin-top:5px;"><strong style="color:var(--text-secondary);">Can't find the button?</strong><br>Ad blockers or script blockers often hide the bottom overlay. Please whitelist Perchance to ensure the gallery button appears.</p>
+        </div>
+        <div class="ix-divider">
+          <h3 class="ix-h">💾 Request a Category</h3>
+          <p class="ix-tm" style="margin-top:8px;">If you have a specific theme or character collection you want permanently archived:</p>
+          <div style="background:var(--bg-inset); color:var(--accent-light); padding:8px; margin:10px 0; font-family:'Outfit',sans-serif; text-align:center; border-left:4px solid var(--accent); font-weight:700; letter-spacing:2px; text-transform:uppercase;">REQUEST IT IN CHAT</div>
+          <p class="ix-td" style="font-style:italic;">If it fits the vibe and makes sense for the site, I will add it to the system.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="vhs-btn tier-2">🔄 Navigation / Reset Bar</button>
+    <div class="vhs-panel content-box">
+      <div class="vhs-inner-content">
+        <p class="ix-t" style="margin-bottom:15px;">Look to the bottom of your screen to find the <span style="color:var(--accent-light); font-weight:bold;">Main Navigation Bar</span>.</p>
+        <ul style="list-style:none; padding:0; margin-bottom:20px; color:var(--text-muted); font-size:0.9em;">
+          <li style="margin-bottom:8px;">✨ <strong class="ix-s">GENERATE:</strong> Create your image.</li>
+          <li style="margin-bottom:8px;">🔃 <strong class="ix-s">RESET:</strong> Clears all dropdowns and text fields.</li>
+          <li style="margin-bottom:8px;">⬆️⬇️ <strong class="ix-s">UP / DOWN:</strong> Quickly jump to the top or bottom.</li>
+          <li style="margin-bottom:8px;">🌴 <strong class="ix-s">GALLERY:</strong> (Bottom Right) View community creations.</li>
+        </ul>
+        <div style="text-align:center; margin:25px 0;"><img src="https://user.uploads.dev/file/48fa1a00b850c162f2dedecb1c84a7ba.png" alt="Navigation Bar Preview" style="max-width:100%; height:auto; border:1px solid var(--border);"></div>
+        <div class="ix-box c">
+          <strong style="color:var(--accent-lighter); font-size:0.95em; letter-spacing:1px; font-family:'Outfit',sans-serif; text-transform:uppercase;">⚠️ Missing the Bar?</strong><br>
+          <span class="ix-tm">Ad blockers or script blockers can sometimes hide the navigation bar.<br>If you don't see the bar pictured above, please <strong class="ix-s">whitelist Perchance</strong> in your browser settings.</span>
+        </div>
+        <div class="ix-box b">
+          <strong style="color:var(--accent-light); font-size:0.95em; letter-spacing:1px; font-family:'Outfit',sans-serif; text-transform:uppercase;">ℹ️ Reset Behavior</strong><br>
+          <p class="ix-tm" style="margin-top:10px;">The <strong class="ix-s">Reset</strong> button clears all internal settings, including the Scratch Pad.</p>
+          <p class="ix-td" style="margin-top:10px; font-style:italic;">However, text may remain (but not seen) in the <strong style="color:var(--text-secondary);">Description Box</strong> after a reset. To ensure a clean slate for your next prompt:</p>
+          <ul style="margin-top:10px; color:var(--text-muted); padding-left:20px; font-size:0.9em;">
+            <li>Type a single <strong class="ix-s">space</strong> in the box, OR...</li>
+            <li>Simply type your <strong class="ix-s">new description</strong> directly over the old text.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <button class="vhs-btn tier-2">🧠 Prompt Writer</button>
+    <div class="vhs-panel content-box">
+      <div class="vhs-inner-content">
+        <div class="ix-banner">INTERFACING WITH THE MACHINE MIND</div>
+        <div class="ix-box a">
+          <h3 class="ix-h">🧠 AI Prompt Writer</h3>
+          <p class="ix-t">The built-in AI Prompt Writer can generate or enhance any image description using plain language — no prompt-crafting experience needed.</p>
+          <ul class="ix-list-bordered">
+            <li>Click the <strong class="ix-s">🧠 brain icon</strong> on the right side of the Image Description box to open the Prompt Writer panel.</li>
+            <li>Type what you want to see — as much or as little detail as you like. Plain language works perfectly.</li>
+            <li>Choose <strong class="ix-s">Normal Prompt</strong> for a clean, direct output, or choose <strong class="ix-s">Random</strong> to inject randomized variations.</li>
+            <li>Click <strong class="ix-s">Generate</strong> and watch the prompt write itself in real time into the Image Description box.</li>
+            <li>Once the prompt finishes writing, click <strong class="ix-s">Generate</strong> on the main page to render your image.</li>
+          </ul>
+        </div>
+        <div class="ix-box b">
+          <strong style="color:var(--accent-light); text-transform:uppercase; font-family:'Outfit',sans-serif; letter-spacing:1px;">✍️ Start From Scratch:</strong><br><span class="ix-tm">Leave the Image Description box empty before opening the Prompt Writer and it will build a completely new prompt from your input alone.</span><br><br>
+          <strong style="color:var(--accent-light); text-transform:uppercase; font-family:'Outfit',sans-serif; letter-spacing:1px;">⚡ Enhance What You Have:</strong><br><span class="ix-tm">Already have a prompt you like? Leave it in the box, open the Prompt Writer, and describe what you want to <strong class="ix-s">add or change</strong>. The AI will expand and refine it rather than replace it.</span><br><br>
+          <strong style="color:var(--accent-light); text-transform:uppercase; font-family:'Outfit',sans-serif; letter-spacing:1px;">🎲 Random Mode:</strong><br><span class="ix-tm">Selecting <strong class="ix-s">Random</strong> before generating wraps variable elements in curly bracket syntax. This means each time you hit Generate, those sections will roll a new value.</span>
+        </div>
+        <div style="text-align:center; margin-top:15px; opacity:0.8;">
+          <p style="color:var(--accent); font-size:0.85em; letter-spacing:2px; font-family:'Outfit',sans-serif; text-transform:uppercase;">Let the machine dream for you — then make it stranger.</p>
+          <div style="font-size:1.5em; letter-spacing:10px; margin-top:5px;">🧠💜🌀</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="vhs-btn tier-2">📜 Rules</button>
+    <div class="vhs-panel content-box">
+      <div class="vhs-inner-content">
+        <div class="ix-box alt">
+          <h3 class="ix-h halt">🚫 Zero Tolerance Protocol</h3>
+          <p class="ix-t"><strong style="color:var(--alert);">System Warning:</strong> Any content that violates the platform <strong class="ix-s">Terms of Service (TOS)</strong> or Safety Guidelines is strictly prohibited.</p>
+          <p class="ix-tm" style="margin-top:10px;">Attempts to bypass safety filters or generate prohibited themes will result in an immediate report.</p>
+          <p style="color:var(--alert); font-weight:bold; font-size:0.9em; margin-top:8px;">KEEP IT CLEAN. KEEP IT SAFE.</p>
+        </div>
+        <div class="ix-box b">
+          <h3 class="ix-h">💬 The Vibe Check</h3>
+          <p class="ix-t"><strong class="ix-s">Be Nice. Chat More.</strong><br>This site is a sanctuary for creative exploration. We are all floating in this void together anonymously.</p>
+          <p class="ix-tm" style="margin-top:10px;">Treat fellow dreamers with respect and have fun. ✨</p>
+        </div>
+        <div class="ix-box a">
+          <h3 class="ix-h hac">💾 Insert Request</h3>
+          <p class="ix-t">I love requests for additions or changes! As long as it fits within the <strong class="ix-s">Community Guidelines</strong>:</p>
+          <div style="margin:10px 0; padding:8px; background:var(--bg-inset); color:var(--accent); font-family:'Outfit',sans-serif; text-align:center; border-left:4px solid var(--accent); font-weight:700; letter-spacing:2px;">"If it fits the TOS, it can be here."</div>
+          <p class="ix-tm">I am happy to try and make it happen.</p>
+        </div>
+        <div style="text-align:center; margin-top:10px; opacity:0.8;">
+          <span style="color:var(--accent-light); font-size:1.1em; font-family:'Outfit',sans-serif; font-weight:700; letter-spacing:2px;">📼 THANKS FOR STOPPING BY 📼</span>
+          <p style="font-size:0.8em; color:var(--text-dim); margin-top:5px;">I hope you enjoy your stay.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="vhs-btn tier-2">🧫 Seed Data</button>
+    <div class="vhs-panel content-box">
+      <div class="vhs-inner-content">
+        <div class="ix-banner">SYNTHESIZING DREAM STATES</div>
+        <div class="ix-box a">
+          <h3 class="ix-h">🔮 Seed Extraction</h3>
+          <p class="ix-t">To find the seed number of a generation and lock in your timeline:</p>
+          <ul class="ix-list-bordered">
+            <li>Click the <strong class="ix-s">"i" icon</strong> in the lower right of the image.</li>
+            <li>In the pop-up menu, click the <strong class="ix-s">second "i" icon</strong> on the left.</li>
+            <li>Click the prompt text to expand it; you will see a checkbox for <strong class="ix-s">"Include Seed"</strong>.</li>
+            <li>Once checked, the seed number appears at the bottom of the prompt. <strong class="ix-s">Copy and paste</strong> it into the seed box on the main page.</li>
+          </ul>
+        </div>
+        <div class="ix-box b">
+          <strong style="color:var(--accent-light); text-transform:uppercase; font-family:'Outfit',sans-serif; letter-spacing:1px;">💾 Persistence of Vision:</strong><br><span class="ix-tm">The seed is the blueprint of your generation. At the very least, it preserves the <strong class="ix-s">Artstyle, Lighting, and Vibe</strong> of the image.</span><br><br>
+          <strong style="color:var(--accent-light); text-transform:uppercase; font-family:'Outfit',sans-serif; letter-spacing:1px;">🛠️ Modular Generation:</strong><br><span class="ix-tm">Use the seed to keep a character or location constant while changing the action. If you love a character and place but want a new <strong class="ix-s">Pose</strong>, leave the character and location tags alone and only update the pose tag.</span><br><br>
+          <strong style="color:var(--accent-light); text-transform:uppercase; font-family:'Outfit',sans-serif; letter-spacing:1px;">⚠️ System Limitation:</strong><br><span class="ix-tm">Seeds will not help when changing <strong class="ix-s">Art Styles</strong>. Style tags have the most significant impact on the prompt; changing them will cause a "drift" that makes it nearly impossible to get similar results.</span>
+        </div>
+        <div style="text-align:center; margin-top:15px; opacity:0.8;">
+          <p style="color:var(--accent); font-size:0.85em; letter-spacing:2px; font-family:'Outfit',sans-serif; text-transform:uppercase;">Lock the timeline. Control the output.</p>
+          <div style="font-size:1.5em; letter-spacing:10px; margin-top:5px;">🌌🔮💎</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="vhs-btn tier-2">💡 Tips</button>
+    <div class="vhs-panel">
+
+      <button class="vhs-btn tier-3">Aesthetic / Era</button>
+      <div class="vhs-panel content-box"><div class="vhs-inner-content">
+        <p class="ix-td" style="margin-bottom:20px; font-style:italic; border-bottom:1px solid var(--border); padding-bottom:10px;">Found under the <strong class="ix-s">World</strong> section, these are the most powerful tools for shifting reality without changing the art style.</p>
+        <div class="ix-box a"><h3 class="ix-h">🎨 Aesthetics (The Vibe)</h3><p class="ix-t"><strong class="ix-s">Design DNA Override.</strong> Aesthetics alter the fundamental design elements of the shot—colors, architecture, furniture, and fashion.</p><div class="ix-callout"><p style="font-size:0.9em; margin:0; color:var(--text-muted);"><span style="color:var(--accent-light);">Example:</span> Selecting <strong class="ix-s">Art Deco</strong> forces geometric gold patterns, luxurious interiors, and stark contrast into the background elements.</p></div></div>
+        <div class="ix-box c"><h3 class="ix-h hb">⏳ Eras (The Timeline)</h3><p class="ix-t"><strong class="ix-s">Temporal Displacement.</strong> Instead of applying a specific art movement, Eras transport the entire scene back to a generalized time period.</p><div class="ix-callout c"><p style="font-size:0.9em; margin:0; color:var(--text-muted);"><span style="color:var(--accent-lighter);">Example:</span> Selecting <strong class="ix-s">1980s</strong> applies a generalized filter of neon, analog technology, and big hair.</p></div></div>
+        <div class="ix-box b" style="text-align:center;"><strong style="text-transform:uppercase; font-family:'Outfit',sans-serif; letter-spacing:2px; color:var(--accent-light);">⚡ System Tip</strong><p class="ix-tm" style="margin-top:5px;">You can mix them. An <strong class="ix-s">Art Deco</strong> aesthetic in a <strong class="ix-s">Cyberpunk</strong> era creates a unique retro-future blend.</p></div>
+      </div></div>
+
+      <button class="vhs-btn tier-3">Art Styles</button>
+      <div class="vhs-panel content-box"><div class="vhs-inner-content">
+        <div class="ix-box a"><h3 class="ix-h">🎨 Visual Override</h3><p class="ix-t"><strong class="ix-s">Maximum Impact.</strong> Art Styles dictate the entire rendering engine of the image. These are the biggest levers you can pull.</p><p class="ix-tm" style="margin-top:8px;">Every style here has been <strong class="ix-s">hand-crafted</strong> to ensure distinct, high-quality results.</p></div>
+        <div class="ix-box c"><h3 class="ix-h hb">🏆 Best in Class</h3><p class="ix-t">Found at the top of the list, this is a curated selection of the <strong class="ix-s">heavy hitters</strong>.</p><ul style="color:var(--text-muted); font-size:0.9em; margin-top:10px; padding-left:20px; list-style-type:square;"><li>Consistently high-quality results.</li><li>Shortlisted for easy, quick selection.</li><li>The "Gold Standard" of this generator.</li></ul></div>
+        <div class="ix-box b"><h3 class="ix-h">⚙️ The Flux Engine</h3><p class="ix-t"><strong class="ix-s">Negative Prompts? Rarely.</strong></p><p class="ix-tm" style="margin-top:5px;">Flux architecture prioritizes positive prose. Negative prompts often dilute the quality, so I have removed them from most styles to keep the output pure.</p></div>
+        <div class="ix-divider" style="text-align:center;"><p class="ix-td">Want to see a specific painter or movement?<br><span style="color:var(--accent); font-weight:bold; font-family:'Outfit',sans-serif; letter-spacing:1px;">LET ME KNOW IN CHAT.</span></p></div>
+      </div></div>
+
+      <button class="vhs-btn tier-3">Camera Settings</button>
+      <div class="vhs-panel content-box"><div class="vhs-inner-content">
+        <div class="ix-box a"><h3 class="ix-h">📷 Optical Control</h3><p class="ix-t"><strong class="ix-s">Granular Precision.</strong> This section gives you manual control over the lens, angle, focus, and film stock.</p><p class="ix-td" style="margin-top:10px; font-style:italic;"><strong style="color:var(--text-secondary);">Note:</strong> These settings work best when <em>not</em> fighting against a heavy Art Style or Aesthetic.</p></div>
+        <div class="ix-box c"><h3 class="ix-h hb">⚠️ Don't Overload</h3><p class="ix-t"><strong class="ix-s">Less is usually more.</strong> You do not need to select every single option.</p><div class="ix-callout c"><p style="font-size:0.9em; margin:0; color:var(--text-muted);"><span style="color:var(--accent-lighter);">Tip:</span> Start with just a <strong class="ix-s">Lens</strong> and an <strong class="ix-s">Angle</strong>. Play with combinations until you find a "recipe" you like.</p></div></div>
+        <div class="ix-box b"><h3 class="ix-h">🛠️ Under the Hood</h3><p class="ix-t">This section also houses the technical sliders:</p><ul style="color:var(--text-muted); font-size:0.9em; margin-top:10px; padding-left:20px; list-style-type:square;"><li><strong class="ix-s">Image Enhancements:</strong> Upscaling and detailing.</li><li><strong class="ix-s">Image Fixes:</strong> Correction tools.</li><li><strong class="ix-s">Guidance Scale:</strong> How strictly the AI follows your prompt.</li><li><strong class="ix-s">Seed:</strong> The DNA of the image (lock it to reproduce results).</li></ul></div>
+      </div></div>
+
+      <button class="vhs-btn tier-3">Characters</button>
+      <div class="vhs-panel content-box"><div class="vhs-inner-content">
+        <div class="ix-box a"><h3 class="ix-h">👤 The Identity Matrix</h3><p class="ix-t">The list is split into two main data streams:</p><ul style="color:var(--text-muted); font-size:0.9em; margin-top:5px; padding-left:20px;"><li><strong class="ix-s">General / Original:</strong> Custom characters born in the machine.</li><li><strong class="ix-s">Pop Culture:</strong> Icons from Video Games, TV, Comics, and Movies.</li></ul><p style="color:var(--accent); font-size:0.9em; margin-top:10px; font-weight:bold; font-family:'Outfit',sans-serif;">More sub-categories will initialize as the database grows.</p></div>
+        <div class="ix-box c"><h3 class="ix-h hb">🧩 Find Your Muse</h3><p class="ix-t"><strong class="ix-s">Why so many Originals?</strong> Because finding a "Muse" changes everything.</p><div class="ix-callout c"><p style="font-size:0.9em; margin:0; color:var(--text-muted);"><span style="color:var(--accent-lighter);">System Note:</span> Once you find a preset you click with (like my muse, <strong class="ix-s">Ula</strong>), you save time. No need to describe hair, eyes, or body type every single generation.</p></div></div>
+        <div class="ix-box alt"><h3 class="ix-h halt">🚫 Celebrity Simulation Error</h3><p class="ix-t"><strong class="ix-s">Manage Expectations.</strong> While I understand the appeal, AI struggles with likenesses unless the person is globally ubiquitous.</p><p class="ix-td" style="margin-top:10px; font-style:italic; border-left:2px solid var(--alert); padding-left:10px;">"If they aren't one of the 25 most famous people on Earth, you will not get a good result. You just won't."</p></div>
+        <div class="ix-divider"><h3 class="ix-h">💾 Patch Notes</h3><p class="ix-tm" style="margin-top:8px;">I am constantly tweaking the code.</p><ul style="color:var(--text-muted); font-size:0.9em; padding-left:20px; list-style-type:square;"><li>Found a prompt that sucks? <strong class="ix-s">Report it in chat.</strong></li><li>Have an OC idea? <strong class="ix-s">Request it.</strong></li></ul></div>
+      </div></div>
+
+      <button class="vhs-btn tier-3">Less Is More</button>
+      <div class="vhs-panel content-box"><div class="vhs-inner-content">
+        <div class="ix-box a"><h3 class="ix-h">📉 Signal to Noise Ratio</h3><p class="ix-t"><strong class="ix-s">The Fundamental Law:</strong> Less is more.</p><p class="ix-tm" style="margin-top:8px;">The more dropdown options you select or the more text you type into the description box, the <strong class="ix-s">worse the result</strong> often becomes.</p></div>
+        <div class="ix-box c"><h3 class="ix-h hb">⚠️ Token Overload</h3><p class="ix-t"><strong class="ix-s">Why does this happen?</strong></p><p class="ix-tm" style="margin-top:8px;">My internal prompts for Characters, Scenes, and Styles are already <strong class="ix-s">very wordy</strong> to ensure high-quality results.</p><div class="ix-callout c"><p style="font-size:0.9em; margin:0; color:var(--text-muted);"><span style="color:var(--accent-lighter);">The Math:</span> If you go crazy and select 37 different options, you confuse the AI.</p></div></div>
+        <div class="ix-box b"><h3 class="ix-h">🤖 Flux Architecture</h3><p class="ix-t">This isn't a glitch in my generator or Perchance. This is the basic nature of working with the <strong class="ix-s">Flux model</strong>.</p><p style="color:var(--accent); font-weight:bold; margin-top:10px; text-align:center; font-family:'Outfit',sans-serif; letter-spacing:2px;">BE SELECTIVE = SEE BETTER RESULTS.</p></div>
+      </div></div>
+
+      <button class="vhs-btn tier-3">Scenes</button>
+      <div class="vhs-panel content-box"><div class="vhs-inner-content">
+        <div class="ix-box a"><h3 class="ix-h">🎬 Cinematic Snapshots</h3><p class="ix-t"><strong class="ix-s">The Perfect Frame.</strong> Think of Scenes as snapshots in time—the single best image captured from the best part of a movie.</p><p class="ix-tm" style="margin-top:8px;">This section contains a vast array of scenarios for almost anything you can imagine.</p></div>
+        <div class="ix-box c"><h3 class="ix-h hb">⚙️ Prompt Engineering</h3><p class="ix-t"><strong class="ix-s">High Fidelity.</strong> Most of these are highly detailed prompts, rigorously tested to ensure they output correctly even when a custom Character and Location are active.</p><div class="ix-callout c"><p style="font-size:0.9em; margin:0; color:var(--text-muted);"><span style="color:var(--accent-lighter);">Work In Progress:</span> I am currently renaming prompts to be more descriptive.</p></div></div>
+        <div class="ix-box b"><h3 class="ix-h">📡 Status Report</h3><p class="ix-t">With so many variables, sometimes a prompt breaks.</p><ul style="color:var(--text-muted); font-size:0.9em; margin-top:10px; padding-left:20px;"><li style="margin-bottom:5px;"><strong class="ix-s">Broken?</strong> If a scene doesn't work at all, let me know.</li><li><strong class="ix-s">Missing?</strong> If there is a specific scenario you want added, just put it in the chat.</li></ul></div>
+      </div></div>
+
+      <button class="vhs-btn tier-3">World</button>
+      <div class="vhs-panel content-box"><div class="vhs-inner-content">
+        <div class="ix-box a"><h3 class="ix-h">🌍 Geographic Database</h3><p class="ix-t">The <strong class="ix-s">World</strong> section is your portal to specific coordinates.</p><ul style="color:var(--text-muted); font-size:0.9em; margin-top:10px; padding-left:20px;"><li style="margin-bottom:5px;"><strong class="ix-s">Real World:</strong> Famous cities and landmarks.</li><li style="margin-bottom:5px;"><strong class="ix-s">Media:</strong> Iconic locations from games, TV, and movies.</li><li><strong class="ix-s">Original:</strong> Unique environments created specifically for this generator.</li></ul></div>
+        <div class="ix-box b"><h3 class="ix-h">🌫️ Atmospheric Override</h3><p class="ix-t">Beyond just "place," this section controls the "feel."</p><div class="ix-callout b"><strong style="color:var(--accent-light); font-family:'Outfit',sans-serif; letter-spacing:1px;">Global Modifiers:</strong><ul style="margin:5px 0 0 0; padding-left:15px; color:var(--text-muted); font-size:0.9em;"><li>Lighting & Mood</li><li>Aesthetics & Eras</li></ul></div><p class="ix-tm" style="margin-top:10px;">These options change the way the <strong class="ix-s">entire image</strong> looks, acting as a filter over your reality.</p></div>
+        <div class="ix-divider" style="text-align:center;"><p class="ix-td">For more details on shifting time and design, see the<br><span style="color:var(--accent-light); font-weight:bold; font-family:'Outfit',sans-serif; letter-spacing:1px;">AESTHETIC / ERA</span> tab.</p></div>
+      </div></div>
+
     </div>
   </div>
 </div>
 
+<!-- ══════════════════════════════════════
+     TIPS SECTION STYLES
+     ══════════════════════════════════════ -->
+<style>
+  #vhs-guide-container {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    padding: 10px;
+    max-width: 600px;
+    width: 96%;
+    margin: 20px auto;
+    box-shadow: 0 0 30px rgba(136,85,204,0.1);
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .vhs-btn {
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Outfit', sans-serif;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 20;
+    letter-spacing: 2px;
+  }
+  .vhs-btn.active { transform: translateX(2px); }
+  .vhs-btn:after { content: '+'; font-weight: bold; font-size: 1.2em; }
+  .vhs-btn.active:after { content: '−'; }
+  .tier-1 {
+    font-size: 1em;
+    font-weight: 700;
+    padding: 13px 16px;
+    background: var(--accent);
+    color: #fff;
+    border-left: 4px solid var(--accent-bright);
+    animation: clBtnPulse 4s ease-in-out infinite;
+  }
+  .tier-1:hover { background: var(--accent-bright); animation: none; }
+  .tier-2 {
+    font-size: 0.85em;
+    font-weight: 600;
+    padding: 11px 16px 11px 20px;
+    background: var(--bg-surface);
+    color: var(--accent-light);
+    border-left: 4px solid var(--accent);
+  }
+  .tier-2:hover { background: var(--bg-hover); color: var(--accent-lighter); padding-left: 24px; }
+  .tier-3 {
+    font-size: 0.8em;
+    font-weight: 600;
+    padding: 9px 16px 9px 36px;
+    background: var(--bg-deep);
+    color: var(--accent-muted);
+    border-left: 4px solid var(--accent-muted);
+  }
+  .tier-3:hover { background: var(--bg-surface); color: var(--accent-light); padding-left: 40px; }
+  .vhs-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  .content-box {
+    background-color: var(--bg-deep);
+    border-left: 2px solid var(--border);
+    margin-left: 10px;
+  }
+  .vhs-inner-content {
+    max-height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--bg-deep);
+  }
+  .vhs-inner-content::-webkit-scrollbar { width: 6px; }
+  .vhs-inner-content::-webkit-scrollbar-track { background: var(--bg-deep); }
+  .vhs-inner-content::-webkit-scrollbar-thumb { background: var(--accent); }
+  .vhs-inner-content p, .vhs-inner-content li {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    line-height: 1.5;
+    font-family: 'Outfit', sans-serif;
+  }
+  .vhs-inner-content img { max-width: 100%; height: auto; }
+</style>
+
 <script>
 (function() {
-  'use strict';
-  
-  const modes = {
-    't2i': {
-      title: 'Text→Image',
-      desc: 'Create stunning images from your text descriptions. Describe what you want and watch the AI bring it to life.'
-    },
-    'i2t': {
-      title: 'Image→Text',
-      desc: 'Upload any image and receive detailed, intelligent analysis and descriptions of its content.'
-    },
-    'i2i': {
-      title: 'Image→Image',
-      desc: 'Take an existing image and transform it. Enhance, modify, or completely reimagine it with AI power.'
-    },
-    'hyper': {
-      title: 'HyperReal Mode',
-      desc: 'Exclusive mode for photorealistic human generation only. Maximum quality, no animals or drawings.'
-    }
-  };
-
-  const buttons = document.querySelectorAll('.mode-button');
-  const descPanel = document.getElementById('modeDescription');
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', function() {
-      buttons.forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      
-      const mode = this.dataset.mode;
-      const modeData = modes[mode];
-      descPanel.textContent = modeData.desc;
-      
-      console.log('Modo ativado:', mode, modeData);
+  var container = document.getElementById("vhs-guide-container");
+  if(!container) return;
+  var acc = container.getElementsByClassName("vhs-btn");
+  for (var i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight) { panel.style.maxHeight = null; }
+      else { panel.style.maxHeight = panel.scrollHeight + "px"; }
+      var parentPanel = this.parentElement;
+      if (parentPanel.classList.contains("vhs-panel") && parentPanel.style.maxHeight) {
+        parentPanel.style.maxHeight = "none";
+      }
     });
-  });
-
-  // Set initial description
-  if (descPanel) {
-    descPanel.textContent = modes['t2i'].desc;
   }
 })();
 </script>
 
+<!-- ══════════════════════════════════════
+     GALLERY MODAL
+     ══════════════════════════════════════ -->
+<div id="galleryModal" hidden style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;justify-content:center;align-items:center;z-index:9998;opacity:0;transition:opacity 0.35s ease;backdrop-filter:blur(4px);">
+    <div id="galleryModalInner" style="width:90%;max-width:540px;max-height:85%;overflow-y:auto;position:relative;padding:25px;background:var(--bg-panel);border:1px solid var(--accent);box-shadow:0 0 40px rgba(136,85,204,0.25),0 8px 40px rgba(0,0,0,0.9);font-family:'Outfit',sans-serif;color:var(--accent-light);">
+        <button id="closeGalleryBtn" style="position:absolute;top:10px;right:10px;background:transparent;border:1px solid var(--border);cursor:pointer;color:var(--accent-light);font-size:14px;font-weight:700;padding:2px 8px;font-family:'Outfit',sans-serif;transition:background 0.1s;">✕</button>
+        <h2 style="text-align:center;margin-bottom:6px;font-size:18px;font-weight:700;color:var(--accent-light);letter-spacing:3px;text-transform:uppercase;font-family:'Outfit',sans-serif;">Gallery Search</h2>
+        <div id="gal-status" style="font-size:11px;color:var(--text-dim);text-align:center;margin-bottom:10px;line-height:1.4;font-family:'Outfit',sans-serif;">
+            <span>Generator: <span id="gal-disp-gen" style="color:var(--accent-light);">the-imaginarium</span></span> · 
+            <span>Gallery: <span id="gal-disp-sub" style="color:var(--accent-light);">public</span></span><br>
+            <span>Tag: <span id="gal-disp-tag" style="color:var(--accent);">none</span></span> · 
+            <span>Exclude: <span id="gal-disp-bad" style="color:var(--accent);">none</span></span>
+        </div>
+        <div id="gal-search-fields" style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px;">
+            <select id="galGenSelect" class="gal-input"><option value="the-imaginarium" selected>the-imaginarium</option><option value="ai-art-generator-advanced">ai-art-generator-advanced</option><option value="ai-character-generator">ai-character-generator</option><option value="ai-furry-generator">ai-furry-generator</option><option value="ai-illustration-generator">ai-illustration-generator</option><option value="ai-image-lab">ai-image-lab</option><option value="ai-photo-generator">ai-photo-generator</option><option value="ai-text-to-image-generator">ai-text-to-image-generator</option><option value="an-image-generator">an-image-generator</option><option value="art-generator-advanced">art-generator-advanced</option><option value="beautiful-people">beautiful-people</option><option value="beautiful-peop1e">beautiful-peop1e</option><option value="best-ai-image-generator">best-ai-image-generator</option><option value="fashion-legs">fashion-legs</option><option value="image-generator-professional">image-generator-professional</option><option value="imaginix">imaginix</option><option value="improved-ai-girl-generator">improved-ai-girl-generator</option><option value="kaw-ai">kaw-ai</option><option value="mack-mcgenerator">mack-mcgenerator</option><option value="multiple-style-tester">multiple-style-tester</option><option value="nexbox">nexbox</option><option value="penumbra-ai">penumbra-ai</option><option value="pretty-ai">pretty-ai</option><option value="prompt-tag-tester">prompt-tag-tester</option><option value="realistic-people">realistic-people</option><option value="realistic-portraits-generator">realistic-portraits-generator</option><option value="ufo-specific-wifey-generator">ufo-specific-wifey-generator</option><option value="urvillain-imagine">urvillain-imagine</option><option value="vukwap">vukwap</option><option value="z154dxbfk0">z154dxbfk0</option></select>
+            <input id="galGenInput" class="gal-input" placeholder="Type generator name..." autocomplete="off" style="display:none;">
+            <select id="galSubSelect" class="gal-input"><option value="public" selected>public</option><option value="anime">anime</option><option value="artistic">artistic</option><option value="bbw">bbw</option><option value="bondage">bondage</option><option value="closeup">closeup</option><option value="come">come</option><option value="contest">contest</option><option value="cosplay">cosplay</option><option value="creatures">creatures</option><option value="ebony">ebony</option><option value="feet">feet</option><option value="femme">femme</option><option value="footwear">footwear</option><option value="hosiery">hosiery</option><option value="machines">machines</option><option value="milf">milf</option><option value="milk">milk</option><option value="outtakes">outtakes</option><option value="pov">pov</option><option value="seasonal">seasonal</option><option value="superheroes">superheroes</option><option value="tattooed">tattooed</option><option value="trans">trans</option><option value="video-games">video-games</option><option value="vintage">vintage</option><option value="_custom">✏️ Custom...</option></select>
+            <input id="galSubInput" class="gal-input" placeholder="Type gallery name..." autocomplete="off" style="display:none;">
+            <input id="galTagInput" class="gal-input" placeholder="Search for tag..." autocomplete="off">
+            <input id="galBadInput" class="gal-input" placeholder="Exclude words (comma-separated)" autocomplete="off">
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:14px;">
+            <button class="gal-btn gal-btn-primary" id="galFilterBtn">Filter</button>
+            <button class="gal-btn" id="galResetBtn">Reset</button>
+            <button class="gal-btn" id="galShareBtn">Share</button>
+        </div>
+        <div id="gal-share-row" style="display:none;margin-bottom:12px;text-align:center;">
+            <div style="display:flex;gap:4px;justify-content:center;align-items:center;"><input id="galShareUrl" readonly class="gal-input" style="width:100%;font-size:11px;cursor:text;"><button class="gal-btn" id="galCopyBtn" style="white-space:nowrap;">Copy</button></div>
+            <div id="gal-copy-toast" style="display:none;color:var(--accent-light);font-size:11px;margin-top:4px;font-family:'Outfit',sans-serif;">Copied!</div>
+        </div>
+        <div id="gal-shared-notice" style="display:none;background:rgba(136,85,204,0.08);border:1px solid var(--border);border-left:4px solid var(--accent);padding:8px;margin-bottom:12px;font-size:11px;text-align:center;color:var(--text-muted);font-family:'Outfit',sans-serif;">
+            🔗 Viewing a shared filter. <a href="https://perchance.org/the-imaginarium" target="_blank" style="color:var(--accent-light);">Go to main site →</a>
+        </div>
+        <div style="border-top:1px solid var(--border);padding-top:12px;">
+            <div style="text-align:center;font-size:11px;color:var(--text-dim);letter-spacing:2px;margin-bottom:8px;text-transform:uppercase;font-family:'Outfit',sans-serif;">Quick Select Gallery</div>
+            <div class="gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:8px;">
+                <div class="gallery-card" data-gal="public">public</div><div class="gallery-card" data-gal="anime">anime</div><div class="gallery-card" data-gal="artistic">artistic</div><div class="gallery-card" data-gal="bbw">bbw</div><div class="gallery-card" data-gal="bondage">bondage</div><div class="gallery-card" data-gal="closeup">closeup</div><div class="gallery-card" data-gal="come">come</div><div class="gallery-card" data-gal="contest">contest</div><div class="gallery-card" data-gal="cosplay">cosplay</div><div class="gallery-card" data-gal="creatures">creatures</div><div class="gallery-card" data-gal="ebony">ebony</div><div class="gallery-card" data-gal="feet">feet</div><div class="gallery-card" data-gal="femme">femme</div><div class="gallery-card" data-gal="footwear">footwear</div><div class="gallery-card" data-gal="hosiery">hosiery</div><div class="gallery-card" data-gal="machines">machines</div><div class="gallery-card" data-gal="milf">milf</div><div class="gallery-card" data-gal="milk">milk</div><div class="gallery-card" data-gal="mlp">mlp</div><div class="gallery-card" data-gal="outtakes">outtakes</div><div class="gallery-card" data-gal="seasonal">seasonal</div><div class="gallery-card" data-gal="trans">trans</div><div class="gallery-card" data-gal="pov">pov</div><div class="gallery-card" data-gal="superheroes">superheroes</div><div class="gallery-card" data-gal="tattooed">tattooed</div><div class="gallery-card" data-gal="video-games">video-games</div><div class="gallery-card" data-gal="vintage">vintage</div>
+            </div>
+        </div>
+        <div style="margin-top:14px;text-align:center;font-size:11px;opacity:.5;color:var(--text-dim);font-family:'Outfit',sans-serif;">Filter within The Imaginarium or search any Perchance gallery</div>
+    </div>
+</div>
+
+[generateInterfaceHTML(settings)]
+
+[footers(footerItems, "#a0a0a0", "background: #a0a0a0; border-top:3px solid #6a6a6a; border-left:4px solid #6a6a6a; border-right:1px solid #222226; border-bottom:1px solid #222226; font-family:'Outfit',sans-serif;", "border:1px solid #222226; border-left:3px solid #6a6a6a; background:#18181a; color:#a0a0a0; font-family:'Outfit',sans-serif;", "#e8e6e2", "#2a2a2a")]
+[something("the-imaginarium")]
+
+<!-- ══════════════════════════════════════
+     INTRO MODAL SCRIPT
+     ══════════════════════════════════════ -->
+<script>
+(function(){
+  if(!localStorage.getItem("introSeen")){
+    document.getElementById("introModal").style.display = "flex";
+  }
+  document.getElementById("introAccept").addEventListener("click", function(){
+    localStorage.setItem("introSeen", "true");
+    document.getElementById("introModal").style.display = "none";
+  });
+})();
+</script>
+
+
+  
+<!-- ══════════════════════════════════════
+     GALLERY STYLES
+     ══════════════════════════════════════ -->
+<style>
+.gal-input {
+    width:100%; box-sizing:border-box; padding:8px 10px;
+    border:1px solid var(--border); background:var(--bg-panel);
+    color:var(--text-primary); font-family:'Outfit',sans-serif;
+    font-size:13px; outline:none; transition:border-color 0.2s,box-shadow 0.2s;
+}
+.gal-input:focus { border-color:var(--accent); box-shadow:0 0 8px rgba(136,85,204,0.3); }
+.gal-input::placeholder { color:var(--text-dim); font-style:italic; }
+.gal-btn {
+    padding:7px 14px; border:1px solid var(--accent); background:var(--bg-surface);
+    color:var(--accent-light); font-family:'Outfit',sans-serif; font-size:12px;
+    font-weight:600; cursor:pointer; text-transform:uppercase; letter-spacing:2px;
+    transition:background 0.15s ease,color 0.15s ease;
+}
+.gal-btn:hover { background:var(--bg-hover); color:var(--accent-lighter); }
+.gal-btn:active { background:var(--bg-deep); }
+.gal-btn-primary { background:var(--accent); border-color:var(--accent-bright); color:#fff; font-weight:700; }
+.gal-btn-primary:hover { background:var(--accent-bright); }
+#galleryModal .gallery-card {
+    padding:9px 6px; background:var(--bg-surface); border:1px solid var(--border);
+    cursor:pointer; font-size:12px; font-family:'Outfit',sans-serif;
+    transition:background 0.15s ease,border-color 0.15s ease;
+    text-align:center; color:var(--accent-muted); text-transform:uppercase; letter-spacing:1px;
+}
+#galleryModal .gallery-card:hover { background:var(--bg-hover); border-color:var(--accent); color:var(--accent-light); }
+#galleryModal .gallery-card.gal-active { background:var(--bg-active); border-color:var(--accent); border-left:4px solid var(--accent); color:var(--accent-light); }
+#galleryModalInner::-webkit-scrollbar { width:6px; }
+#galleryModalInner::-webkit-scrollbar-track { background:var(--bg-panel); }
+#galleryModalInner::-webkit-scrollbar-thumb { background:var(--accent); }
+@keyframes galFlicker { 0%{background-color:initial;} 100%{background-color:rgba(136,85,204,0.15);} }
+.gal-flicker { animation:galFlicker 0.2s ease-out; }
+</style>
+
+<!-- ══════════════════════════════════════
+     GALLERY SCRIPT
+     ══════════════════════════════════════ -->
+<script>
+(function(){
+    const DEFAULT_GEN='the-imaginarium',DEFAULT_SUB='public',SITE_URL='https://perchance.org/the-imaginarium';
+    const STORAGE_KEYS={gen:'imag_galGen',sub:'imag_galSub',tag:'imag_galTag',bad:'imag_galBad'};
+    const modal=document.getElementById('galleryModal');
+    if(!modal)return;
+    const closeBtn=document.getElementById('closeGalleryBtn'),genSelect=document.getElementById('galGenSelect'),genInput=document.getElementById('galGenInput'),subSelect=document.getElementById('galSubSelect'),subInput=document.getElementById('galSubInput'),tagInput=document.getElementById('galTagInput'),badInput=document.getElementById('galBadInput'),filterBtn=document.getElementById('galFilterBtn'),resetBtn=document.getElementById('galResetBtn'),shareBtn=document.getElementById('galShareBtn'),shareRow=document.getElementById('gal-share-row'),shareUrl=document.getElementById('galShareUrl'),copyBtn=document.getElementById('galCopyBtn'),copyToast=document.getElementById('gal-copy-toast'),sharedNotice=document.getElementById('gal-shared-notice'),dispGen=document.getElementById('gal-disp-gen'),dispSub=document.getElementById('gal-disp-sub'),dispTag=document.getElementById('gal-disp-tag'),dispBad=document.getElementById('gal-disp-bad'),cards=document.querySelectorAll('#galleryModal .gallery-card');
+    function fmt(s){return s.replace(/(?<=\S) (\s)?(?=\S)/g,'-').trim().toLowerCase();}
+    function flickerBtn(b){b.classList.add('gal-flicker');setTimeout(()=>b.classList.remove('gal-flicker'),300);}
+    function updateStatusDisplay(g,s,t,b){dispGen.textContent=g||DEFAULT_GEN;dispSub.textContent=s||DEFAULT_SUB;dispTag.textContent=t||'none';dispBad.textContent=b||'none';}
+    function highlightActiveCard(sub){cards.forEach(c=>{c.classList.toggle('gal-active',c.dataset.gal===sub);});}
+    function getGenValue(){return genSelect.value==='_custom'?genInput.value:genSelect.value;}
+    function getSubValue(){return subSelect.value==='_custom'?subInput.value:subSelect.value;}
+    genSelect.addEventListener('change',()=>{if(genSelect.value==='_custom'){genInput.style.display='';genInput.focus();}else{genInput.style.display='none';genInput.value='';}});
+    subSelect.addEventListener('change',()=>{if(subSelect.value==='_custom'){subInput.style.display='';subInput.focus();}else{subInput.style.display='none';subInput.value='';}});
+    function syncGenDropdown(v){const m=[...genSelect.options].find(o=>o.value===v);if(m){genSelect.value=v;genInput.style.display='none';genInput.value='';}else if(v){genSelect.value='_custom';genInput.style.display='';genInput.value=v;}else{genSelect.value=DEFAULT_GEN;genInput.style.display='none';genInput.value='';}}
+    function syncSubDropdown(v){const m=[...subSelect.options].find(o=>o.value===v);if(m){subSelect.value=v;subInput.style.display='none';subInput.value='';}else if(v){subSelect.value='_custom';subInput.style.display='';subInput.value=v;}else{subSelect.value=DEFAULT_SUB;subInput.style.display='none';subInput.value='';}}
+    syncGenDropdown(localStorage.getItem(STORAGE_KEYS.gen)||'');syncSubDropdown(localStorage.getItem(STORAGE_KEYS.sub)||'');tagInput.value=localStorage.getItem(STORAGE_KEYS.tag)||'';badInput.value=localStorage.getItem(STORAGE_KEYS.bad)||'';
+    function parseSharedLink(){const h=window.location.hash;if(!h.includes('#sharedlink='))return false;const gM=h.match(/gen:([^&]*)/),sM=h.match(/galleryname:([^&]*)/),tM=h.match(/tag:([^&]*)/),bM=h.match(/bannedword:([^&]*)/);if(gM&&gM[1])syncGenDropdown(gM[1]);if(sM&&sM[1])syncSubDropdown(sM[1]);if(tM&&tM[1])tagInput.value=decodeURIComponent(tM[1]);if(bM&&bM[1])badInput.value=decodeURIComponent(bM[1]);sharedNotice.style.display='block';return true;}
+    const arrivedViaShare=parseSharedLink();
+    updateStatusDisplay(getGenValue(),getSubValue(),tagInput.value,badInput.value);highlightActiveCard(fmt(getSubValue())||DEFAULT_SUB);
+    function executeFilter(gen,sub,tag,bad){let fG=gen?fmt(gen):DEFAULT_GEN,fS=sub?fmt(sub):DEFAULT_SUB,fT=tag||'',fB=bad||'';let bA=[];if(typeof fB==='string'&&fB.trim()!=='')bA=fB.split(',').map(t=>t.trim()).filter(t=>t!=='');if(fG!==DEFAULT_GEN)localStorage.setItem(STORAGE_KEYS.gen,fG);else localStorage.removeItem(STORAGE_KEYS.gen);if(fS!==DEFAULT_SUB)localStorage.setItem(STORAGE_KEYS.sub,fS);else localStorage.removeItem(STORAGE_KEYS.sub);if(fT)localStorage.setItem(STORAGE_KEYS.tag,fT);else localStorage.removeItem(STORAGE_KEYS.tag);if(bA.length)localStorage.setItem(STORAGE_KEYS.bad,bA.join(', '));else localStorage.removeItem(STORAGE_KEYS.bad);const iframe=document.querySelector('iframe.text-to-image-plugin-gallery');if(!iframe){console.warn('[Gallery Search] iframe not found');return;}const url=new URL(iframe.src);url.searchParams.set('contentFilter','none');url.searchParams.set('channel',fG);url.searchParams.set('subChannel',fS);const hash=url.hash;const dM=hash.match(/^#data=(.+)$/);if(dM){try{const raw=decodeURIComponent(dM[1]);const d=JSON.parse(raw);d.bannedPromptPhrases=[];if(fT)d.bannedPromptPhrases.push(`/^(?!.*(\\b${fT}\\b)).*$/i`);if(bA.length)d.bannedPromptPhrases.push(...bA);if(typeof jail!=='undefined'&&Array.isArray(jail?.bannedPromptPhrases))d.bannedPromptPhrases.push(...jail.bannedPromptPhrases);url.hash='#data='+encodeURIComponent(JSON.stringify(d));}catch(e){console.warn('[Gallery Search] parse error:',e);}}iframe.src='about:blank';setTimeout(()=>{iframe.src=url.toString();},50);updateStatusDisplay(fG,fS,fT,bA.join(', '));highlightActiveCard(fS);}
+    filterBtn.addEventListener('click',()=>{flickerBtn(filterBtn);executeFilter(getGenValue(),getSubValue(),tagInput.value,badInput.value);closeGallery();});
+    resetBtn.addEventListener('click',()=>{flickerBtn(resetBtn);genSelect.value=DEFAULT_GEN;genInput.value='';genInput.style.display='none';subSelect.value=DEFAULT_SUB;subInput.value='';subInput.style.display='none';tagInput.value='';badInput.value='';shareRow.style.display='none';sharedNotice.style.display='none';if(window.location.hash.includes('#sharedlink='))history.replaceState(null,'',window.location.pathname);executeFilter('','','','');closeGallery();});
+    [genInput,subInput,tagInput,badInput].forEach(input=>{input.addEventListener('keydown',e=>{if(e.key==='Enter')filterBtn.click();});});
+    shareBtn.addEventListener('click',()=>{flickerBtn(shareBtn);const g=fmt(getGenValue())||DEFAULT_GEN,s=fmt(getSubValue())||DEFAULT_SUB,t=tagInput.value,b=badInput.value;if(!g&&!s&&!t&&!b){shareRow.style.display='none';return;}shareUrl.value=`${SITE_URL}#sharedlink=gen:${encodeURIComponent(g)}&galleryname:${encodeURIComponent(s)}&tag:${encodeURIComponent(t)}&bannedword:${encodeURIComponent(b)}`;shareRow.style.display='block';});
+    copyBtn.addEventListener('click',()=>{flickerBtn(copyBtn);if(typeof copyText==='function')copyText(shareUrl.value);else navigator.clipboard.writeText(shareUrl.value).catch(()=>{shareUrl.select();document.execCommand('copy');});copyToast.style.display='block';setTimeout(()=>{copyToast.style.display='none';},1500);});
+    cards.forEach(card=>{card.addEventListener('click',()=>{const gal=card.dataset.gal;syncSubDropdown(gal);executeFilter(getGenValue(),gal,tagInput.value,badInput.value);closeGallery();});});
+    window._imagGalleryOpen=function(){modal.style.zIndex=20001;modal.hidden=false;setTimeout(()=>{modal.style.opacity=1;},20);};
+    function closeGallery(){modal.style.opacity=0;setTimeout(()=>{modal.hidden=true;modal.style.zIndex='';},350);}
+    window._imagGalleryClose=closeGallery;
+    if(closeBtn)closeBtn.onclick=closeGallery;
+    modal.addEventListener('click',e=>{if(e.target===modal)closeGallery();});
+    if(arrivedViaShare||getGenValue()!==DEFAULT_GEN||getSubValue()!==DEFAULT_SUB||tagInput.value||badInput.value){const obs=new MutationObserver(()=>{const iframe=document.querySelector('iframe.text-to-image-plugin-gallery');if(iframe){obs.disconnect();setTimeout(()=>{executeFilter(getGenValue(),getSubValue(),tagInput.value,badInput.value);},300);}});obs.observe(document.body,{childList:true,subtree:true});}
+})();
+</script>
+
+<br><br>
+
+
+<!-- ══════════════════════════════════════
+     CHANGELOG COMPONENT
+     ══════════════════════════════════════ -->
+<div id="imag-changelog-component">
+  <button id="imag-cl-trigger"><span id="imag-cl-text">Changelog</span></button>
+  <div id="imag-cl-modal" class="imag-cl-hidden">
+    <div class="imag-cl-modal-content">
+      <div class="imag-cl-modal-header"><span class="imag-cl-title">SYSTEM LOG</span><button id="imag-cl-close">✕</button></div>
+      <div class="imag-cl-modal-body">
+
+<h3 class="vw-h3">5/10/26 - 1.06 - Library Expansion & User Requests</h3>
+        <ul class="vw-ul">
+          <li>Contest component updated — Hall of Fame entries now link out to the full winning image, winner is hand-picked at month's end.</li>
+          <li>First contest winner inducted into the Hall of Fame.</li>
+          <li>New contest launched — theme: <strong>Festival Lights</strong>, runs through 5/31.</li>
+          <li>Heavy ongoing scene creation and updates in progress to support a new section coming soon.</li>
+          <li>Created user requested items
+            <ul>
+              <li>Albino skin tone added.</li>
+              <li>Bronze skin tone added.</li>
+              <li>Face and nipple/areola tattoo placements added, plus three new mixed packages combining them.</li>
+              <li>Nine new tattoo styles added — Art Nouveau, Celtic Knotwork, Color Hyperrealism, Mandala, Micro Realism, Sak Yant, Sketch Style, Stick &amp; Poke, Sumi-e Brush.</li>
+              <li>"Tattoo ink" wording standardized across placement prompts for render reliability.</li>
+              <li>Outlined penis state added — visible anatomical contour through clothing.</li>
+              <li>Three underboob shirt cuts added — crop, cutout, and tie.</li>
+              <li>Bolero jacket and micro bolero added.</li>
+            </ul>
+          </li>
+        </ul>        
+        
+<h3 class="vw-h3">4/21/26 - 1.05 - Prompt Expansions</h3>
+<ul class="vw-ul">
+  <li>Close Up (Macro) prompts added.</li>
+  <li>Toy prompts restored.</li>
+  <li>Oral prompts restored.</li>
+</ul>
+        <h3 class="vw-h3">4/15/26 - 1.04 - Fighting Games & Contest</h3>
+<ul class="vw-ul">
+  <li>Community contest launched — see the Contest button for rules and submission details.</li>
+  <li>Fighting Games given its own dedicated section with improved organization.</li>
+  <li>Street Fighter, BlazBlue, and Darkstalkers character prompts completed and fully functional.</li>
+  <li>Remaining fighting game rosters will be improved over the coming week.</li>
+  <li>All Disney Princess prompts redone — significantly better output consistency.</li>
+  <li>Generic cartoon style added to the Best Styles category.</li>
+</ul><h3 class="vw-h3">4/10/26 - 1.03 - Location & Style Overhaul</h3>
+        <ul class="vw-ul">
+          <li>Site theme finalized across all UI components and panels.</li>
+          <li>Dynamic theme recoloring — accent colors now shift based on active background selection.</li>
+          <li>Art style dropdown relabeled for clarity; category names now reflect their actual content.</li>
+          <li>Location and location mod prompts fully rebuilt — significantly more detailed with improved render consistency.</li>
+        </ul>
+        <h3 class="vw-h3">3/29/26 - 1.00 - Generator Theme Finalized</h3>
+        <ul class="vw-ul">
+          <li>Full CSS variable system — all UI components now use theme-aware custom properties.</li>
+          <li>Theme switcher now shifts accent colors, text, borders, and surfaces across the entire page.</li>
+          <li>Each gradient background carries its own color palette.</li>
+          <li>Utility classes added for content boxes, headings, and callouts.</li>
+          <li>Gallery modal fully rethemed to Mirror's Edge design system.</li>
+          <li>Removed all remaining vaporwave styling artifacts.</li>
+          <li>Added intro modal content warning.</li>
+        </ul>
+        <h3 class="vw-h3">0.95 - Prompt Additions</h3>
+        <ul class="vw-ul">
+          <li>Added a large list of Fortnite characters and a few Fortnite maps</li>
+          <li>Added Shoe and LegWear section, each has a generic option but them special themed options</li>
+          <li>Fixed enhancement promots</li>
+          <li>Added and cleaned up RNG scenes</li>
+          <li>Split RNG between Basic and a little heavier</li>
+          <li>Wallpaper Konbini (my other gen) works again</li>
+          <li>Reset NO LONGER DELETES TEXT FIELDS, this means whatever is types in description, scratch pad, negative, user Nam and image title will not reset, only drop downs reset when clicking the reset button</li>
+        </ul>
+        <h3 class="vw-h3">0.88 — UI Redesign</h3>
+        <ul class="vw-ul">
+          <li>Fully rebuilt UI theme — Mirror's Edge inspired design system replacing vaporwave.</li>
+          <li>All dropdown boxes converted to new style with color-coded left accent bars.</li>
+          <li>Category labels added to all boxes so groupings are immediately obvious.</li>
+          <li>Header, intro modal, tips panel, and changelog all updated to match new theme.</li>
+          <li>Background gradient system rebuilt with distinct, identifiable options.</li>
+          <li>Comment section updated to match new theme.</li>
+        </ul>
+        <h3 class="vw-h3">0.87 — 3/13/26</h3><ul class="vw-ul"><li>Completely redid navigation to be more logical.</li><li>Redid all colorization on dropdown labels.</li><li>Updated a large number of test scenes for better output consistency.</li><li>Redid all art styles — section considered finalized.</li><li>Redid video game characters for better output consistency.</li><li>Added a Gallery Searcher with sub-gallery filtering, custom input, and shareable filter links.</li></ul>
+        <h3 class="vw-h3">0.84 — 3/8/26</h3><ul class="vw-ul"><li>Finalized Nintendo, Super Mario, Final Fantasy, and Misc Video Game character prompts.</li><li>Added Nintendo backdrops.</li><li>Changed main dropdown interface to group items for easier navigation.</li></ul>
+        <h3 class="vw-h3">0.83 — 3/6/26</h3><ul class="vw-ul"><li>Added Perchance Gallery Searcher with generator dropdown and custom input.</li></ul>
+        <h3 class="vw-h3">0.82 — 3/3/26</h3><ul class="vw-ul"><li>Updated Cosplay section. Removed gibberish options. Split more subsections. Pose sets updated.</li></ul>
+        <h3 class="vw-h3">0.81 — 2/28/26</h3><ul class="vw-ul"><li>Finalized Fine Art, Anime, and Photography styles. Added Liminal backdrops. Finalized Cartoon Characters.</li></ul>
+        <h3 class="vw-h3">0.79 — 2/24/26</h3><ul class="vw-ul"><li>Changed Fairy Tale characters to Grimm's Tales era. Added Zodiac and Tarot Card snapshot sets.</li></ul>
+        <h3 class="vw-h3">0.77 — 2/17/26</h3><ul class="vw-ul"><li>Added Tattoos, Prosthetics, hair combs, more original characters, new pose set.</li></ul>
+        <h3 class="vw-h3">0.75 — 2/9/26</h3><ul class="vw-ul"><li>Added render seed guide. Moved video library. Redid original characters. Added Roulette scenes.</li></ul>
+        <h3 class="vw-h3">0.71 — 1/30/26</h3><ul class="vw-ul"><li>Corrected nav bar, gallery, and theme buttons. Misc formatting fixes.</li></ul>
+        <h3 class="vw-h3">0.70 — 1/25/26</h3><ul class="vw-ul"><li>Restyled Scenes section. Split scene categories. Created Leg Wear scene set.</li></ul>
+        <h3 class="vw-h3">0.68 — 1/20/26</h3><ul class="vw-ul"><li>Restyled main page. Moved options. Color coded groupings. Tweaked Machine scenes.</li></ul>
+        <h3 class="vw-h3">0.66 — 1/18/26</h3><ul class="vw-ul"><li>Added mature original characters. Created Creature gallery.</li></ul>
+        <h3 class="vw-h3">0.65 — 1/16/26</h3><ul class="vw-ul"><li>Additional original characters. Revised restraint scenes. Revised footer.</li></ul>
+        <h3 class="vw-h3">0.64 — 1/15/26</h3><ul class="vw-ul"><li>Added changelog. Fixed many Abstract art styles.</li></ul>
+        <h3 class="vw-h3">0.10 — 1/1/26 — Initial Beta</h3><ul class="vw-ul"><li>System online. First build deployed.</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #imag-changelog-component { display:block; width:200px; margin:0 auto; font-family:'Outfit',sans-serif; }
+    #imag-cl-trigger { display:inline-flex; justify-content:center; align-items:center; width:100%; box-sizing:border-box; background:var(--accent); border:none; border-left:4px solid var(--accent-bright); color:#fff; font-family:'Outfit',sans-serif; font-size:1em; font-weight:700; text-transform:uppercase; letter-spacing:2px; cursor:pointer; padding:13px 16px; transition:background 0.2s; animation:clBtnPulse 4s ease-in-out infinite; }
+    #imag-cl-trigger:hover { background:var(--accent-bright); animation:none; }
+    @keyframes clBtnPulse { 0%{background:var(--accent);box-shadow:0 0 0 rgba(136,85,204,0);}50%{background:var(--accent-bright);box-shadow:0 2px 16px rgba(136,85,204,0.5);}100%{background:var(--accent);box-shadow:0 0 0 rgba(136,85,204,0);} }
+    #imag-cl-modal { position:fixed; top:0;left:0; width:100%;height:100%; background:rgba(0,0,0,0.85); z-index:99999; display:flex; justify-content:center; align-items:center; }
+    .imag-cl-hidden { display:none !important; }
+    .imag-cl-modal-content { width:480px; max-width:92%; max-height:82vh; background:var(--bg-panel); border:1px solid var(--accent); box-shadow:0 0 40px rgba(136,85,204,0.25); display:flex; flex-direction:column; animation:clModalIn 0.25s ease forwards; }
+    @keyframes clModalIn { from{opacity:0;transform:scale(0.97);}to{opacity:1;transform:scale(1);} }
+    .imag-cl-modal-header { background:var(--accent); padding:10px 14px; display:flex; justify-content:space-between; align-items:center; flex-shrink:0; border-bottom:1px solid var(--accent-light); }
+    .imag-cl-title { color:#fff; font-family:'Outfit',sans-serif; font-weight:700; font-size:13px; letter-spacing:3px; text-transform:uppercase; }
+    #imag-cl-close { background:transparent; border:1px solid var(--accent-light); color:#fff; font-size:14px; font-weight:700; cursor:pointer; padding:2px 8px; font-family:'Outfit',sans-serif; transition:background 0.1s; }
+    #imag-cl-close:hover { background:rgba(255,255,255,0.15); }
+    .imag-cl-modal-body { padding:18px 20px; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--accent) var(--bg-panel); }
+    .imag-cl-modal-body::-webkit-scrollbar { width:6px; }
+    .imag-cl-modal-body::-webkit-scrollbar-track { background:var(--bg-panel); }
+    .imag-cl-modal-body::-webkit-scrollbar-thumb { background:var(--accent); }
+    .vw-h3 { font-family:'Outfit',sans-serif; font-weight:700; color:var(--accent-light); border-bottom:1px solid var(--border); padding-bottom:4px; letter-spacing:2px; font-size:0.9em; text-transform:uppercase; margin:16px 0 8px 0; }
+    .vw-h3:first-child { margin-top:0; }
+    .vw-ul { color:var(--text-secondary); line-height:1.7; padding-left:20px; font-size:0.88em; margin:0 0 4px 0; }
+    .vw-ul li { margin-bottom:4px; }
+    .vw-ul ul { margin-top:4px; padding-left:18px; list-style-type:circle; }
+  </style>
+
+  <script>
+  (function(){
+    const version="1.06",lastUpdate="May 10, 2026",texts=["Changelog",version,lastUpdate];
+    const btn=document.getElementById('imag-cl-trigger'),btnTxt=document.getElementById('imag-cl-text'),modal=document.getElementById('imag-cl-modal'),closeBtn=document.getElementById('imag-cl-close');
+    let idx=0;setInterval(()=>{idx=(idx+1)%texts.length;btnTxt.style.opacity=0;setTimeout(()=>{btnTxt.textContent=texts[idx];btnTxt.style.opacity=1;},200);},3000);
+    btnTxt.style.transition="opacity 0.2s";
+    btn.addEventListener('click',()=>modal.classList.remove('imag-cl-hidden'));
+    closeBtn.addEventListener('click',()=>modal.classList.add('imag-cl-hidden'));
+    modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.add('imag-cl-hidden');});
+  })();
+  </script>
+</div>
+
+<br><br>
+[plogo(2)]
+<br><br><br>
+
+
+<!-- ══════════════════════════════════════
+     ANIMATION EFFECTS + NAV BAR
+     ══════════════════════════════════════ -->
+<style>
+.click-effect { position:fixed; pointer-events:none; font-family:'Outfit',sans-serif; font-weight:bold; font-size:18px; text-shadow:0 0 6px,0 0 12px; transition:transform 0.8s ease-out,opacity 0.8s ease-out; z-index:2147483647; }
+.spark { position:fixed; width:4px; height:4px; border-radius:50%; pointer-events:none; opacity:1; transition:all 0.6s ease-out; z-index:2147483647; }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const applyNavBtnStyle = (btn) => {
+    btn.style.background = "var(--bg-panel)";
+    btn.style.color = "var(--text-primary)";
+    btn.style.fontFamily = "'Outfit', sans-serif";
+    btn.style.fontSize = "11px";
+    btn.style.fontWeight = "700";
+    btn.style.border = "1px solid var(--border-subtle)";
+    btn.style.borderLeft = "4px solid var(--accent)";
+    btn.style.borderRadius = "0";
+    btn.style.padding = "6px 12px";
+    btn.style.textTransform = "uppercase";
+    btn.style.letterSpacing = "1px";
+    btn.style.cursor = "pointer";
+    btn.style.minHeight = "32px";
+    btn.style.transition = "background 0.1s, border-color 0.1s";
+    btn.onmouseover = () => { btn.style.background = "var(--bg-hover)"; btn.style.borderLeftColor = "var(--accent-light)"; };
+    btn.onmouseleave = () => { btn.style.background = "var(--bg-panel)"; btn.style.borderLeftColor = "var(--accent)"; };
+  };
+
+  const navBar = document.createElement("div");
+  navBar.id = "studio-tools-wrapper";
+  navBar.style.cssText = "position:fixed;bottom:35px;left:50%;transform:translateX(-50%);display:flex;justify-content:center;align-items:center;gap:4px;z-index:5000;";
+
+  const navButtons = [
+    { text:"Reset", action:"reset", onClick:()=>{document.querySelectorAll('select').forEach(d=>{d.selectedIndex=0;d.dispatchEvent(new Event('change'));});} },
+    { text:"Up", action:"up", onClick:()=>window.scrollTo({top:0,behavior:"smooth"}) },
+    { text:"✨", action:"scroll", onClick:()=>document.getElementById("generateButtonEl")?.scrollIntoView({behavior:"smooth",block:"center"}) },
+    { text:"Down", action:"down", onClick:()=>window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"}) },
+    { text:"Generate", action:"generate", onClick:()=>document.getElementById("generateButtonEl")?.click() }
+  ];
+
+  navButtons.forEach(cfg => {
+    const btn = document.createElement("button");
+    btn.textContent = cfg.text;
+    applyNavBtnStyle(btn);
+    btn.addEventListener("click", () => {
+      if (cfg.onClick) cfg.onClick();
+      const rect = btn.getBoundingClientRect();
+      const x = rect.left + rect.width / 2, y = rect.top;
+      if (cfg.action === "generate") {
+        const label = document.createElement("div"); label.classList.add("click-effect"); label.textContent = "GENERATING"; label.style.left = x+"px"; label.style.top = y+"px"; document.body.appendChild(label);
+        requestAnimationFrame(() => { label.style.transform = "translateY(-80px) scale(1.2)"; label.style.opacity = "0"; }); setTimeout(() => label.remove(), 800);
+        for (let i = 0; i < 10; i++) { const s = document.createElement("div"); s.classList.add("spark"); s.style.left = x+"px"; s.style.top = y+"px"; document.body.appendChild(s); const a = Math.random()*Math.PI, d = 40+Math.random()*40; requestAnimationFrame(() => { s.style.transform = `translate(${Math.cos(a)*d}px,${-Math.sin(a)*d}px) scale(0.3)`; s.style.opacity = "0"; }); setTimeout(() => s.remove(), 600); }
+      } else if (cfg.action === "reset") {
+        const label = document.createElement("div"); label.classList.add("click-effect"); label.textContent = "RESET"; label.style.left = x+"px"; label.style.top = y+"px"; label.style.transition = "transform 0.4s ease-in, opacity 0.4s ease-in"; document.body.appendChild(label);
+        requestAnimationFrame(() => { label.style.transform = "scale(1.1)"; }); setTimeout(() => { label.style.transform = "scale(0)"; label.style.opacity = "0"; }, 50); setTimeout(() => label.remove(), 500);
+      } else if (cfg.action === "scroll") {
+        for (let i = 0; i < 14; i++) { const s = document.createElement("div"); s.classList.add("spark"); s.style.left = x+"px"; s.style.top = y+"px"; document.body.appendChild(s); const a = Math.random()*2*Math.PI, d = 40+Math.random()*40; requestAnimationFrame(() => { s.style.transform = `translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(0.3)`; s.style.opacity = "0"; }); setTimeout(() => s.remove(), 600); }
+      } else {
+        const label = document.createElement("div"); label.classList.add("click-effect"); label.textContent = cfg.text.toUpperCase(); label.style.left = x+"px"; label.style.top = y+"px"; document.body.appendChild(label);
+        const dir = cfg.action === "down" ? 60 : -60; requestAnimationFrame(() => { label.style.transform = `translateY(${dir}px) scale(1.1)`; label.style.opacity = "0"; }); setTimeout(() => label.remove(), 800);
+      }
+    });
+    navBar.appendChild(btn);
+  });
+  document.body.appendChild(navBar);
+
+  // ── GALLERY BUTTON ──
+  const galleryModal = document.getElementById("galleryModal");
+  if (galleryModal) {
+    const galleryBtn = document.createElement("button");
+    galleryBtn.id = "view-gallery-btn"; galleryBtn.title = "Gallery";
+    applyNavBtnStyle(galleryBtn);
+    galleryBtn.textContent = "Gallery"; galleryBtn.style.position = "fixed"; galleryBtn.style.right = "3vw"; galleryBtn.style.bottom = "70px"; galleryBtn.style.zIndex = "5000"; galleryBtn.style.minHeight = "32px"; galleryBtn.style.maxHeight = "32px"; galleryBtn.style.display = "flex"; galleryBtn.style.alignItems = "center"; galleryBtn.style.justifyContent = "center";
+    galleryBtn.onclick = () => {
+      window._imagGalleryOpen();
+      const rect = galleryBtn.getBoundingClientRect(), x = rect.left+rect.width/2, y = rect.top+rect.height/2, emojis = ['🖼️','🎨','📷','✨'];
+      for (let i = 0; i < 15; i++) { const el = document.createElement("div"); el.textContent = emojis[Math.floor(Math.random()*emojis.length)]; el.style.cssText = `position:fixed;pointer-events:none;font-size:20px;left:${x}px;top:${y}px;transform:translate(-50%,-50%);opacity:1;transition:transform 0.7s ease-out,opacity 0.7s ease-out;z-index:2147483647;`; document.body.appendChild(el); const a = Math.random()*2*Math.PI, d = 60+Math.random()*40; requestAnimationFrame(() => { el.style.transform = `translate(${Math.cos(a)*d-(x-rect.left)}px,${Math.sin(a)*d-(y-rect.top)}px) scale(0.5)`; el.style.opacity = 0; }); setTimeout(() => el.remove(), 700); }
+    };
+    document.body.appendChild(galleryBtn);
+  }
+});
+</script>
+
+<!-- ══════════════════════════════════════
+     DROPDOWN STYLING (Perchance Tab Controller)
+     ══════════════════════════════════════ -->
+<style>
+  #tabControllerInputEl {
+    width: 100%;
+    font-size: 20px;
+    padding: 14px 20px;
+    margin-top: 4px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: bold;
+    color: var(--text-primary);
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22292.4%22 height%3D%22292.4%22%3E%3Cpath fill%3D%22%238855cc%22 d%3D%22M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-13 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 13l128 128c3.6 3.6 7.8 5.4 13 5.4s9.4-1.8 13-5.4l128-128c3.6-3.6 5.4-7.8 5.4-13 0-4.8-1.8-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 16px;
+  }
+  #tabControllerInputEl option {
+    background: var(--bg-panel);
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 5px;
+    line-height: 1.5em;
+  }
+</style>
+
+<br><br>
+
+<!-- ══════════════════════════════════════
+     BACKGROUND / THEME CHANGER
+     ══════════════════════════════════════ -->
+<div id="bg-changer-ui" style="position:fixed;bottom:67px;left:2vw;z-index:5000;font-family:'Outfit',sans-serif;">
+
+<button id="bg-changer-btn" aria-expanded="false" title="Change Background" style="background:var(--bg-panel);color:var(--text-primary);font-family:'Outfit',sans-serif;border:1px solid var(--border-subtle);border-left:4px solid var(--accent);border-radius:0;padding:6px 16px;text-transform:uppercase;font-weight:700;letter-spacing:1px;cursor:pointer;font-size:11px;min-height:32px;transition:background 0.1s,border-color 0.1s;position:fixed;bottom:70px;left:2vw;z-index:5000;" onmouseover="this.style.background='var(--bg-hover)';this.style.borderLeftColor='var(--accent-light)'" onmouseleave="this.style.background='var(--bg-panel)';this.style.borderLeftColor='var(--accent)'">Theme</button>
+
+<div id="bg-changer-modal" aria-hidden="true" style="display:none;position:fixed;bottom:110px;left:2vw;width:300px;max-width:80vw;background:var(--bg-panel);padding:12px;border-radius:0;color:var(--text-primary);box-shadow:0 0 20px rgba(136,85,204,0.2);border:1px solid var(--border-subtle);border-left:4px solid var(--accent);z-index:5001;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+      <strong style="color:var(--accent-bright);letter-spacing:0.6px;font-size:15px;text-transform:uppercase;font-family:'Outfit',sans-serif;">Backgrounds</strong>
+      <button id="bg-close" style="background:transparent;border:0;color:var(--accent-bright);cursor:pointer;font-size:18px;font-weight:bold;">✕</button>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+      <img class="preset-thumb" data-url="https://files.catbox.moe/xbizvf.png" src="https://files.catbox.moe/xbizvf.png" alt="Abstract Stone" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://user.uploads.dev/file/345a2fe8410d2418257cb79ce5f22fb5.jpg" src="https://user.uploads.dev/file/345a2fe8410d2418257cb79ce5f22fb5.jpg" alt="Bliss" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://user.uploads.dev/file/a13782a1e8aac2ba1f3122c30a0b6b7e.jpg" src="https://user.uploads.dev/file/a13782a1e8aac2ba1f3122c30a0b6b7e.jpg" alt="Colorful Abstract" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://user.uploads.dev/file/dfc968ff1479e200795d1a67c10a44b0.jpg" src="https://user.uploads.dev/file/dfc968ff1479e200795d1a67c10a44b0.jpg" alt="Dark Sand" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://files.catbox.moe/zodpt1.png" src="https://files.catbox.moe/zodpt1.png" alt="Fabric Tear" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://files.catbox.moe/dc1kg3.png" src="https://files.catbox.moe/dc1kg3.png" alt="Gray Fiber" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://files.catbox.moe/qc6v1w.png" src="https://files.catbox.moe/qc6v1w.png" alt="Marble" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://files.catbox.moe/okmk0v.png" src="https://files.catbox.moe/okmk0v.png" alt="Opalescent Sand" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://files.catbox.moe/r8ncov.png" src="https://files.catbox.moe/r8ncov.png" alt="Paint Splatter" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://files.catbox.moe/2p37np.png" src="https://files.catbox.moe/2p37np.png" alt="Parchment" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://files.catbox.moe/n11wh5.png" src="https://files.catbox.moe/n11wh5.png" alt="Resin Pour" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://files.catbox.moe/m5v596.png" src="https://files.catbox.moe/m5v596.png" alt="Sandstone" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://files.catbox.moe/abi23t.png" src="https://files.catbox.moe/abi23t.png" alt="Stone" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://files.catbox.moe/9mco36.png" src="https://files.catbox.moe/9mco36.png" alt="Tan Concrete" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://files.catbox.moe/0p1b9f.png" src="https://files.catbox.moe/0p1b9f.png" alt="Tranquil Forest" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)">
+<img class="preset-thumb" data-url="https://files.catbox.moe/ry01kh.png" src="https://files.catbox.moe/ry01kh.png" alt="Wood Grain" style="width:50px;height:35px;object-fit:cover;border-radius:0;cursor:pointer;border:1px solid rgba(255,255,255,0.2)"></div>
+    <label style="display:block;color:var(--text-muted);margin-bottom:4px;font-size:13px;text-transform:uppercase;font-family:'Outfit',sans-serif;">Solid Color</label>
+    <input id="bg-color-picker" type="color" value="#18181a" style="width:100%;height:32px;border-radius:0;border:1px solid #333336;margin-bottom:8px;background:#000;">
+    <label style="display:block;color:var(--text-muted);margin-bottom:4px;font-size:13px;text-transform:uppercase;font-family:'Outfit',sans-serif;">Moving Gradients</label>
+    <select id="bg-gradient-picker" style="width:100%;height:34px;border-radius:0;border:1px solid #333336;margin-bottom:8px;background:var(--bg-panel);color:var(--text-primary);font-family:'Outfit',sans-serif;font-size:14px;">
+      <option value="none">(none)</option>
+      <optgroup label="── Theme Default ──"><option value="deep-purple">Deep Purple</option></optgroup>
+      <optgroup label="── Dark ──">
+        <option value="midnight-ink">Midnight Ink</option>
+        <option value="dark-forest">Dark Forest</option>
+        <option value="deep-ocean">Deep Ocean</option>
+        <option value="obsidian">Obsidian</option>
+        <option value="ember">Ember</option>
+        <option value="desert-night">Desert Night</option>
+        <option value="mahogany">Mahogany</option>
+        <option value="arctic">Arctic</option>
+        <option value="steel-blue">Steel Blue</option>
+        <option value="amethyst">Amethyst</option>
+        <option value="violet-smoke">Violet Smoke</option>
+        <option value="nightshade">Nightshade</option>
+        <option value="moss">Moss</option>
+        <option value="burgundy-rose">Burgundy Rose</option>
+        <option value="charcoal">Charcoal</option>
+        <option value="warm-dark">Warm Dark</option>
+      </optgroup>
+      <optgroup label="── Mid-Tone ──">
+        <option value="mid-purple">Mid Purple</option>
+        <option value="mid-blue">Mid Blue</option>
+        <option value="mid-green">Mid Green</option>
+        <option value="mid-neutral">Mid Neutral</option>
+        <option value="mid-warm">Mid Warm</option>
+        <option value="mid-rose">Mid Rose</option>
+      </optgroup>
+      <optgroup label="── Light ──">
+        <option value="parchment">Parchment</option>
+        <option value="warm-white">Warm White</option>
+        <option value="cool-white">Cool White</option>
+        <option value="paper">Paper</option>
+        <option value="soft-lavender">Soft Lavender</option>
+        <option value="soft-rose">Soft Rose</option>
+        <option value="soft-sage">Soft Sage</option>
+        <option value="soft-slate">Soft Slate</option>
+        <option value="soft-blue">Soft Blue</option>
+        <option value="soft-amber">Soft Amber</option>
+      </optgroup>
+    </select>
+    <label style="display:block;color:var(--text-muted);margin-bottom:4px;font-size:13px;text-transform:uppercase;font-family:'Outfit',sans-serif;">Upload Image</label>
+    <input id="bg-upload" type="file" accept="image/*" style="width:100%;margin-bottom:10px;font-size:13px;color:var(--text-primary);">
+    <button id="bg-apply-btn" style="width:100%;padding:10px;border-radius:0;border:1px solid var(--accent);background:var(--accent);color:#fff;font-weight:700;cursor:pointer;text-transform:uppercase;font-family:'Outfit',sans-serif;font-size:14px;letter-spacing:1px;">Apply</button>
+  </div>
+</div>
+
+<style>
+@keyframes bgShift { 0%{background-position:0% 50%;}25%{background-position:50% 60%;}50%{background-position:100% 50%;}75%{background-position:50% 40%;}100%{background-position:0% 50%;} }
+.preset-thumb:hover { transform:scale(1.05); border-color:var(--accent) !important; transition:0.1s; }
+</style>
+
+<script>
+(function(){
+  const body = document.body;
+  const btn = document.getElementById('bg-changer-btn');
+  const modal = document.getElementById('bg-changer-modal');
+  const closeBtn = document.getElementById('bg-close');
+  const applyBtn = document.getElementById('bg-apply-btn');
+  const colorPicker = document.getElementById('bg-color-picker');
+  const gradientPicker = document.getElementById('bg-gradient-picker');
+  const uploadInput = document.getElementById('bg-upload');
+  const presetThumbs = Array.from(document.querySelectorAll('.preset-thumb'));
+  const STORAGE_KEY = 'the_imaginarium_bg_v1';
+  let staged = { type: 'gradient', value: 'deep-purple' };
+
+  if (!document.getElementById('bg-shift-keys')) {
+    const s = document.createElement('style'); s.id = 'bg-shift-keys';
+    s.textContent = '@keyframes bgShift{0%{background-position:0% 50%}25%{background-position:50% 60%}50%{background-position:100% 50%}75%{background-position:50% 40%}100%{background-position:0% 50%}}';
+    document.head.appendChild(s);
+  }
+
+
+  // ══════════════════════════════════════
+  //  PALETTE DEFINITIONS
+  // ══════════════════════════════════════
+  const P = {
+    // ── DARK PALETTES ──
+    purple:  { bgP:'#111114',bgS:'#1e1e22',bgD:'#0e0e12',bgH:'#2a2030',bgA:'#2a1a40',ac:'#8855cc',acL:'#aa88cc',acLr:'#c4a0e8',acB:'#aa77ee',acM:'#7a5a9a',acD:'#3a1860',tP:'#e8e6e2',tS:'#9a8aaa',tM:'#7a7a80',tD:'#7a6a90',bd:'#3a1860',bdA:'#8855cc',bdSub:'#222226',al:'#cc4444' },
+    blue:    { bgP:'#0e1118',bgS:'#161c26',bgD:'#0a0e14',bgH:'#1a2536',bgA:'#1a2840',ac:'#4488cc',acL:'#6699cc',acLr:'#88bbdd',acB:'#55aaee',acM:'#4a6a8a',acD:'#1a3050',tP:'#e2e6e8',tS:'#8a9aaa',tM:'#7a8490',tD:'#6a7a94',bd:'#1a3050',bdA:'#4488cc',bdSub:'#1e2230',al:'#cc5544' },
+    green:   { bgP:'#0e1410',bgS:'#162018',bgD:'#0a100c',bgH:'#1a3020',bgA:'#1a3828',ac:'#44aa55',acL:'#66bb77',acLr:'#88cc99',acB:'#55cc66',acM:'#4a8a5a',acD:'#1a4828',tP:'#e2e8e4',tS:'#8aaa9a',tM:'#7a9080',tD:'#6a907a',bd:'#1a4828',bdA:'#44aa55',bdSub:'#1e2820',al:'#cc5544' },
+    red:     { bgP:'#141010',bgS:'#201616',bgD:'#100c0c',bgH:'#361a1a',bgA:'#401a1a',ac:'#cc5544',acL:'#cc7766',acLr:'#dd9988',acB:'#dd6655',acM:'#8a5a4a',acD:'#4a2018',tP:'#e8e4e2',tS:'#aa8a8a',tM:'#907a7a',tD:'#907272',bd:'#4a2018',bdA:'#cc5544',bdSub:'#2a1e1e',al:'#cc4444' },
+    amber:   { bgP:'#141208',bgS:'#201c10',bgD:'#100e06',bgH:'#362c1a',bgA:'#403218',ac:'#cc9933',acL:'#ccaa55',acLr:'#ddcc88',acB:'#ddaa44',acM:'#8a7040',acD:'#4a3810',tP:'#e8e6e0',tS:'#aaa080',tM:'#908470',tD:'#908862',bd:'#4a3810',bdA:'#cc9933',bdSub:'#2a2418',al:'#cc5544' },
+    neutral: { bgP:'#111114',bgS:'#1c1c1e',bgD:'#0c0c0e',bgH:'#262628',bgA:'#2a2a2c',ac:'#707080',acL:'#9090a0',acLr:'#b0b0c0',acB:'#8888a0',acM:'#707080',acD:'#303040',tP:'#e8e6e2',tS:'#9a9aa0',tM:'#7a7a80',tD:'#7a7a84',bd:'#303040',bdA:'#707080',bdSub:'#222226',al:'#cc4444' },
+    plum:    { bgP:'#12101a',bgS:'#1e1a24',bgD:'#0e0c14',bgH:'#2e2036',bgA:'#341a40',ac:'#aa44aa',acL:'#cc77bb',acLr:'#dd99cc',acB:'#cc55cc',acM:'#8a4a8a',acD:'#441844',tP:'#e8e2e8',tS:'#aa8aaa',tM:'#907a90',tD:'#907a92',bd:'#441844',bdA:'#aa44aa',bdSub:'#241e28',al:'#cc4444' },
+    // ── MID-TONE PALETTES ──
+    midPurple: { bgP:'#2a2430',bgS:'#343040',bgD:'#222028',bgH:'#3e3650',bgA:'#443860',ac:'#9966dd',acL:'#bb99ee',acLr:'#d4bbff',acB:'#aa77ee',acM:'#8870aa',acD:'#4a3060',tP:'#f0eef4',tS:'#c0b4d0',tM:'#9a90a8',tD:'#7e7490',bd:'#4a3060',bdA:'#9966dd',bdSub:'#343040',al:'#dd5555' },
+    midBlue:   { bgP:'#1e2430',bgS:'#283040',bgD:'#1a2028',bgH:'#303c52',bgA:'#304060',ac:'#5599dd',acL:'#77bbee',acLr:'#99ccff',acB:'#66aaee',acM:'#5580aa',acD:'#203050',tP:'#eef2f6',tS:'#b0c0d0',tM:'#8a9aaa',tD:'#6e7e92',bd:'#203050',bdA:'#5599dd',bdSub:'#283040',al:'#dd5544' },
+    midGreen:  { bgP:'#1e2820',bgS:'#283428',bgD:'#1a2218',bgH:'#304030',bgA:'#304830',ac:'#55bb66',acL:'#77cc88',acLr:'#99ddaa',acB:'#66cc77',acM:'#558a60',acD:'#204828',tP:'#eef4f0',tS:'#b0c8b8',tM:'#8aa898',tD:'#6e907e',bd:'#204828',bdA:'#55bb66',bdSub:'#283428',al:'#dd5544' },
+    midNeutral:{ bgP:'#2a2a2e',bgS:'#343438',bgD:'#222226',bgH:'#3e3e44',bgA:'#44444a',ac:'#8888a0',acL:'#a0a0b8',acLr:'#b8b8cc',acB:'#9494b0',acM:'#707080',acD:'#3a3a4a',tP:'#f0f0f2',tS:'#b8b8c0',tM:'#9494a0',tD:'#7a7a86',bd:'#3a3a4a',bdA:'#8888a0',bdSub:'#343438',al:'#dd5555' },
+    midWarm:   { bgP:'#302820',bgS:'#3a3228',bgD:'#282218',bgH:'#4a3e30',bgA:'#504430',ac:'#cc9944',acL:'#ddbb66',acLr:'#eedd88',acB:'#ddaa55',acM:'#aa8844',acD:'#4a3818',tP:'#f4f0ea',tS:'#c8bca0',tM:'#a09480',tD:'#887a66',bd:'#4a3818',bdA:'#cc9944',bdSub:'#3a3228',al:'#dd5544' },
+    // ── LIGHT PALETTES ──
+    lightNeutral: { bgP:'#f0ece4',bgS:'#e4e0d8',bgD:'#f5f2ee',bgH:'#d8d0c4',bgA:'#ccc4b8',ac:'#6644aa',acL:'#8866bb',acLr:'#5533aa',acB:'#7755cc',acM:'#a088c0',acD:'#c4b8d8',tP:'#2a2420',tS:'#5a5450',tM:'#7a7470',tD:'#a09890',bd:'#c4b8d0',bdA:'#6644aa',bdSub:'#d8d0c4',al:'#bb4444' },
+    lightPurple: { bgP:'#ece8f8',bgS:'#e0d8f0',bgD:'#f0ecf8',bgH:'#d0c8e8',bgA:'#c4bce0',ac:'#6644aa',acL:'#7755bb',acLr:'#5533aa',acB:'#7755cc',acM:'#9080b8',acD:'#b8b0d0',tP:'#2a2030',tS:'#4a4060',tM:'#6a6080',tD:'#908aa0',bd:'#b8b0d0',bdA:'#6644aa',bdSub:'#d0c8e0',al:'#bb4444' },
+    lightGreen: { bgP:'#eaf0ea',bgS:'#dceadc',bgD:'#f0f4f0',bgH:'#c8dcc8',bgA:'#bcd0bc',ac:'#448844',acL:'#669966',acLr:'#337733',acB:'#55aa55',acM:'#88b088',acD:'#b0ccb0',tP:'#202a20',tS:'#445044',tM:'#6a7a6a',tD:'#90a090',bd:'#b0ccb0',bdA:'#448844',bdSub:'#d0dcd0',al:'#bb4444' },
+    lightSlate: { bgP:'#eaeaf0',bgS:'#dcdce8',bgD:'#f0f0f4',bgH:'#c8c8dc',bgA:'#bcbcd0',ac:'#4455aa',acL:'#6677bb',acLr:'#3344aa',acB:'#5566cc',acM:'#8898b8',acD:'#b0b8d0',tP:'#20202a',tS:'#444a5a',tM:'#6a6e7a',tD:'#9094a0',bd:'#b0b8d0',bdA:'#4455aa',bdSub:'#d0d0dc',al:'#bb4444' },
+    lightBlue: { bgP:'#e8f0f8',bgS:'#dce8f4',bgD:'#f0f4f8',bgH:'#c8d8e8',bgA:'#bcd0e0',ac:'#3366aa',acL:'#5588bb',acLr:'#2255aa',acB:'#4477cc',acM:'#8098b8',acD:'#b0c0d8',tP:'#18202a',tS:'#3a4a5a',tM:'#5a6a7a',tD:'#8894a0',bd:'#b0c0d8',bdA:'#3366aa',bdSub:'#d0d8e4',al:'#bb4444' },
+    lightAmber: { bgP:'#f8f0e4',bgS:'#f0e8d8',bgD:'#f8f4ee',bgH:'#e0d4c0',bgA:'#d4c8b4',ac:'#aa7722',acL:'#bb9944',acLr:'#997718',acB:'#cc9933',acM:'#b09870',acD:'#d0c0a0',tP:'#2a2418',tS:'#5a5040',tM:'#7a7060',tD:'#a09480',bd:'#d0c0a0',bdA:'#aa7722',bdSub:'#e0d8c8',al:'#bb4444' }
+  };
+
+  // Map each gradient to its palette
+  const GRADIENT_PALETTE_MAP = {
+    'deep-purple':P.purple, 'amethyst':P.purple, 'nightshade':P.purple, 'violet-smoke':P.purple,
+    'midnight-ink':P.blue, 'deep-ocean':P.blue, 'arctic':P.blue, 'steel-blue':P.blue,
+    'dark-forest':P.green, 'moss':P.green,
+    'obsidian':P.red, 'ember':P.red, 'mahogany':P.red, 'burgundy-rose':P.red,
+    'desert-night':P.amber, 'charcoal':P.neutral, 'warm-dark':P.neutral,
+    'mid-purple':P.midPurple, 'mid-blue':P.midBlue, 'mid-green':P.midGreen,
+    'mid-neutral':P.midNeutral, 'mid-warm':P.midWarm,
+    'parchment':P.lightNeutral, 'warm-white':P.lightNeutral, 'paper':P.lightNeutral,
+    'cool-white':P.lightSlate,
+    'soft-lavender':P.lightPurple, 'soft-rose':P.lightRose, 'soft-sage':P.lightGreen,
+    'soft-slate':P.lightSlate, 'soft-blue':P.lightBlue, 'soft-amber':P.lightAmber
+  };
+
+
+  // ══════════════════════════════════════
+  //  COLOR DETECTION ENGINE
+  // ══════════════════════════════════════
+
+  // Convert hex (#rrggbb) to HSL {h:0-360, s:0-100, l:0-100}
+  function hexToHSL(hex) {
+    hex = hex.replace('#','');
+    if (hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+    const r = parseInt(hex.substring(0,2),16)/255;
+    const g = parseInt(hex.substring(2,4),16)/255;
+    const b = parseInt(hex.substring(4,6),16)/255;
+    const max = Math.max(r,g,b), min = Math.min(r,g,b);
+    let h=0, s=0, l=(max+min)/2;
+    if (max !== min) {
+      const d = max - min;
+      s = l > 0.5 ? d/(2-max-min) : d/(max+min);
+      if (max === r) h = ((g-b)/d + (g<b?6:0));
+      else if (max === g) h = ((b-r)/d + 2);
+      else h = ((r-g)/d + 4);
+      h *= 60;
+    }
+    return { h: Math.round(h), s: Math.round(s*100), l: Math.round(l*100) };
+  }
+
+  // Map HSL values to the best palette
+  function hslToPalette(h, s, l) {
+    const isLight = l > 55;
+    const isGray  = s < 10;
+
+    // Very desaturated / gray
+    if (isGray) return isLight ? P.lightNeutral : P.neutral;
+
+    // Hue-based matching
+    // Red: 0-15, 345-360
+    // Amber/Orange: 15-45
+    // Yellow/Gold: 45-65
+    // Green: 65-165
+    // Cyan/Teal: 165-195
+    // Blue: 195-265
+    // Purple: 265-290
+    // Plum/Magenta: 290-345
+
+    if (h >= 345 || h < 15)   return isLight ? P.lightRose    : P.red;
+    if (h >= 15  && h < 45)   return isLight ? P.lightAmber   : P.amber;
+    if (h >= 45  && h < 65)   return isLight ? P.lightAmber   : P.amber;
+    if (h >= 65  && h < 165)  return isLight ? P.lightGreen   : P.green;
+    if (h >= 165 && h < 195)  return isLight ? P.lightBlue    : P.blue;
+    if (h >= 195 && h < 265)  return isLight ? P.lightBlue    : P.blue;
+    if (h >= 265 && h < 290)  return isLight ? P.lightPurple  : P.purple;
+    if (h >= 290 && h < 345)  return isLight ? P.lightRose    : P.plum;
+
+    return isLight ? P.lightNeutral : P.purple;
+  }
+
+  // Detect palette from a hex color string
+  function detectPaletteFromColor(hex) {
+    const { h, s, l } = hexToHSL(hex);
+    return hslToPalette(h, s, l);
+  }
+
+  // Detect palette from an image URL using canvas pixel sampling
+  function detectPaletteFromImage(imgSrc, callback) {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function() {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      // Sample at small size for speed
+      const sampleW = 64, sampleH = 64;
+      canvas.width = sampleW;
+      canvas.height = sampleH;
+      ctx.drawImage(img, 0, 0, sampleW, sampleH);
+
+      const data = ctx.getImageData(0, 0, sampleW, sampleH).data;
+      let totalR=0, totalG=0, totalB=0;
+      let count = 0;
+
+      // Sample every 4th pixel in a grid
+      for (let i = 0; i < data.length; i += 16) {
+        totalR += data[i];
+        totalG += data[i+1];
+        totalB += data[i+2];
+        count++;
+      }
+
+      if (count === 0) { callback(P.purple); return; }
+
+      const avgR = Math.round(totalR/count);
+      const avgG = Math.round(totalG/count);
+      const avgB = Math.round(totalB/count);
+      const hex = '#' + [avgR,avgG,avgB].map(c=>c.toString(16).padStart(2,'0')).join('');
+
+      callback(detectPaletteFromColor(hex));
+    };
+    img.onerror = function() {
+      // Fallback if CORS or load fails
+      callback(P.purple);
+    };
+    img.src = imgSrc;
+  }
+
+
+  // ══════════════════════════════════════
+  //  APPLY PALETTE TO CSS VARIABLES
+  // ══════════════════════════════════════
+  function applyPalette(pal) {
+    if (!pal) pal = P.purple;
+    const r = document.documentElement.style;
+    r.setProperty('--bg-panel', pal.bgP);
+    r.setProperty('--bg-surface', pal.bgS);
+    r.setProperty('--bg-deep', pal.bgD);
+    r.setProperty('--bg-hover', pal.bgH);
+    r.setProperty('--bg-active', pal.bgA);
+    r.setProperty('--accent', pal.ac);
+    r.setProperty('--accent-light', pal.acL);
+    r.setProperty('--accent-lighter', pal.acLr);
+    r.setProperty('--accent-bright', pal.acB);
+    r.setProperty('--accent-muted', pal.acM);
+    r.setProperty('--accent-dim', pal.acD);
+    r.setProperty('--text-primary', pal.tP);
+    r.setProperty('--text-secondary', pal.tS);
+    r.setProperty('--text-muted', pal.tM);
+    r.setProperty('--text-dim', pal.tD);
+    r.setProperty('--border', pal.bd);
+    r.setProperty('--border-accent', pal.bdA);
+    r.setProperty('--border-subtle', pal.bdSub);
+    r.setProperty('--alert', pal.al);
+  }
+
+
+  // ══════════════════════════════════════
+  //  GRADIENT DEFINITIONS
+  // ══════════════════════════════════════
+  function getGradientDef(key) {
+    switch(key) {
+      case 'deep-purple':     return { css:'linear-gradient(270deg,#18181a 0%,#5a2090 25%,#18181a 50%,#3a0e60 75%,#18181a 100%)', dur:36 };
+      case 'midnight-ink':    return { css:'linear-gradient(270deg,#08080f 0%,#1e1e55 25%,#08080f 50%,#2a1845 75%,#08080f 100%)', dur:40 };
+      case 'dark-forest':     return { css:'linear-gradient(270deg,#060f06 0%,#0c3a10 25%,#060f06 50%,#0a2e0e 75%,#060f06 100%)', dur:44 };
+      case 'deep-ocean':      return { css:'linear-gradient(270deg,#060810 0%,#0a2255 25%,#060810 50%,#0c2860 75%,#060810 100%)', dur:40 };
+      case 'obsidian':        return { css:'linear-gradient(270deg,#080404 0%,#301010 25%,#080404 50%,#240a0a 75%,#080404 100%)', dur:50 };
+      case 'ember':           return { css:'linear-gradient(270deg,#0e0404 0%,#501808 25%,#0e0404 50%,#3c1006 75%,#0e0404 100%)', dur:36 };
+      case 'desert-night':    return { css:'linear-gradient(270deg,#0e0c06 0%,#3a2c08 25%,#4a3410 50%,#2c2006 75%,#0e0c06 100%)', dur:40 };
+      case 'mahogany':        return { css:'linear-gradient(270deg,#0c0404 0%,#3c1408 25%,#0c0404 50%,#441408 75%,#0c0404 100%)', dur:48 };
+      case 'arctic':          return { css:'linear-gradient(270deg,#040c10 0%,#0a3858 25%,#040c10 50%,#083050 75%,#040c10 100%)', dur:44 };
+      case 'steel-blue':      return { css:'linear-gradient(270deg,#04080e 0%,#0e2848 25%,#04080e 50%,#102c50 75%,#04080e 100%)', dur:40 };
+      case 'amethyst':        return { css:'linear-gradient(270deg,#0a0814 0%,#381858 25%,#0a0814 50%,#401c60 75%,#0a0814 100%)', dur:36 };
+      case 'nightshade':      return { css:'linear-gradient(270deg,#08060e 0%,#280c40 25%,#08060e 50%,#2e0e48 75%,#08060e 100%)', dur:48 };
+      case 'moss':            return { css:'linear-gradient(270deg,#060c04 0%,#183018 25%,#060c04 50%,#1a2c16 75%,#060c04 100%)', dur:50 };
+      case 'midnight-garden': return { css:'linear-gradient(270deg,#040c06 0%,#0c2c1c 25%,#040c06 50%,#0e3020 75%,#040c06 100%)', dur:44 };
+      case 'charcoal':        return { css:'linear-gradient(270deg,#0a0a0a 0%,#282828 25%,#0a0a0a 50%,#222222 75%,#0a0a0a 100%)', dur:56 };
+      case 'warm-dark':       return { css:'linear-gradient(270deg,#0e0c0c 0%,#2c2418 25%,#0e0c0c 50%,#281e14 75%,#0e0c0c 100%)', dur:50 };
+      case 'parchment':       return { css:'linear-gradient(270deg,#f0ece4 0%,#c8b89a 25%,#e8e0d4 50%,#bfac8c 75%,#f0ece4 100%)', dur:44 };
+      case 'warm-white':      return { css:'linear-gradient(270deg,#f5f2ee 0%,#cec8bc 25%,#ede8e0 50%,#c4bcb0 75%,#f5f2ee 100%)', dur:50 };
+      case 'cool-white':      return { css:'linear-gradient(270deg,#f0f0f8 0%,#c8c8e0 25%,#e8e8f4 50%,#bebebc 75%,#f0f0f8 100%)', dur:50 };
+      case 'soft-lavender':   return { css:'linear-gradient(270deg,#ece8f8 0%,#b8a8e0 25%,#e0d8f4 50%,#b0a0d8 75%,#ece8f8 100%)', dur:40 };
+      case 'soft-sage':       return { css:'linear-gradient(270deg,#eaf0ea 0%,#b8d4b8 25%,#dceadc 50%,#aaccaa 75%,#eaf0ea 100%)', dur:44 };
+      case 'soft-slate':      return { css:'linear-gradient(270deg,#eaeaf0 0%,#b8b8d0 25%,#dcdce8 50%,#ababc4 75%,#eaeaf0 100%)', dur:44 };
+      case 'paper':           return { css:'linear-gradient(270deg,#f4f0ec 0%,#ccc8bc 25%,#eae6e0 50%,#c0bcb0 75%,#f4f0ec 100%)', dur:56 };
+      case 'mid-purple':     return { css:'linear-gradient(270deg,#2a2430 0%,#44306a 25%,#2a2430 50%,#3a2858 75%,#2a2430 100%)', dur:40 };
+      case 'mid-blue':       return { css:'linear-gradient(270deg,#1e2430 0%,#2a4068 25%,#1e2430 50%,#243858 75%,#1e2430 100%)', dur:44 };
+      case 'mid-green':      return { css:'linear-gradient(270deg,#1e2820 0%,#2a4830 25%,#1e2820 50%,#244028 75%,#1e2820 100%)', dur:44 };
+      case 'mid-neutral':    return { css:'linear-gradient(270deg,#2a2a2e 0%,#3e3e48 25%,#2a2a2e 50%,#363640 75%,#2a2a2e 100%)', dur:50 };
+      case 'mid-warm':       return { css:'linear-gradient(270deg,#302820 0%,#4a3c28 25%,#302820 50%,#443424 75%,#302820 100%)', dur:44 };
+      case 'soft-blue':      return { css:'linear-gradient(270deg,#e8f0f8 0%,#b8d0e8 25%,#dce8f4 50%,#aac4e0 75%,#e8f0f8 100%)', dur:44 };
+      case 'soft-amber':     return { css:'linear-gradient(270deg,#f8f0e4 0%,#e0cca0 25%,#f0e8d8 50%,#d8c498 75%,#f8f0e4 100%)', dur:44 };
+      default: return null;
+    }
+  }
+
+
+  // ══════════════════════════════════════
+  //  APPLY BACKGROUND + PALETTE
+  // ══════════════════════════════════════
+  function applyBackgroundSettings(settings) {
+    if (!settings) return;
+
+    if (settings.type === 'color') {
+      body.classList.add('no-bg-animation');
+      body.style.background = settings.value;
+      body.style.backgroundSize = '';
+      body.style.animation = 'none';
+      colorPicker.value = settings.value;
+      // Detect palette from the picked color
+      applyPalette(detectPaletteFromColor(settings.value));
+
+    } else if (settings.type === 'image') {
+      body.classList.add('no-bg-animation');
+      body.style.background = `url('${settings.value}') center/cover fixed no-repeat`;
+      body.style.backgroundSize = 'cover';
+      body.style.animation = 'none';
+      // Sample image and apply matching palette
+      detectPaletteFromImage(settings.value, function(pal) {
+        applyPalette(pal);
+      });
+
+    } else if (settings.type === 'gradient') {
+      const def = getGradientDef(settings.value);
+      if (!def) return;
+      body.classList.remove('no-bg-animation');
+      body.style.background = def.css;
+      body.style.backgroundSize = '600% 600%';
+      body.style.animation = `bgShift ${def.dur}s ease infinite`;
+      gradientPicker.value = settings.value;
+      applyPalette(GRADIENT_PALETTE_MAP[settings.value] || P.purple);
+    }
+  }
+
+  function reloadSavedOrStaged() { applyBackgroundSettings(getSaved() || staged); }
+  function getSaved() { try { const r = localStorage.getItem(STORAGE_KEY); return r ? JSON.parse(r) : null; } catch(e) { return null; } }
+
+
+  // ══════════════════════════════════════
+  //  UI EVENT HANDLERS
+  // ══════════════════════════════════════
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = modal.style.display !== 'none';
+    modal.style.display = open ? 'none' : 'block';
+    if (!open) { btn.style.boxShadow = "0 0 10px var(--accent)"; btn.style.background = "var(--bg-hover)"; btn.style.borderColor = "var(--accent-bright)"; }
+    else { btn.style.boxShadow = "none"; btn.style.background = "var(--bg-panel)"; btn.style.borderColor = "var(--accent)"; }
+  });
+
+  const closePanel = () => { modal.style.display = 'none'; btn.style.boxShadow = "none"; btn.style.background = "var(--bg-panel)"; btn.style.borderColor = "var(--accent)"; };
+  closeBtn.addEventListener('click', closePanel);
+  document.addEventListener('click', (e) => { if (modal.style.display === 'block' && !modal.contains(e.target) && e.target !== btn && !btn.contains(e.target)) closePanel(); });
+
+  presetThumbs.forEach(img => {
+    img.addEventListener('click', () => { staged = { type:'image', value:img.dataset.url }; presetThumbs.forEach(x => x.style.border = '1px solid rgba(255,255,255,0.2)'); img.style.border = '2px solid var(--accent)'; });
+    img.addEventListener('mouseenter', () => { body.classList.add('no-bg-animation'); body.style.background = `url('${img.dataset.url}') center/cover fixed no-repeat`; });
+    img.addEventListener('mouseleave', reloadSavedOrStaged);
+  });
+
+  colorPicker.addEventListener('input', () => { staged = { type:'color', value:colorPicker.value }; });
+  colorPicker.addEventListener('mouseenter', () => { body.classList.add('no-bg-animation'); body.style.background = colorPicker.value; });
+  colorPicker.addEventListener('mouseleave', reloadSavedOrStaged);
+  gradientPicker.addEventListener('change', () => { staged = { type:'gradient', value:gradientPicker.value }; });
+
+  uploadInput.addEventListener('change', e => {
+    const f = e.target.files && e.target.files[0]; if (!f) return;
+    const r = new FileReader();
+    r.onload = () => { staged = { type:'image', value:r.result }; body.classList.add('no-bg-animation'); body.style.background = `url('${r.result}') center/cover fixed no-repeat`; };
+    r.readAsDataURL(f);
+  });
+
+  applyBtn.addEventListener('click', () => { applyBackgroundSettings(staged); try { localStorage.setItem(STORAGE_KEY, JSON.stringify(staged)); } catch(e) {} closePanel(); });
+  const saved = getSaved();
+  applyBackgroundSettings(saved || staged);
+
+})();
+</script>
+
+
+
+  
 </body>
