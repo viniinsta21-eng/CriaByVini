@@ -1,0 +1,1066 @@
+fullscreenButton = {import:fullscreen-button-plugin}
+commentsPlugin = {import:comments-plugin}
+generateImage = {import:text-to-image-plugin}
+AWL = {import:anime-waifu}
+uploadImage = {import:upload-plugin}
+urvillain_styles = {import:urvillain-styles}
+aiag = {import:zfxj1i7tlv}
+liveActivityPlugin = {import:live-activity-plugin}
+my_waifu = {import:codegeasse-anime-waifu}
+my_donghuawaifu = {import:codegeasse-donghua-waifu}
+
+// Note: Text that comes after "//" is ignored, which allows
+// you to write notes - like the one you're reading now!
+
+$meta
+  title = 🎨 Ultimate AI Image Generator Pro
+  description = Create stunning AI-generated images with professional settings and advanced customization.
+  image = https://user.uploads.dev/file/02ce3aca32e9510a51b611b00680c168.jpg
+
+kv = {import:kv-plugin}
+
+custom_styles
+  Realistic_images
+    prompt = [input.description], high quality image, 4k, 8k, HD, UHD, Sharp Focus, In Frame
+    negative = [input.negative], low quality, deformed, blurry, bad art, drawing, painting, horrible resolutions, low DPI, low PPI, blurry, glitch, error
+    meta:position = 5
+
+  Realistic_humans
+    prompt = [input.description], high quality image, 4k, 8k, HD, UHD
+    negative = [input.negative], low quality, deformed, blurry, bad art, drawing, painting, incorrect anatomy, ugliness, ugly, horrible resolutions, low DPI, low PPI, bad character positioning, absurd anatomy, tiling, pixelization, low pixel count, blurry, low-res face, low poly, Poorly Drawn Characters, Badly Drawn Eyes, Badly Drawn Mouth, Badly Drawn Ears, Badly Drawn Nose, Badly Drawn Hands, Badly Drawn Feet, Badly Drawn Legs, Badly Drawn Hair, Badly Drawn Clothing, bad anatomy, (ugly), missing arms, bad proportions, tiling, missing legs, blurry, (poorly drawn feet), morbid, cloned face, ((extra limbs)), (mutated hands), cropped, (disfigured), mutation, deformed, (mutilated), dehydrated, body out of frame, out of frame, (disfigured), ((bad anatomy)), (poorly drawn face), duplicate, cut off, (poorly drawn hands), error, low contrast, signature, (extra arms), underexposed, text, (extra fingers), overexposed, (too many fingers), (extra legs), bad art, ugly, (extra limbs), beginner, username, (fused fingers), amateur, watermark, (distorted face), worst quality, jpeg artifacts, low quality, (malformed limbs), long neck, low-res, (poorly Rendered face), low resolution, low saturation, (bad composition), Images cut out at the top, left, right, bottom, (deformed body features), (poorly rendered hands)
+    modifiers = [nsfwModifiers]
+    meta:position = 6
+
+  No_style
+    prompt = [input.description]
+    negative = [input.negative]
+    meta:position = 7
+
+  Ultra_realistic_photo
+    prompt = [input.description], photorealistic, ultra-realistic, natural human skin texture, fine pores, subtle wrinkles, soft lighting, high-quality textures, HDR lighting, realistic proportions, intricate facial details, full-body composition, chromoshadowic split-infinity
+    negative = [input.negative], cartoonish, overexposed, pixelated, plastic-like appearance, low resolution, extra limbs, distorted anatomy
+
+  Cinematic_realism
+    prompt = [input.description], cinematic lighting, realistic skin texture, high detail, natural colors, depth of field, lifelike proportions, phototriadic tessellation of marginalities
+    negative = [input.negative], blurry, overly smooth skin, artificial coloring, fake appearance
+    meta:tags = [({cinematic:100, realism:100, portrait:85, render:70, hyperrealistic:70, cinematic:50})]
+
+  Studio_portrait
+    prompt = [input.description], studio lighting, soft shadows, professional photography, realistic textures, natural imperfections, sharp focus, superfine conscious details
+    negative = [input.negative], low detail, overly smooth appearance, unnatural pose, plastic-like texture  
+    meta:tags = [({portrait:100, realism:100, portrait:85, render:70, hyperrealistic:70, cinematic:50})]
+
+  Surrealism
+    prompt = (masterpiece, best quality, surrealism, erotic dreamscape), dreamlike fluids, glowing fractals spiraling out of subject, kaleidoscopic void background, tessellated spirals, geometric dream palace, melting impossible shapes, bioluminescent symbolic fluids, [input.description], dripping fractal fermions, uncanny dream perspective, whimsical erotic nightmare, x-raycoupage, Contemporary Acrylic, andromorph numptigami spudknuckles, alchemical architecture of cosmicoolaliciousasmis, Flora Borsi GrifFX, anthropomorphic ypogegrammeni, dark Passiflora edulis sculpted quilled felting, volumetric lighting, ultra-detailed 8k, cinematic maximalist, cinematic lighting, volumetric glow, intricate detailing, maximalist, hyper-saturated surreal palette, shifting geometry, bioluminescent textures, glowing spirals, ultra-detailed, 8k render, (artist: Salvador Dalí, Max Ernst, Yves Tanguy, Remedios Varo, Leonora Carrington, Zdzisław Beksiński, HR Giger, Alex Grey,  M C Escher, Mœbius, Jacek Yerka, Beeple, Android Jones.)
+    negative = [input.negative], (worst quality, low quality, normal quality, jpeg artifacts, blurry, pixelated, unfinished, sketch, cartoon, 3d render, anime, comic, illustration, lowres, cropped, deformed, mutated hands, extra fingers, fused limbs, missing arms, wrong anatomy, ugly, poorly drawn, bad art, censored, mosaic, text, watermark, logo, duplicate body parts, stretched body, broken geometry, bad perspective, extra limbs, out of frame, easynegative, ng_deepnegative_v1_75t).
+
+  Pin_up_art
+    prompt = Nsfw, score_9, score_10_up, absurdres, best quality, ultra-detailed, [input.description], pin-up art, vintage pin-up, retro pin-up, classic pin-up, pin-up girl, Alluring eyes, perfectly coiffed hair (victory rolls, waves), red lipstick, arched eyebrows, innocent yet seductive expression, pin-up photography, pin-up illustration, pin-up painting, pin-up poster, pin-up calendar, pin-up magazine, pin-up glamour, pin-up beauty, pin-up fashion, pin-up pose, pin-up aesthetic, pin-up culture, pin-up history, pin-up art style, pin-up art inspiration, pin-up art techniques, Vibrant saturated colors, pastel color palette, warm tones, technicolor, hand-painted look, rich hues,  Classic Americana, Pulp Magazine Art, WWII Nose Art, Art Deco, Retro-Futurism, Classic Pin-up, Vintage Pin-up, Retro Pin-up, Good Girl Art (GGA), Boudoir Photography, Glamour Photography, Cheesecake Art, paper texture, vintage photo effect, risqué, 1940s style, 1950s style, warm tones, technicolor, hand-painted look, Art Deco, Rembrandt lighting, Roy Lichtenstein style, Alberto Vargas style, Gil Elvgren style, by Jon Hul, George Petty, Rolf Armstrong, Zoë Mozert.
+    negative = [input.negative], low quality, deformed, blurry, bad art, incorrect anatomy, ugliness, ugly, horrible resolutions, low DPI, low PPI, bad character positioning, absurd anatomy, tiling, pixelization, low pixel count, blurry, low-res face, low poly, Poorly Drawn Characters, Badly Drawn Eyes, Badly Drawn Mouth, Badly Drawn Ears, Badly Drawn Nose, Badly Drawn Hands, Badly Drawn Feet, Badly Drawn Legs, Badly Drawn Hair, Badly Drawn Clothing, deformed, bad anatomy, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, poorly drawn hands, missing limb, blurry, bad hands, out of focus, long neck, blurry, amateur.
+    meta:tags = [({pinup:100, vintage:100, portrait:85, render:70, semirealistic:70, cinematic:50})]
+
+  Saturday_evening_post_art
+    prompt = (Tack sharp macro clarity, masterpiece, hyper-clean anatomical realism, best quality: 1.5), ((Rockwellesque Saturday Evening Post Art Style by J. C. Leyendecker: 1.3)), ([input.description]) , (Norman Rockwell nostalgia), (idealized American scenes), (J. Howard Miller art style riveted Retro textures), (expressive exaggerated gestures), (warm domestic vignettes), (Leyendecker's polished brushwork), sculptural facial features , (Saturday Evening Post covers), (wartime propaganda colors), (gleaming reflective surfaces), (staged theatrical balanced compositions: 1.2), (heroic Americana archetypes); (classical still life maturity arrangements), (ultra-detailed, (polished commercial realism): 1.25), (8K pore-level), (35 mm anamorphic), perfectly Oil-rendered elegance, ((Precise perspective grids by Andrew Loomis)) ,, no sequential deformation, no distortion,
+    negative = [input.negative] , thin script fonts, ((bokeh, watermark, text, signature, artist mark, narrative technical diagrams: 1.3)) ,  ((underage, child, teen: 1.6)) , generic dystopian bleakness, gritty urban decay, wrinkled baggy clothes, stiff robotic movements, cold institutional spaces, sloppy rushed impasto strokes, obscure indie zines, matte dull textures, flat muted tones, chaotic candid snapshots, weak effeminate caricatures, anonymous silhouette figures, Flat distorted forms, modern minimalist ads, bright neon colors, ill-fitting sloppiness , weak feminine shapes , hard-edge digital rendering, sterile sans-serif fonts, futuristic cybernetic figures, flat uniform lighting, poorly drawn face, mutation, deformed, low detail, blurry, out of frame, duplicate, morbid, flat blob placements, blurry artifacts , ugly juxtaposition , Unstructured scribble drawing, Chaotic disjointed composition , have strabismus , 
+    meta:tags = [({rockwell:100, vintage:100, portrait:85, render:70, semirealistic:70, cinematic:50})]
+
+  Colored_pencil_hyperdetailed
+    prompt = ArsMJStyle, Colored pencil hyperdetailed realism, ([input.description]), illustrative colored pencil rendering, natural media emulation, smooth tonal transitions, tactile look through chromatic realism, no flat digital fills, layered shading on textured paper, organic Color Field art, Art Chicano, Art Noir, cinematic light, luxcore render, trending on ArtStation, (Marco Mazzoni style, foundational illustrative buildup by Diego Fazio (DiegoKoi), by Morgan Davidson, rich details by Paul Cadden, tack sharp quality by Heather Rooney and Andrew Loomis, bold linework silhouettes by Arthur Rackham, Audrey Kawasaki inspired ironicism, Aerosolgrafia amalgamated deco style of Wayang Kulit, style of Rebecca Guay & Gottfried Bammes:1.4). This high resolution image's proportions are flawlessly balanced, exuding a divine harmony of Precisionism. A Captivating and Unforgettable vibrancy with a version compatibility of 5.2. 300 DPI. The juxtaposition of a celebration of frivolity, where perfect shapes and subcutaneous colors create visual latticework of classical antiquity,
+    negative = blurry, ugly, bad, flat digital shading, cel anime shading, cartoonish kitsch, smooth digital gradients, painterly brush texture, vector style,
+    meta:tags = [({pencil:100, drawing:85, illustration:70, portrait:50, landscape:20, hyperrealistic:70, cinematic:50})]
+    modifiers = [nsfwModifiers]
+
+  Pulp_magazine_cover_1930s
+    prompt = 1930s Weird Tales pulp magazine cover art, commercial gouache illustration style. Flat opaque color application with simplified modeling, poster-aesthetic with naturalistic forms. Bold color zones with controlled edges, limited soft transitions only for form modeling. Strong value contrast, theatrical stage lighting, hard-edged cast shadows. Vintage four-color printing look, slight registration offset.Illustrative realism with posterized color planes. ([input.description]). Saturated dramatic lighting. 1930s adventure pulp, heroic fantasy illustration, magazine cover composition.
+    negative = [input.negative], oil painting, visible brushstrokes, impasto, heavy texture, painterly, blended edges, soft focus, atmospheric, chiaroscuro, tenebrism, academic painting, fine art, canvas texture, alla prima, glazing, scumbling, loose brushwork, impressionist, expressionist, textured surface, thick paint application, Rembrandt lighting, naturalistic rendering, photorealistic, digital art, concept art, artstation, modern illustration, 3D render, airbrushed, gradient mesh.
+    meta:tags = [({pulp:100, vintage:100, portrait:85, render:70, semirealistic:70, cinematic:50})]
+
+  Digital_comic_illustration
+    prompt = score_9, score_8_up, score_7_up, (2026_one-page_comic_masterpiece:1.3), HDRI, [input.description] , (High_gloss_finish_style_digital_illustration:1.2), aggressive_bloom, (vertically_centered_subject:1.15), (perfect_cross_hatching_Cel_Shading), dramatic composition, (highly_chromatic_pigmented_saturation:1.0), \{artist: (Jack_Kirby, John_Byrne, Jim_Lee, George_Pérez, Alex_Ross, John_Romita_Jr., Arthur_Adams, Todd_McFarlane, Steve_Ditko)\} , contrasting highlight mix-up, powerful_personality_with_epic_high-stake_design, (heavily-densed_ink_lines:1.1), (crisp_hard_edges:1.35), (perfect_topology:1.3), (clean_bevels:1.3), (sharp_silhouette_definition:1.25) , (PBR materials:1.25), (clean shader response:1.3), Cycles-style realism, 85mm lens look, (photoreal camera optics:1.2) , cinematic_rim_lighting, orthographic precision, ultra-sharp focus, (natural_head_to_body_proportions), supremely detailed, good hands and fingers, Minimal shadow depth, Ultra-smooth tonal gradients , clear features, 8k clarity , Minimal texture noise , ,
+    negative = score_3, score_2, score_1, score_4, score_5, [input.negative] , ugly perspective, 3D render, low poly, soft blurry edges, noisy surfaces, sketchy outlines, work in progress, (bad topology, greyscale, monochrome, black and white), anime, cartoon, caricature, kitsch, toon shading style, cgi, pencil stippling, (bad_perspective), glitchy_drawing, watercolor_patches, mangled_posterization, painterly_texture, grainy lighting, minimalistic lighting, out of focus, duplicate_cover_art, wrong dynamics, wrong sex, wrong gender, wrong age, dwindled limbal ring, facial hair on women, veiny skin, broken _cape_physics, abstract shapes, low_resolution, (text, wordmark, signatures, copyright, letters) , boring expression, exaggerated_doodles, jagged_pixelation, bokeh_color_grading, matte_painting, (jpeg_artifacts) ,,
+    meta:tags = [({comic_masterpiece:100, High_gloss_finish_style_digital_illustration:85, portrait:70, clear_features:50, landscape:20})]
+
+  Art_nouveau
+    prompt = ((Art Nouveau art style: 1.3)) , ([input.description]) , (Flowing organic lines) , (Whiplash curves) , (Stylized floral motifs) , (Elegant asymmetry) , (Nature-inspired compositions) , (Decorative female figures) , (Intricate ornamental details) , (Soft muted palettes) , (Curvilinear architecture) , (Dramatic elongated forms) , Nouveau_OrnamentXL , Tiffany glass color palette , Alphonse Mucha portrait style , dramatic framing with botanical elements , 
+    negative = [input.negative] , Rigid geometric shapes , Angular harsh lines , Minimalist sparse designs , Cluttered symmetry , Urban industrial themes , Simplified masculine forms , Flat plain surfaces , Vibrant neon colors , Rectilinear structures , Compact stubby shapes , geometric shapes , sharp angles , minimalist , 
+    meta:tags = [({artNouveau:100, illustration:85, portrait:70, drawing:50, landscape:20})]
+
+  Graphic_vector_illustration
+    prompt = (Clean Vector Illustration Style:1.3), (Ultra-Crisp Bézier Curves:1.25), (Razor-Sharp Linework:1.2), [input.description], (Flat Color Dominance with Surgical Precision:1.2), (High-Saturation Graphic Palette:1.15), (Hard-Edge Shadow Blocking:1.15), (Poster-Grade Visual Punch:1.2), (Silkscreen-Inspired Color Separation:1.15), (Modern Editorial Illustration:1.1), (Iconic Shape Language:1.15), (Zero Noise, Zero Blur, Pure Control:1.2), (Artist: Malika Favre, Shepard Fairey, Charley Harper, Tom Whalen, Saul Bass, Shigeo Fukuda, Sister Corita Kent, Andy Warhol, Patrick Nagel)
+    negative = [input.negative], gaussian blur, noise, grain, film grain, jpeg artifacts, dithering, pixelation, raster texture, canvas texture, paper texture, brush strokes, painterly style, oil painting, watercolor, acrylic, charcoal, sketch, hand-drawn wobble, uneven lines, shaky lines, broken linework, fuzzy edges, feathered edges, aliasing, low resolution, low detail, muddy colors, desaturated colors, color banding, gradient noise, airbrush shading, soft shading, smooth shading, realistic shading, subsurface scattering, skin pores, skin texture, wrinkles, fabric texture, hair strands, fur detail, micro-detail, over-detail, cluttered composition, busy background, complex background, photographic background, 3D render, CGI, octane render, blender render, unreal engine, perspective distortion, fisheye, wide-angle lens, warped geometry, asymmetry, malformed shapes, inconsistent scale, off-model anatomy, extra limbs, extra fingers, missing fingers, distorted hands, distorted face, uncanny valley, bad anatomy, text, watermark, logo, signature, UI elements, frame, border, inconsistent perspective, moiré patterns, compression artifacts,
+    meta:tags = [({vector:100, illustration:85, graphicDesign:70, portrait:50, landscape:20, drawing:35})]
+
+  European_comic_book
+    prompt = A highly detailed and dynamic European comic book style, utilizing loose yet expressive pencil and ink strokes. ([input.description]). There is an emphasis on cross-hatching and stippling to create rich textures and shadows. The color palette is muted and earthy, resembling watercolor or colored pencil, featuring natural tones such as brown, olive green, and dark blue. The composition consists of a rough pencil underdrawing with bold ink strokes, loose spontaneous linework, heavy cross-hatching, dense stippling, strong black shapes, textured paper feel, with complex perspective and a strong sense of movement, capturing a candid moment of the subject itself. The sparingly applied subdued earthy colors instructing expressive anatomy, lived-in realism, visual storytelling, gritty atmosphere filled with watercolor wash effect in an intimate documentary feel. (Art-deco influencial artistry in the style of Enki Bilal, Jean Giraud, Jacques Tardi, Hugo Pratt, François Schuiten, Lorenzo Mattotti, Jiro Taniguchi, Aubrey Beardsley and Alphonse Mucha:1.5),
+    negative = [input.negative], low resolution, blurry, pixelated, mosaic, foggy, duplicate, fake, draft, manuscript, compression artifacts, noise, oversharpened, washed out, photorealistic, anime, american superhero comic, 3d render, pixar, disney, cartoon network, clean line art, smooth shading, low texture detail, bright neon colors, manga, chibi, oversaturated palette, minimalist background, single character, static pose, flat perspective, studio lighting, text, headings, signature, wordmark, pastel kawaii tones, digital airbrush, overly polished ink, pure white highlights, no cross-hatching, cell shading, uniform line weight, vector art, dramatic spotlighting, studio setup, cgi, octane render, unreal engine, compression artifacts, flat perspective, serrated silhouette,
+    meta:tags = [({comic:100, europeanComic:85, illustration:70, portrait:50, landscape:20, drawing:35})]
+
+  Graphic_novel_art
+    prompt = Keywords: graphic novel style, highly detailed line art, sharp black ink outlines, bold shadows, cel-shaded, strong contrast, [input.description], cinematic lighting, dramatic perspective, dynamic composition, expressive poses, high detail, clean inking, cross-hatching, painterly textures, halftone patterns, screen-tone effects, vibrant yet moody color grading, retro comic print texture, 4k resolution, sharp focus, heroic composition, ensual anatomy, dramatic chiaroscuro lighting on skin, glossy highlights, erotic tension, soft painterly shading on curves, textured fabrics, moody neon glow, decadent atmosphere, (artist: Frank Miller, Jim Lee, Moebius, Mike Mignola, Jackie Ormes, Jaime Hernandez, Dave Stewart, Alex Ross, Sana Takeda, Olivier Coipel, Brian K. Vaughan, Euan Uglow, Adrian Tomine, Craig Thompson, Mike Mayhew, Mike Zeck, Milton Caniff, Murphy Anderson)
+    negative = [input.negative], blurry, low resolution, low detail, bad anatomy, extra limbs, fused fingers, malformed hands, distorted faces, bad proportions, cartoonish unless intended, flat colors, muddy shading, noisy textures, watermark, signature, text artifacts, jpeg compression, low contrast, washed out colors, 3d render look, stock photo look, generic digital art style
+
+  Gothic_mythologique_iconography
+    prompt = (D'art classique Mythologique style , Esoteric Noir oil-art realism: 1.4) , ([input.description]) , ((clean illustrative control with painterly depth)) , Sacramental Enamel Gothic occult iconography and symbolic elements , vitrified high-gloss surfaces with sharp specular highlights , smooth polished metal adornments with museum-grade realism , moonlit altar-like composition , (medieval manuscript influences) , (dramatic negative space) , ritualized erotic dominance , (lustrous detailing) , (hauntingly delicate figures) , (reflective ethereal decadence) , darkwave melancholic shadows , inspired by Artgerm and Olivia De Berardinis , Hyper-Stylized Hajime Sorayama technique , sculptural approach by Olivier Coipel , Digital Glam linework style of Wenjun Lin and Kienan Lafferty ,
+    negative = [input.negative] , anime , manga , hentai , dull matte finish , corroded surfaces , low-contrast blandness , rustic simplicity , angular brutalism , chipped enamel , cartoon shading , plastic doll skin , (Puritanical figures , Frumpy shapelessness , chaotic deconstructivist designs , sparse rough sketches: 1.4) , uneven scribbled edges , velvet circuit aesthetics - coarse disconnection , glitch-infused shattered mirror archaic ,
+    meta:tags = [({gothic:100, illustration:85, portrait:70, clean_illustrative_silhouettes:50, landscape:20})]
+
+  Golden_age_neoclassicism
+    prompt = ((Dutch Golden Age Neoclassicism art style: 1.3)), [input.description], (chiaroscuro lighting), (heroic nudity), (austere symmetry), (Greco-Roman revival), (genre scenes), (still life opulence), (bourgeois portraits), (meticulous brushwork), (domestic interiors), (maritime paintings), (trompe l'oeil details), (biblical tableaux), (historical allegory), (sculptural drapery), (rational composition), (civic virtue themes), (merchant class commissions) , ,
+    negative = [input.negative] , excessive clothing, chaotic asymmetry, modern abstraction, exaggerated proportions, garish colors, flat lighting, historical epics, minimal compositions, peasant caricatures, loose strokes, public spaces, desert landscapes, abstract blurs, secular studies, clergy patronage, (golden frames),
+    meta:tags = [({dutch_golden_age_painting:100, neoClassicism:100, portrait:85, greco_roman_revival:70, trompe_loeil_details:70, austere_symmetry:50, rational_composition:50})]
+
+  Baroque_impressionism
+    prompt = (masterpiece:1.4), (best quality:1.4), (ultra-detailed:1.3), (8k resolution), (baroque:1.3), (impressionism:1.3), (baroque impressionism fusion:1.2), (real life texture:1.3), (hyper-realistic brush strokes:1.3), (rich layered oil paint texture:1.2), dramatic chiaroscuro lighting, [input.description], deep shadows, velvety shadows, ornate atmosphere, opulent details, realistic human skin texture, warm golden highlights, volumetric depth, painterly elegance, oil paint luster, natural imperfections, emotional realism, dynamic composition, atmospheric depth, focal glow, cinematic grandeur, skin pore detail, vivid color harmonies, natural falloff lighting, triangular composition, physically correct rendering, central subject illumination, rule of thirds emphasis, inspired by Caravaggio and Renoir, Rubens and Monet style, Rembrandt meets Sargent style, by Diego Velázquez, by Albert Lynch, by William Holman Hunt, by Anthony van Dyck, by Nicolas Poussin.
+    negative = [input.negative], (worst quality:2), (low quality:2), (bad anatomy:1.4), blurry, flat lighting, deformed, mutated hands, extra limbs, out of frame, poorly drawn face, poorly drawn hands, text, watermark, signature, jpeg artifacts, oversaturated, noisy, cartoonish, anime, 3d render, cgi, cell-shading, simplistic, sketch, unfinished, overexposed, underexposed, distorted proportions, uncanny valley, plastic texture, low-res skin, lack of texture, airbrush, smudged details, washed out, dull colors,
+    meta:tags = [({painting:100, oilPainting:100, portrait:85, render:70, hyperrealistic:70, cinematic:50})]
+
+  Renaissance_oil_painting
+    prompt = (masterpiece:1.4), (best quality:1.4), (ultra-detailed:1.3), (8k resolution), (renaissance oil painting:1.3), (real life texture:1.3), (hyper-realistic brush strokes:1.3), (rich layered oil paint texture:1.2), dramatic chiaroscuro lighting, [input.description], deep shadows, velvety shadows, ornate atmosphere, opulent details, realistic human skin texture, warm golden highlights, volumetric depth, painterly elegance, oil paint luster, natural imperfections, emotional realism, dynamic composition, Mannerism, Late Renaissance, Baroque, Dutch Golden Age, Flemish Baroque, Caravaggisti, Rococo, Neoclassicism, Later Cretan School, Heptanese School, (artist: Leonardo da Vinci, Michelangelo, Raphael, Titian, Caravaggio, Rembrandt, Rubens, Velázquez, Vermeer, Botticelli, Giorgione, Tintoretto, Veronese, El Greco, Albrecht Dürer, Hans Holbein the Younger, Jan van Eyck, Rogier van der Weyden, Pieter Bruegel the Elder, Hieronymus Bosch, Andrea Mantegna, Paolo Veronese, Jacopo Tintoretto, Giovanni Bellini, Sandro Botticelli, Domenico Ghirlandaio, Pietro Perugino.)
+    negative = [input.negative], (worst quality:2), (low quality:2), (bad anatomy:1.4), blurry, flat lighting, deformed, mutated hands, extra limbs, out of frame, poorly drawn face, poorly drawn hands, text, watermark, signature, jpeg artifacts, oversaturated, noisy, cartoonish, anime, 3d render, cgi, cell-shading, simplistic, sketch, unfinished, overexposed, underexposed, distorted proportions, uncanny valley, plastic texture, low-res skin, lack of texture, airbrush, smudged details, washed
+    meta:tags = [({painting:100, oilPainting:100, portrait:85, render:70, hyperrealistic:70, cinematic:50})]
+
+  South_asian_orientalism
+    prompt = (Neo-classical Gandhara-Buddhist hybrid romantic oil painting: 1.3) , ([input.description]) , hyperrealistic academic realism , Raja Ravi Varma revival style , museum-grade oil on canvas , ((soft varnished finish: 1.4)) , ((porcelain skin with warm undertones)) , painterly glazing, salon-level realism, idealized feminine smooth Hellenistic integrity , (Hyperclean anatomical rendering: 1.1) , devotional carved schist Orientalism , Neo-traditional allegorical paintings , calm sensual expression , romantic classical pose , painterly background , (high cultural elegance with exotic Indo-Greek-esque scenes) , (Temple sculpture influences: 1.2) , sensual classical femininity silhouetted , aristocratic opulent compositions , soft erotic elegance, (Revivalist portraiture techniques: 1.2) , (Dramatic chiaroscuro lighting) , refined adult Bagan Frescoes, tasteful sensuality, fine art eroticism , by Kōsetsu Hashimoto and Pratuang Emjaroen ,
+    negative = [input.negative] , Muted pastel tones , blurred perspective , Uniform flat lighting , Chaotic asymmetry , Pop art kitsch , minimalist blank walls , flat even illumination , urban industrial scenes , garish neon palette , grotesque realism , harsh strokes , chaotic thorn patterns , abstract facial distortion , (narrative marble statues: 1.2) , ((photorealism)) ,
+    meta:tags = [({gandhara:100, illustration:85, portrait:70, landscape:20, drawing:35})]
+
+  Game_illustration
+    prompt = (Blizzard Cinematic Art Style:1.3), (Hyper-Polished Stylized Realism:1.25), (Heroic Proportions:1.2), ([input.description]), (Exaggerated Anatomy Curves:1.15), (High-Contrast Rim Lighting:1.15), (Cinematic Volumetric Lighting:1.1), (Saturated Color Palette:1.1), (Sensual Character Posing:1.15), (Dramatic Cel-Shaded Lighting:1.1), (Smooth Gradient Skin Shading:1.1), (Glossy Skin & Subsurface Scattering:1.15), (Ultra-Clean Photographic Finish:1.2), (square enix cinematic style:1.3), (AAA Game Cinematic render:1.3), (next-gen RPG cutscene style:1.3), (high-poly character render:1.25), (real-time engine render quality:1.2), (Artist: Wei Wang, Tetsuya Nomura, Vitaly Bulgarov, Magdalena Dadela, Alex Horley, Isamu Kamikokuryo, Maciej Kuciara, Rafael Grassetti, Samwise Didier, Feng Zhu, Arno Schmitz, Akihiko Yoshida),
+    negative = [input.negative], flat silhouette, low resolution, blurry, jpeg artifacts, compression artifacts, noise, grain, bad anatomy, broken anatomy, incorrect limb count, extra arms, extra legs, extra fingers, missing fingers, fused fingers, malformed hands, deformed feet, distorted face, asymmetrical eyes, cross-eyed, misaligned jaw, stretched neck, unrealistic body proportions, chibi style, anime style, manga style, cartoon style, western comic style, sketch lines, painterly brush strokes, oil painting, watercolor, flat 2D shading, hand-drawn look, toon outlines, low-poly, voxel style, uncanny valley, plastic doll face, lifeless expression, waxy skin, blotchy skin tones, cheap cel shading, banding gradients, inconsistent light direction, ps2 graphics, stock character look,
+    meta:tags = [({gameArt:100, cinematic:85, characterDesign:70, portrait:50, landscape:20, drawing:35})]
+
+  SFM_art_nsfw
+    prompt = ([input.description]), (masterpiece:1.4), (realistic skin shader:1.3), (perfect light balance:1.2), (sharp focus:1.25), (Rule34, NSFW:1.3), hyperrealistic, ultra high resolution, (8k:1.4), (photo-realistic texture mapping:1.3), (real-life skin microdetails:1.25), (Blender Cycles render:1.2), Source Filmmaker lighting, cinematic depth of field, HDRI environment, physically based rendering, ray-traced reflections, subsurface scattering, (volumetric lighting:1.2), skin pore detail, realistic shading, anisotropic hair shading, filmic tonemapping, high-poly mesh, ambient occlusion, (perfect anatomy:1.2), (muscle tone definition:1.1), ultra detailed face, lifelike eyes, realistic tongue/teeth, (natural expression:1.1), (realistic genital texture:1.3), precise specular highlights, bounce lighting, cinematic framing, shallow focus, (photorealistic shading:1.25), Unreal Engine 5 quality, (subsurface scattering:1.2), (ray tracing reflections:1.2), (true-to-life textures:1.25), (high-poly:1.3), (photo-quality depth:1.25), (artist: Falkentyne,  Akabur (3D realism adaptation),  sp3ctrum,  Xenoart,  Jabcomix (realistic style),  Aleksey Bayura,  Biorust,  Lixian,  Nightshift3D,  KyoSFM,  Darkholme,  Redmoa (photoreal variant),  Kronos3000).
+    negative = [input.negative], (worst quality:2), (low quality:2), lowres, blurry, pixelated, noise, bad anatomy, deformed, (extra limbs:1.2), fused fingers, (poorly drawn hands), stretched textures, low-poly, flat shading, toon shading, cel shading, anime, manga, painting, illustration, sketch, watermark, signature, oversaturated, monochrome, grayscale, color banding, jpeg artifacts, cross-eyed, lazy eye, untextured, unlit, incorrect proportions, uncanny valley, (mutated hands), glitched geometry
+
+  Oil_painting_70s_pulp
+    prompt = 1970s vintage pulp art, ultra realistic, fully restored, exquisite lighting and composition, polished, masterpiece, vintage pulp art, by Earle K. Bergey, by Kelly Freas, by Alex Schomburg, by H. J. Ward, glossy pulp art, Amazing Stories, Weird Tales, 8k, high resolution, best quality, hyper-realistic, Mattias Adolfsson style, detailed stylization, [input.description], ultra realistic, wlop-style, exquisite lighting and composition, polished, world-class masterpiece, digitally enhanced, breathtaking shot, subtle details, superb quality, art by Kuvshinov, Kuvshinov style, detailed stylization.\n\nOverall, it's an absolute world-class masterpiece artwork. It's an aesthetically pleasing restored 1970s vintage pulp art with impeccable attention to detail and impressive composition. It has perfect contrast and color balance. Almost photorealism.
+    negative = [input.negative], scratches, faded, washed out, grainy, dirty
+    meta:tags = [({painting:80, oilPainting:85, vintage:50, landscape:20, portrait:60, drawing:35})]
+
+  Wet_on_wet_oil_painting
+    prompt = ((Wet-on-wet oil painting art style: 1.3)) , [input.description] , (fluid blending techniques) , (luminous color transitions) , (atmospheric landscapes) , (soft edge mastery) , (spontaneous brushwork) , (alla prima method) , (impressionistic wet layers) , (dynamic light reflections) , (textured impasto effects) , (harmonious tonal gradations) , (balanced composition) , (vibrant earthy palettes) , (detailed textures) , (35 mm) , (van Gogh:0.7) , ,
+    negative = [input.negative] , flat smooth surfaces , muted grayscale schemes , blurry artifacts , deformed elements , lowres distortions , harsh color blocking , muddy color mixing , flat graphic landscapes , hard edge precision , deliberate stroke control , multi-layer glazing , dry brush realism , static matte surfaces , smooth flat finishes , abstract geometric motifs , discordant tonal jumps , ,
+    meta:tags = [({oilPainting:100, wetOnWet:85, portrait:70, landscape:20, drawing:35})]
+
+  Superhero_comic_art
+    prompt = [input.description], superhero comic art, dynamic poses, vibrant colors, bold outlines, dramatic lighting, action-packed, detailed backgrounds, comic book style, high contrast, expressive characters, intense emotions, heroic atmosphere, cinematic composition, powerful storytelling, iconic imagery, classic comic book aesthetic, modern comic book art, superhero universe, epic battles, legendary heroes, iconic villains, comic book cover, graphic novel, sequential art, comic book panel, comic book splash page, comic book illustration, comic book artwork, comic book design, comic book creativity, comic book imagination, comic book inspiration, comic book innovation, ( ##artist: Jim Lee, J Scott Campbell, Adam Hughes, Jay Ancelato, David Nakayama, Alex Ross, Jack Kirby, Stan Lee, Steve Ditko, John Romita Sr., Todd McFarlane, George Pérez, Neal Adams, John Buscema, Joe Quesada.)
+    negative = [input.negative], low-quality, deformed, blurry, bad art, incorrect anatomy, ugliness, ugly, horrible resolutions, low DPI, low PPI, bad character positioning, absurd anatomy, tiling, pixelization, low pixel count, blurry, low-res face, low poly, Poorly Drawn Characters, Badly Drawn Eyes, Badly Drawn Mouth, Badly Drawn Ears, Badly Drawn Nose, Badly Drawn Hands, Badly Drawn Feet, Badly Drawn Legs, Badly Drawn Hair, Badly Drawn Clothing, Ugly body language, Bad Perspective
+    meta:tags = [({comic:100, superhero:100, portrait:85, render:70, semirealistic:70, cinematic:50})]
+
+  Retro_illustration
+    prompt = 90s comic book art, (bold ink outlines:1.3), (vibrant cel-shading:1.2), airbrushed highlights, [input.description], (over-exaggerated anatomy:1.1), (sharp focus:1.3), flawless lineart, perfect anatomy, expressive face, extreme detail, professional illustration, (award-winning comic cover art:1.2), (official digital art:1.1), neon accent lighting, (retro pulp glamour:1.3), ultra-saturated colors, sharp contour lines, dramatic perspective, (poster art composition:1.2), metallic ink effects, retro-futuristic tone, pop art sensibilities, splash illustration style, full-bleed image, (dynamic foreshortening:1.2), hyper-defined musculature, volumetric spotlighting, intense rim light, (vivid halftone texture:1.15), glossy finish, erotic tension, fetish comic aesthetic, oil-slick gloss, dominatrix styling, richly textured shading, cinematic lighting, cover-worthy composition, fully rendered, (artst: Jim Lee, Joe Madureira, Michael Turner, Frank Cho, Adam Hughes, J. Scott Campbell, Marc Silvestri, Greg Capullo, Rob Liefeld, Alex Ross, Olivier Coipel, Ed Benes, Dan Lawlis, Bruce Timm (90s variant), Todd McFarlane.)
+    negative = [input.negative], (watermark), (signature), (text), (speech bubbles), (comic panels), manga, anime, chibi, cartoon, lowres, blurry, jpeg artifacts, low quality, pixelated, (muted colors), desaturated, pastel tones, flat shading, sketch, unfinished, bad hands, bad feet, extra limbs, mutated anatomy, deformed face, wonky eyes, blurry eyes, cross-eyed, asymmetrical eyes, unaligned pupils, low detail skin, flat lighting, grainy, monotone, overexposed, ugly, poor perspective,
+    meta:tags = [({retro_illustration:100, Vintage_comic_art:90, bold_ink_outlines:80, vibrant_cel_shading:70, airbrushed_highlights:60, exaggerated_anatomy:50, sharp_focus:80, flawless_lineart:70, perfect_anatomy:60, expressive_face:50, extreme_detail:70, professional_illustration:60, award_winning_comic_cover_art:50, official_digital_art:40, neon_accent_lighting:30, retro_pulp_glamour:20})]
+
+  Vintage_propaganda_poster
+    prompt = (**Keywords**: 1950s dime-store noir cover, banned VHS cover art style, garish neon typography, Pulp magazine aesthetic, high-contrast shadows, lurid color palette, torn edges, distressed paper texture, Crime doesn’t pay!—style cover, Gritty, exploitative, morally ambiguous, Cheap thrills, high drama, low morals, Like a lost 1940s crime comic, 1970s grindhouse Naziploitation poster, Exploitation film aesthetic, heaving bosoms, sadistic grin, grainy film texture, vintage Italian poster style, Sleazy, transgressive, Pulp magazine pinup, Hyper-detailed crosshatching, 19th-century engraving style, but modern—razor-sharp lines, Escher meets crime comic, impossible perspectives, Pen-and-ink portrait, Caravaggio lighting, Frazetta meets film noir, Pre-Raphaelite pinup, hyper-saturated colors, 1930s Hollywood portraiture, Oil painting texture, thick impasto brushstrokes, Grainy newsprint, art deco  water-stained paper, No smudges. No shortcuts.), ([input.description]), (artist: Saul Bass, Frank Frazetta, Boris Vallejo, Lucio Parrillo, Frank McCarthy, Norman Saunders, James Avati, Robert Maguire, Robert Bonfils, Alberto Vargas, Gil Elvgren, Earl Norem, Basil Gogos, Basil Wolverton, Jack Davis, Wally Wood, Frank Bellamy, Frank Kelly Freas, Frank R. Paul, Frank Frazetta, Boris Vallejo, Julie Bell, Luis Royo, Hajime Sorayama, Hajime Isayama, Jim Silke, Robert McGinnis, Dave Stevens, Charles Dana Gibson, Norm Eastman, Knute O. Munson, Oscar Chichoni.) 
+    negative = [input.negative], Blurry, low-resolution, out of focus, malformed anatomy, extra limbs, fused fingers, disfigured faces, (child), (young), non-consensual, explicit gore, ((text, watermark, logo, signature):0.4), cartoon, painting, sketch, low saturation, low contrast, deformed, bad anatomy, extra limbs, missing fingers, disfigured face, body out of frame, poorly drawn hands, bad proportions, unrealistic lighting, flat colors, cartoonish, low detail, ugly, duplicate characters, floating objects, distorted perspective, oversaturated, underexposed, bad shadows, unnatural poses, censored, clothing covering nudity, lack of sweat, dry skin, bad belly, pregnant, wrong dog breed, incorrect anatomical details, (animal abuse),
+    meta:tags = [({vintage_propaganda_poster:100, Nineteen_fifties_dime_store_noir:90, banned_VHS_cover_art:80, garish_neon_typography:70, pulp_magazine_aesthetic:60, high_contrast_shadows:50, lurid_color_palette:40, torn_edges:30, distressed_paper_texture:20, crime_doesnt_pay_style_cover:10})]
+
+  Contemporary_european_movie_poster
+    prompt = High-drama painted pulp illustration combining mid-century European paperback cover realism with modern digital polish, (Rockwell narrative realism), [input.description] , cinematic lighting, expressive figures, cinematic composition, oil paint texture of crisp edges, broadcast-quality 8k, ultra-detailed faces and hands, realistic anatomy, bold colors, and glossy yet textured skin tones, clean illustration realism, pre-digital painting style, vintage paperback art, (WWII era poster realism, historical authenticity in sharp focal hierarchy), ((Leyendecker-style lighting and shadow design:1.3)), ((Loomis anatomical construction)), (no anime eyes, no simplified shading) , ,
+    negative = [input.negative] , , anime, manga, cell shading, digital painting look, flat lighting, flat colors, sketch lines, neon colors, hyper-saturated, blur, low detail, photorealism, skin pores, gritty texture, painterly brushstrokes, Fragile aristocratic figures, ,
+    meta:tags = [({contemporary_european_movie_poster:100, high_drama_painted_pulp_illustration:90, mid_century_european_paperback_cover_realism:80, modern_digital_polish:70, rockwell_narrative_realism:60, cinematic_lighting:50, expressive_figures:40, cinematic_composition:30, oil_paint_texture:20, crisp_edges:10})]
+
+  Modern_comic_art
+    prompt = (Keywords: Hyper-stylized cell-shaded comic art, Dynamic lighting with reflecting highlights, Exaggerated proportions with a pin-up twist, Immaculate anatomical precision, High-contrast shadows for dramatic depth, Glossy, wet-look textures, Brutalismically-inspired with Western comic flair, Dominant, confident pose, Seductive yet fierce expression, Over-the-shoulder glance with smoldering eyes, Aura of danger and allure, Sultry, half-lidded gaze, Ultra-HD, 8K resolution, studio-quality render, Soft gradients with sharp comic-book reflective surfaces, Vibrant, saturated colors with a neon-noir twist, Realistic Ink splatter or comic book ‘action lines’.) ([input.description]), (Artist: Artgerm, Ivan Reis, J Scott Campbell, Jay Ancelato, Adam Hughes, Jim Lee, John Romita Jr, Paolo Serpieri, Luis Royo, Alphonse Mucha, Anne Stokes.) 
+    negative = [input.negative], blurry, lowres, bad anatomy, bad hands, text, error, missing fingers, extra limbs, disfigured, deformed, poorly drawn face, mutation, mutated, ugly, bad proportions, extra arms, extra legs, floating limbs, disconnected limbs, malformed hands, fused fingers, too many fingers, long neck, bad art, amateur drawing, low quality, normal quality, jpeg artifacts, signature, watermark, username, cropped, out of frame, duplicate, morbid, mutilated, extra breasts, bad breasts, poorly drawn breasts, flat chest, bad nipples, bad physics, bad lighting, flat lighting, overly smooth, overly soft, dull colors, desaturated, oversaturated, grainy, noisy, low contrast, bad shadows, bad highlights, bad shading, bad reflections, bad refractions, ugly face, bad lips, bad eyes, bad nose, bad ears, bad hair, bad physique, bad pose, awkward pose, stiff pose, unnatural pose, bad perspective, bad composition, bad background, bad glow, bad highlights, bad contrasts, bad lineart, messy lineart, lazy lineart, bad cell shading, overly detailed, under detailed, bad stylization, generic, boring, uninteresting, lackluster, no depth, flat image, cartoonish (unless intentional), chibi, super deformed, unrealistic colors, bad color palette, bad neon colors, bad skin tone, bad muscle definition, bad hourglass figure, bad curves, bad smirk, bad expression, bad seduction, bad danger, bad confidence, bad power, bad energy, bad atmosphere, bad mood, bad vibes,
+
+  Cyborge_anime_realism
+    prompt = (((ultra-detailed masterpiece:1.6), ([input.description]) , (absurdres oil painting with Greek mural sharpness:1.5),  (2.5D photorealism × gekiga seinen hard-edge realism:1.4),  (CelFrame volumetric lighting + subsurface skin scattering:1.3),  ,  (cinematic depth framing × 75mm sony fx3 UHD),  "009 Re:Cyborg" × "Inkframe Noir" dynamic compositions,  city-pop action screencaps (Active Raid vibe), blender rendered 3D speed-paint, ultra-clean silhouette planes with HD AdGlow,  (textured hair+++ambient occlusion++++),  (Artist DNA: Hodgkin×Faulkner×Borelli da Caluso×Mumford:1.7)p art style: 1.3)), (hyper-sculpted musculature lighting), (forensic brushstroke detailing), (neo-noir chromatic aberration), (volumetric fabric physics), (8K pore-rendered skin), (baroque motion blur), (cyberpunk deco negative space), (liquid metal reflectivity), (forensic anatomy cross-sections), (Renaissance sfumato+++digital glitch overlays) ,
+    negative = [input.negative] , lowres , aliasing , jpeg artifacts , blurry , muddy colors , flat lighting , anime flat face , jagged sketches , chibi , cartoon , glitchy scribbles , pixelated , mosaic , (collage , comic panels: 1.5) , graffiti , tattoo , bad proportions , deformed , golden frame , fisheye distortion , dull shading, panels , double exposure , ugly perspectives ,, amateurish drawn , split screens , text, watermark, letters, signatures, reference sheet ,, (bad orientation) , ugly exoskeleton ,
+    meta:tags = [({chaborge_anime_realism:100, ultra_detailed_masterpiece:90, absurdres_oil_painting:80, greek_mural_sharpness:70, photorealistic:60, cinematic_depth_framing:50, volumetric_lighting:40, subsurface_skin_scattering:30, city_pop_action:20})]
+
+  Dark_fantasy_nsfw
+    prompt = Score_9, Absurdres, Fantasy gnarled Clean Art, Hyper-detailed statuesque character as monumental figure, Dungeon and Dragons aesthetics, ([input.description]), Ethereal glow of magic, firelight reflecting off sweat, phial of liquid lust, Ancient tomes of forbidden knowledge, jewel-encrusted collars, elegant style by Eroguro artist, Dark fantasy by Kentaro Miura, gothic surged themes by Luis Royo, Fantastical storybook pin-up by Chris Achilleos, mystical NSFW detailing of Magali Villeneuve, Fine and bold line textured by Peter Mohrbacher, fractal patterns by Rafael Grassetti, spiritual eroticism by Alphonso Dunn, digital psychedelia style of Android Jones, high contrast Chiaroscuro, hyper-sharp focus, anatomically precise genitals, perfectly fine fingers and proportions, ray-traced reflections, Dark Souls or Elden Ring-like realism.
+    negative = [input.negative], (worst quality:1.7), (low quality:1.7), bad art, bad perspective, bad anatomy,poorly drawn hands, blurry,low resolution,cartoon,anime,3d,doll,mutated,text,ugly,disfigured,extra limbs,malformed limbs,missing arms,missing legs,fused fingers,long neck,poorly drawn face,deformed iris,deformed pupils,deformed eyes,poorly drawn feet,poorly drawn ears,cloned face,out of frame,watermark,signature,text,username,jpeg artifacts, messy lines, framed blurry crappy photo, overexposed, worst quality, border, deformed horror, overly faded, bad art, bad perspective, bad anatomy,poorly drawn hands, blurry,low resolution,cartoon,anime,3d,doll,mutated,text,ugly,disfigured,extra limbs,malformed limbs,missing arms,missing legs,fused fingers,long neck,poorly drawn face,deformed iris,deformed pupils,deformed eyes,poorly drawn feet,poorly drawn ears,cloned face,out of frame,watermark,signature,text,username,jpeg artifacts, messy lines,
+
+  Blender_3d_art
+    prompt = (masterpiece:1.3), (best quality:1.3), (ultra-detailed:1.3), (8k resolution), (Blender 3D render:1.3), (realistic skin shader:1.3), (perfect light balance:1.2), (sharp focus:1.25), [input.description], hyperrealistic, ultra high resolution, (photo-realistic texture mapping:1.3), (real-life skin microdetails:1.25), (Blender Cycles render:1.2), Source Filmmaker lighting, cinematic depth of field, HDRI environment, physically based rendering, ray-traced reflections, subsurface scattering, (volumetric lighting:1.2), skin pore detail, realistic shading, anisotropic hair shading, filmic tonemapping, high-poly mesh, ambient occlusion, (perfect anatomy:1.2), (muscle tone definition:1.1), ultra detailed face, lifelike eyes, realistic tongue/teeth, (natural expression:1.1), precise specular highlights, bounce lighting, cinematic framing, shallow focus, (photorealistic shading:1.25), Unreal Engine 5 quality, (subsurface scattering:1.2), (ray tracing reflections:1.2), (true-to-life textures:1.25), (high-poly:1.3), (photo-quality depth:1.25), (XDR:1.3), (beyondIMAXres:1.3), (artist: Falkentyne,  Akabur (3D realism adaptation),  sp3ctrum,  Xenoart,  Jabcomix (realistic style),  Aleksey Bayura,  Biorust,  Lixian,  Nightshift3D,  KyoSFM,  Darkholme,  Redmoa (photoreal variant), Blizzard Entertainment, Kronos3000).
+    negative = [input.negative], (worst quality:2), (low quality:2), lowres, blurry, pixelated, noise, bad anatomy, deformed, (extra limbs:1.2), fused fingers, (poorly drawn hands), stretched textures, low-poly, flat shading, toon shading, cel shading, anime, manga, painting, illustration, sketch, watermark, signature, oversaturated, monochrome, grayscale, color banding, jpeg artifacts, cross-eyed, lazy eye, untextured, unlit, incorrect proportions, uncanny valley, (mutated hands), glitched geometry
+    meta:tags = [({blender_3D:100, photorealistic:90, high_poly:90, ray_tracing:80, subsurface_scattering:70, volumetric_lighting:60, SSAO:50, cycles_render:90, unreal_engine_5:70, source_filmmaker:60, physically_based_rendering:80, filmic_tonemapping:70, ambient_occlusion:60, anisotropic_hair_shading:50, skin_pore_detail:80, realistic_shading:90})]
+
+  Three_d_character_concept
+    prompt = ((Blender_3D_character_render_of_subject:1.3)), [input.description] , (hyper-realistic 3D rendering, (photoreal camera optics:1.2)), 3D anime realism illustration, (mature_adult_character:1.25), realistic proportions, anime-inspired facial design, cinematic lighting, high-end game cinematic render, realistic skin shading, detailed eyes, physically based materials, ultra-polished illustration quality, dramatic depth of field, high-end Blender 3D render, ultra-clean geometry, razor-sharp edges, subdivision-surface perfection, physically-based rendering (PBR), studio-grade lighting, 8k render quality, adult characters, mature facial features, realistic anatomy, normal head-to-body ratio, photoreal lighting, subtle skin texture, realistic eye reflections, natural imperfections , (perfect topology:1.3), (clean bevels:1.3), high contrast composition, Crispy chamfers, (sharp_silhouette_definition:1.25), no_chibi, no_childlike_proportions, no_exaggerated_anime_eyes, no_cute_expression, source_r/3Dnsfw, source_r/3DAnimAfterDark, artist: (Syd Mead:1.3) , artist: (Android_Jones:1.2) , artist: (Ian_Hubert:1.25) , artist: (Rafael_De_La_Torre:1.0) , artist: (Beeple:1.15) , artist: (Paul_Chadeisson:1.1) ,
+    negative = [input.negative] , (chibi, lolicon, child, teenager, underage, babyface:1.7), oversized head, moe, kawaii, vtuber style, pixar style, disney art, toon shading, flat anime lighting, cel shading, plastic skin, doll face, simplified anatomy, cartoon proportions, niche style, low poly, soft blurry edges, noisy surfaces, bad topology, painterly texture, (collage:1.3), character sheet, glitch art,
+    meta:tags = [({hyper_realistic_3D_rendering:100, three_dimentional_character_concept_style:90, photoreal_camera_optics:80, mature_adult_character:70, realistic_proportions:60, anime_inspired_facial_design:50, cinematic_lighting:40, high_end_game_cinematic_render:30, realistic_skin_shading:20})]
+
+  Neo_romanticism
+    prompt = (masterpiece:1.3), (best quality:1.3), (ultra-detailed:1.3), (8k resolution), (neo-classical romanticism:1.3), (realistic skin shader:1.3), (perfect light balance:1.2), (sharp focus:1.25), [input.description], hyperrealistic, ultra high resolution, (photo-realistic texture mapping:1.3), (real-life skin microdetails:1.25), Norwich school, Biedermeier, Photography, Realism, Barbizon school, Peredvizhniki, Abramtsevo Colony, Hague School, American Barbizon school, Spanish Eclecticism, Macchiaioli, Pre-Raphaelite Brotherhood, Nazarene movement, The Ancients, Purismo, Düsseldorf school, Hudson River school, Luminism, Modern Greek art, (artist: John Constable, William Turner, Caspar David Friedrich, Francisco Goya, Eugène Delacroix, Théodore Géricault, Jean-Auguste-Dominique Ingres, Thomas Cole, Asher Brown Durand, Frederic Edwin Church, Albert Bierstadt, Thomas Moran, John Martin, Samuel Palmer, William Blake, John Sell Cotman, John Crome, Joseph Mallord William Turner, John Robert Cozens, Thomas Girtin, David Cox, Peter De Wint, John Varley, Samuel Prout, William Henry Hunt, Richard Parkes Bonington, Clarkson Frederick Stanfield.)
+    negative = [input.negative], (worst quality:2), (low quality:2), (lowres:2), (blurry:2), (out of focus:1.5), (watermark:2), (signature:2), (text:2), (logo:2), (cartoon:2), (anime:2), (3d render:2), (cgi:2), (illustration:2), (painting:2), (digital art:2), (artstation:2), (sketch:2), (line art:2), (deformed:2), mgfx, zvu, bad hands, name tags, tags, words, letters, golden frame, collage
+    meta:tags = [({neo_romanticism:100, neo_classicism:90, realism:80, pre_raphaelite:70, luminism:60, hudson_river_school:50, landscape:40, portrait:30, romanticism:90, biedermeier:70, barbizon_school:60, peredvizhniki:50, macchiaioli:40, nazarene_movement:30, purismo:20, düsseldorf_school:10})]
+
+  Hyper_fantasy_art
+    prompt = Celestialpunk subject , Heroic Low-Angle , ([input.description]) , Bio-Gothic , Arcane Neon , Crystallized emotion , Liquid gold armor , (Perspective: Godview) , Time Dilation Fog , Gravity Storm , Doomgloom Spellcore Glow , Prism Veil into tangible solid colors , Runic Overload in pulsating ancient script , Aetherpunk Dystopia , Cinematic LUT: Apocalypse Gold channelling through molten metal highlights , Hollow Divinity as swirling cosmos backdrop , Blood Sigil Dynamics that fabricate temporary spell circles in mid-air , magicpunk Schlieren souls where gravity occasionally fails , Dimensional Tear Border , rule of thirds Photon precision , 8K UHD Hyper-Detail Nanite Texture , perfect knuckle  silhouettes ,  –no (2D:1.1) –no (modern architecture:0.8) –no (depth of field:1.2) –no (film grain:0.5) –no (muddy textures) –no (flat composition) –no (oversharpened) , 
+    negative = [input.negative] , lowres , blurry , deformed anatomy , dull lighting , flat perspective , over-saturated , bad symmetry , watermark , 3D render , plastic texture , low-detail backgrounds , duplicate elements , mutilated , 
+    meta:tags = [({hyper_fantasy:100, celestialpunk:90, bio_gothic:80, arcane_neon:70, crystallized_emotion:60, liquid_gold_armor:50, godview_perspective:40, time_dilation_fog:30, gravity_storm:20, doomgloom_spellcore_glow:10})]
+
+  Manhwa_webtoon
+    prompt = ([input.description]), (#KEYWORDS = manhwa style, full color, korean webtoon illustration, semi-realistic shading, glossy highlights, Feng Lee style transitions, by Yongje Park and LICO & bbo, cinematic framing, vibrant cel-shading, high-contrast lighting, exaggerated expressions, speed lines, clean line art, smooth digital shading, semi-realistic faces, expressive eyes, subtle blush, glossy lighting, soft gradients, vivid tones, sharp highlights, modern coloring, painterly background, dynamic composition, cinematic framing.)
+    negative = [input.negative], (worst quality, low quality, normal quality, lowres, blurry, sketch, rough lines, pixelated, bad anatomy, oversaturated, washed out, duplicate face, text, watermark, signature, monochrome, grayscale, 3d render, cartoon, disney, caricature, kitsch, photorealistic, futanari, hermaphrodite, genderfluid, androgynous, muscle growth, inflation, vore, tf transformation, petrification, doppelgänger, identity crisis, split personality, breathy dialogue bubbles, whispered text,  ink bleeds, sketchy pencil lines, glitch effects, mixed media collage, gore splatter, censored mosaics, easynegative, ng_deepnegative_v1_75t).
+    meta:tags = [({manhwa:100, webtoon:90, korean_illustration:80, semi_realistic:70, cel_shading:60, vibrant_colors:50, dynamic_lighting:40, expressive_eyes:30, cinematic_framing:20})]
+
+  Seinen_anime_style
+    prompt = (professional fortiche style anime illustration, ultra high resolution, gothcore seinen anime style, three-quarter view:1.2), (soft anime realism, non-chibi, high quality anime artwork:1.3), (clean lineart, visual novel CG style, strong silhouette readability, masterpiece blender smooth shading:1.4), ([input.description]), shallow depth of field, cinematic chintzy mayhem composition, natural proportions, sharp focus, no distortion, (perfect anatomy:1.3), (supraliminally levelled finger knuckle silhouettes:1.1), Late-2000s OVA-era style doujin illustration with production animation still, high detail chromoshadowic color contrast storytelling, seussian structured traditional anime hair silhouette, soft copernicium pastel atmospherialised dramatic geosynthesised tones of vandegraaff shininess, by artist Beryl Pearl, by photographer "Maria Sibylla Merian" by artist "Si-O-Se Pol Isfahan", by Bridget Bate Tichenor, by photographer Edward Steichen and Dora Maar, by artist Varo Fini, (not cell-flat shōnen, not moe), nouveaugasmic velvetnebularity of liminodimensional patchouliwork, by Franklin Mint, (not sketchy, not calligraphic),
+    negative = (lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts:1.5), [input.negative], signature, watermark, username, blurry, artist name, deformed, disfigured, poorly drawn face, mutation, mutated, extra limbs, extra arms, extra legs, fused fingers, too many fingers, long neck, cross-eyed, ugly, morbid, mutilated, out of frame, bad proportions, gross proportions, malformed hands, missing arms, missing legs, extra breast, missing breast, deformed breasts, bad nipples, misplaced nipples, extra nipples, anime, cartoon, 3d render, cgi, painting, illustration, sketches, greyscale, monochrome, desaturated, overexposed, underexposed, bad lighting, flat lighting, amateur photography, selfie, mirror selfie, indoor setting, winter clothing, modern smartphone visible, modern cars, buildings, cityscape, blue jeans, sneakers, t-shirt, casual clothing, hat, cap, headphones, glasses instead of sunglasses, small sunglasses, square sunglasses, plastic frame sunglasses, clear lenses, no lens reflection, no palm reflection, brown hair, red hair, black hair, short hair, straight hair, no jewelry, no bracelets, golden jewelry, silver jewelry, choker, tattoo, piercing, freckles, flat illumination, beasticle stompflaps, floathovers, Hornfúggle, exometallic gizmo, sepiagrisaille, crumbling structures, anthropomorphic miniature, insouciance of boredom.
+    meta:tags = [({doujin_style_illustration:100, gothcore:90, seinen:80, three_quarter_view:70, soft_anime_realism:60, non_chibi:50, high_quality_anime_artwork:90, clean_lineart:80, visual_novel_cg_style:70, strong_silhouette_readability:60, masterpiece_blender_smooth_shading:90, natural_proportions:80, sharp_focus:70, no_distortion:60, perfect_anatomy:50, supraliminally_levelled_finger_knuckle_silhouettes:40, shallow_depth_of_field:30})]
+
+  Anime_oil_painting
+    prompt = (masterpiece:1.3), (best quality:1.3), (ultra-detailed:1.3), (8k resolution), (anime oil painting:1.3), (realistic skin shader:1.3), (perfect light balance:1.2), (sharp focus:1.25), [input.description], hyperrealistic, ultra high resolution, (photo-realistic texture mapping:1.3), (real-life skin microdetails:1.25), (Path-Traced, 8K Ultra-HD, 16K texture resolution), 2.5d, bold line, smooth shading, flat colors, minimalistic, cgi, digital painting, extremely detailed CG, anime screencap, anime coloring, newest, Expressiveh, highres, ink style, oil style, pastel style, (Artist: by zonda \(solid air\), by zaphn, by tony guisado, by thirty 8ght, by throat \(artist\), by take \(trude1945oneetyan\), by vibncent, by urushihara satoshi, by tsuaii and Alphonse Mucha.)
+    negative = [input.negative], worst quality, low quality, normal quality, lowres, blurry, sketch, rough lines, pixelated, bad anatomy, oversaturated, washed out, duplicate face, text, watermark, signature, monochrome, grayscale, 3d render, cartoon, disney, caricature, kitsch, photorealistic, futanari, hermaphrodite, genderfluid, androgynous, muscle growth, inflation, vore, tf transformation, petrification, doppelgänger, identity crisis, split personality, breathy dialogue bubbles, whispered text,  ink
+    meta:tags = [({retro_anime:80, painterly_anime:90, cellshading:70, bold_outlines:80, semirealistic:90, portrait:50, landscape:20, manga_drawing:35})]
+
+  Hyperrealistic_h_anime
+    prompt = ([input.description]), (hyperrealistic:1.3), (ultra detailed:1.3), (realistic skin texture:1.4), (8k RAW photo:1.2), (detailed pores), skin microtextures, hair strand detailing, realistic reflections, glossy eyes, accurate anatomy, sweat sheen, (hentai:1.2), erotic realism, (anime realism fusion), (detailed face:1.3), glossy eyes, realistic body physics, accurate muscle tone, soft shadows, photo-anime hybrid style, (specular highlights:1.2), ambient occlusion, soft light diffusion, volumetric lighting, subsurface scattering, (ray tracing reflections), (50mm lens:1.1), f/1.8 aperture, cinematic angle, ultra close-up, shallow depth of field, macro detailing, frontal lighting, (dynamic composition:1.2), HDR, ultra high res, film grain, depth of field, bokeh, ultra photorealism, masterpiece, high quality illustration, cinematic lighting, (photo-realistic anime:1.4), (artist: sakimichan, greg rutkowski, shunya yamashita, wlop, oss tran, hajime sorayama, yoshitaka amano, kazuki takahashi, alphonse mucha.)
+    negative = [input.negative], (low quality, worst quality:1.4), (bad anatomy:1.4), blurry, out of focus, overexposed, underexposed, pixelated, jpeg artifacts, extra limbs, missing fingers, fused fingers, mutated hands, unnatural skin, bad proportions, deformed body, cross-eye, lazy eye, ugly face, flat lighting, watermark, text, signature, monochrome, lowres, cartoonish, (3d render), plastic skin, doll-like texture, AI artifacts, grainy, muddy colors
+
+  American_commercial_magazine_canvas
+    prompt = ((mid-century commercial illustration art style , 50s vintage advertisement oil painting: 1.3)) , [input.description] , 1950s mid-century American acrylic pop illustration , hand-painted oil on canvas, canvas weave style lifestyle art with painterly skin tones , (bold graphic shapes) , (limited color palettes) , (optimistic futurism) , (exaggerated perspectives) , (clean linework:1.2) , (playful typography) , (retro product scenes) , (dynamic asymmetrical layouts) , (streamlined human figures) , (vibrant oil paint on canvas textures) , narrative composition , varnished finish , eye-catching billboard poster-ready framing , edges defined underpainting highlights , chirascuro studio lighting depicting art noire , in the classic style of Haddon Sundblom , by Al Parker , by Norman Rockwell , by Dean Cornwell and McClelland Barclay , no digital gradients , no airbrush , 
+    negative = [input.negative] , modern digital art , smooth shading , airbrush , heavy realism , chaotic color schemes , dystopian pessimism , rigid orthographic views , messy sketchiness , sterile corporate fonts , futuristic abstractions , static symmetrical grids , grotesque distorted forms , muted volumetric shading , flat colors , cel shading , flat silhouettes , anime, manga , vector art , blurry lineart , sharp outlines , plastic skin , 3d render , CGI , collage , comic panels , intentional brush placement , uneven brush pressure , avant - garde abstract geometry , 
+    meta:tags = [({mid_century_illustration:100, vintage_advertisement:90, classic_oil_painting:80, bold_graphic_shapes:70, limited_color_palettes:60, optimistic_futurism:50, exaggerated_perspectives:40, clean_linework:30, playful_typography:20, retro_product_scenes:10, dynamic_asymmetrical_layouts:20, streamlined_silhouette_figures:30, vibrant_oil_paint_on_canvas_textures:40})]
+
+  Western_enamel_pinup_realism
+    prompt = score_9 , score_8_up , score_7_up , (( Old Wild Western Hyperrealism art style: 1.3)) , Western Enamel Pin-Up Oil Realism, ([input.description]) , mythic frontier hyperrealism, Jeddtl02 , iconic warm nostalgic pigments , (Revolver-etched detail) , statuesque pin-up pose with dominant presenc, high-gloss enamel finish, Digital Tyndall effect , obsessive material detailin, reflective lacquered surfaces with sculptural realism , sun-polished skin with subtle enamel sheen , oil-slick highlights on leather, brass, and steel , hand-painted oil on canvas texture , (Gold rush grit rendering) , engraved revolvers and gold-accented leather , cinematic golden-hour frontier lighting , (High noon chiaroscuro) , epic western sky with towering storm clouds , dust-filled atmosphere glowing in sunlight , OverallDetail , museum-grade fine art realism, 1800s vintage RAW magazine cover-style digital photo , timeless, iconic, and monumental composition , SeraMunTest , inspired by Mark Maggiori and Jeremy Lipking , SAIGADOV1 style , with material sensuality reminiscent of Boris Vallejo , by darius kawasaki , OdaNon-V1 , hades-12800 , 16kuhd, EPEpochElfStyleV2 , traditional media , rustle , 
+    negative = score_6 , score_5 , score_4 , [input.negative] , bad_prompt , anime , manga , comic style , cel shading , flat lighting , flat silhouettes , signboard plate, digital illustration look , plastic skin , modern photography , cgi render , neon colors , low-detail background , Clean urban minimalism , Midnight flat lighting , Smudged vague outlines , Static plastic foliage, Muffled shoe silence , Fluorescent hallway glare , Slack rope inertia , Bokeh outlines , badhandv4 , BadNegAnatomyV1-neg ,
+    meta:tags = [({western:100, pinup:85, vintage:70, retro:50, frontier_fine_art:50, chiaroscuro:20, hyperrealistic:70, cinematic:50})]
+
+  Mid_century_western_subcultural_art
+    prompt = ((1950s Americana commercial painting art style: 1.3)), [input.description] , mid-century American narrative illustration, 1950s commercial art style, (Retro pastel color palettes), ((idealized realistic figures, vintage Americana painting, smooth opaque shading)), (gouache and oil illustration look, clean color blocks, clear streamlined mid-century features), (celebration of award-winning heritage of the late 19th century),, wholesome storytelling composition, soft daylight lighting, (Diners-and-50s Suburbia aesthetic), (Technicolor family values), classic magazine cover aesthetic, retro pin-up culture motifs, adult nostalgic tone, hand-painted realism, matured, centered, ultra-detailed faces and hands, sharp focal hierarchy , (no anime eyes, no simplified shading) , ,
+    negative = [input.negative] , photorealistic skin texture, pores, cinematic lighting, dramatic shadows, anime, manga, comic lineart, hyperrealism, modern digital painting, painterly brush chaos, gritty realism, film grain, HDR, glossy skin, grim austerity sketches, Modern minimalist branding, Monochrome social alienation, oil-leaking jalopies, jagged color blocks, digital vector art, watercolor abstracts, matte impasto finishes, photogrammetry, ai artifacts, distorted anatomy, low detail, oversaturated, neon colors, overcrowded,, (wrong sex, wrong gender, wrong age: 1.3), child, loli, toddler, young, underage, static basic fonts, narrow perspectives, ugly juxtaposition , bokeh finger knuckles , flat silhouettes, flat illumination ,
+    meta:tags = [({mid_century_illustration:100, vintage_advertisement:90, classic_oil_painting:80, bold_graphic_shapes:70, limited_color_palettes:60, optimistic_futurism:50, exaggerated_perspectives:40, clean_linework:30, playful_typography:20, retro_product_scenes:10, dynamic_asymmetrical_layouts:20, streamlined_silhouette_figures:30, vibrant_oil_paint_on_canvas_textures:40})]
+
+  Zbrush_style
+    prompt = hyper-realistic classic blender 3D pulp pin-up character render of (centered vertical aspect) , [input.description] , vintage pin-up pose , reaching perfection, dramatic lighting , vibrant retro color palette , smooth subdivision surfaces , sharp facial edge definition , realistic skin shader with controlled roughness , strong Z-brush composition , artist: (by Gil Elvgren:1.3) , artist: (by Marko Lazov:1.2) , artist: (by Norman Rockwell:1.3) , artist: (by J.C. Leyendecker:1.3) , artist: (by James Bama:1.25) , artist: (by Earl Moran:1.2) , artist: (by Mort Künstler:1.2) , artist: (by Roberto Molino:1.3) , artist: (by Alessandro Biffignandi:1.3) , artist: (by Marco Nizzoli:1.3) , studio HDRI lighting , cinematic rim light , PBR shader workflow , (clean topology:1.3) , (sharp silhouette definition:1.25) , Cycles realism , 8k detail , oil paint texture , precise boolean geometry , warm nostalgic lighting , dynamic expressive figure , subtle film grain , ultra-clean shading , painterly blend artstation realism , cinematic mood , (clean bevels:1.3) , (macro-clarity  emphasis:1.25) , (photoreal camera optics:1.2) ,
+    negative = [input.negative] , low poly , soft blurry edges , noisy surfaces , bad topology , stretched UVs , over-smoothed mesh , clay render , cartoon shading , toon style , game engine look , unreal engine artifacts , painterly texture , grainy lighting , bokeh perspective , flat even lighting , toy-like proportions , anime style , disney character duplication, plastic toy doll , figurine collectables , clay like sculpture, ugly knuckle detailing, (bad anatomy), poorly drawn features, incorrect blob placing, melting pile of flesh, text , watermark , signatures ,
+    meta:tags = [({hyperrealistic:100, classic_blender_3d:90, pulp_pinup:80, vintage_pinup_pose:70, dramatic_lighting:60, vibrant_retro_color_palette:50, smooth_subdivision_surfaces:40, sharp_facial_edge_definition:30, realistic_skin_shader:20, strong_zbrush_composition:10, clean_topology:20, sharp_silhouette_definition:30, cycles_realism:40, oil_paint_texture:50, precise_boolean_geometry:60})]
+
+  Realistic_nsfw_illustration
+    prompt = ((Luis_Ricardo_Falero_style_erotic_digital_pinup_masterpiece_art:1.4)), [input.description], (vertical_semirealistic_blender_4D_illustration_centering:1.2), (studio_HDRI_lighting:1.3), 8k_clarity , sharp geometric edges, (hyper voluptuous woman with extreme hourglass figure massive gravity-defying breasts tiny waist flared hips thick juicy thighs), (ultra glossy skin with oily sheen realistic pores subtle sweat beads high shine reflections), ultra-clean render, (clean topology:1.3), (sharp_silhouette:1.25), Cycles realism, (seductive powerful pose arched back hands cupping breasts or spreading thighs confident gaze), (dramatic high-key studio lighting rim lights glowing highlights deep contrasting shadows emphasizing curves), (hyper-detailed Studio-polished digital airbrush painting flawless smooth gradients intricate facial details heavy makeup glossy red lips smoky eyes), (long flowing voluminous hair with perfect strands), (sultry aroused expression parted lips flushed cheeks bedroom eyes), (rich saturated skin tones vibrant accents minimal plain background, clean edge flow, razor-sharp chamfers, cinema-4D_intensity), (intricate jewelry accessories when present fantasy cosplay elements, Ultra-smooth_tonal_gradients), Minimal_texture_noise, \{Artist: (H.R. Giger, Zacharias_Martin_Aagaard, Samuel_Melton_Fisher, M. C. Escher, John_Anster_Fitzgerald, Emilio_Giuseppe_Dossena, Jan_van_Eyck, John_Wayne_Gacy, Lucian_Freud, Nan_Goldin, Igor_Morski)\} ,
+    negative = [input.negative] , lowres, blurry, deformed, ugly, extra limbs, missing limbs, fused fingers, bad anatomy, poorly drawn hands, watermark, text, signature, worst quality, low quality, jpeg artifacts, anime eyes, photorealism, 3d render, cartoon, anime style, flat shading, monochrome, greyscale, small breasts, flat chest, masculine features, aged skin, wrinkles, censored, clothing covering genitals, 
+    meta:tags = [({nsfw:100, erotic:90, pinup:80, hyperrealistic:70, cinematic:50, studio_lighting:60, glossy_skin:70, seductive_pose:60, dramatic_lighting:50, hyper_detailed:80, cycles_realism:70, clean_topology:60, sharp_silhouette:50, cinema_4d_intensity:40})]
+
+  Illustrative_oil_painting_style
+    prompt = ((Hyper-realistic_high-fidelity_oil_Painting_Style:1.4)), ((crispy_sharp_illustration_masterpiece:1.2)), ("[input.description]") , (clean_realism_shading_with_PBR_materials:1.15), bold outline surged strong silhouettes, high-gloss_oil_on_canvas_finish, sequential_smooth_toning_textures, 8K_pigmentation_clarity, photoreal_macro-detailing, minimal_noise_effect, natural lighting, perfect subject proportions, sharp-focal_hierarchy, HDRI_skin_pores, dramatically_juxtaposed_bloom_luminosity, (vertical_85mm_picture_centering), inflatable_orientalist_vignette, \{(in the style of artist: by John Henry Twachtman , artist: by Sir John Tenniel , artist: by Tom Thomson , artist: by Howard Pyle , artist: by John Singer Sargent , artist:  by J.M.W. Turner , artist: by Rembrandt van Rijn , artist: by Mark Rothko , artist: by Howard Terpning , artist: by Peter Paul Rubens):1.5\} , (brilliant_ccomposition_with_ultra-clean_polishing), orthographic_precision, shallow_depth_of_field, global illumination , smooth subdivisional edge definition, trending on devianart, 5 0 0 px models, source_r/oilpainting, source_r/acrylicpainting, source_r/Oilpastel, 
+    negative = "[input.negative]", Bad quality, Low poly , low resolution , blurry , (visible_impasto_brush_strokes) , wrong proportions, ugly perspective, jagged angle, monochromatic, bokeh color banding, artificial shadows, deformity, poorly drawn subject, abstract watercolor patches, sketches, drawing, anime eyes, framing, digital painting, airbrushed, neon colors, duplicate canvas, David Mckean dripping paint, avant-garde art, meticulous Pixelation, whimsical, ai_artifacts, text, signature, letters, watermark, logo, 3D, CGI, unreal Engine, vfx, camera, cartoon, kitsch, caricature, flat even lighting, oversaturation, fake, copy, paperback, art gallery, exhibition, mangled surfaces, noisy mesh, artist tools, cropped, annoying_dots,
+    meta:tags = [({hyperrealistic:100, high_fidelity:90, oil_painting:80, crispy_sharp_illustration:70, clean_realism_shading:60, pbr_materials:50, bold_outline:40, strong_silhouettes:30, high_gloss_oil_on_canvas_finish:20, sequential_smooth_toning_textures:10, high_gloss_pigmentation_clarity:20, photoreal_macro_detailing:30})]
+
+  Velvet_noir
+    prompt = [input.description], moody realistic portrait with deep shadows and soft velvet texture, high detail, low key lighting, rich dark color palette with subtle highlights, cinematic film noir atmosphere, smooth skin tones
+    negative = [input.negative], bright daylight, cartoon, noisy texture, harsh edges, over-saturated colors
+
+  GTA_style
+    prompt = [input.description], stylized character portrait in the style of GTA loading screen art, bold black outlines, smooth shading, urban background, strong attitude, vice city color palette, 2000s comic realism, (XDR:1.3), (beyondIMAXres:1.3), style of Stephen Bliss, by Anthony Macbainl, by Ben Brudenell, by Ian McQue.
+    negative = [input.negative], cartoon, blurry, messy shading
+    meta:tags = [({gta_style:100, comic_realism:90, urban_background:80, bold_outlines:90, vice_city:80, pop_culture_aesthetic:70})]
+
+  Hentai_illustration
+    prompt = ([input.description]), (masterpiece:1.3), (best quality:1.3), (ultra-detailed:1.3), ((((Anime Oil painting, surrealism in the style of Shintaro Kago)))), (hentai illustration:1.3), (perfect light balance:1.2), (sharp focus:1.25), hyperrealistic, ultra high resolution, (photo-realistic texture mapping:1.3), (real-life skin microdetails:1.25), Bold black ink line art, high contrast, Thick, sketchy outlines, manga-style cel shading, screentone-like textures, Vintage hentai aesthetic, 90s-era doujinshi vibes, Odanon-style hentai, Sweat flying in thick droplets, speed lines for motion, Homare-style hentai, Intense facial expressions, Tagasuki Kouru-style hentai, fluid ink lines, Ultra-detailed, 8K, sharp focus, professional scanned, (artist: Odanon, Homare, Tagasuki Kouru, ShindoL, Asanagi, Mizuryu Kei, Takeda Hiromitsu, Henreader, Mizuryu Kei, Takeda Hiromitsu)
+    negative = [input.negative], (worst quality, low quality, normal quality, lowres, blurry, sketch, rough lines, pixelated, bad anatomy, oversaturated, washed out, duplicate face, text, watermark, signature, monochrome, grayscale, 3d render, cartoon, disney, caricature, kitsch, photorealistic, futanari, hermaphrodite, genderfluid, androgynous, muscle growth, inflation, vore, tf transformation, petrification, doppelgänger, identity crisis, split personality, breathy dialogue bubbles, whispered text,  ink bleeds, sketchy pencil
+
+  Film_noir
+    prompt = Ultra-detailed black and white cinematic portrait in classic 1940s film noir style, dramatic chiaroscuro lighting, deep shadows with sharp contrast, muted monochrome palette, Dramatic lighting and bright highlights, Gritty, urban atmosphere, famous vintage 1940s photo, [input.description], fine facial details, realistic skin tones, accurate proportions, Vintage 1940s–1950s aesthetic, 1940s photo with film grain, 40s photo with vignetting, retro, r/OldSchoolCool, r/vintage, r/vintage_xxx, 40s photo, vintage photo, Suspenseful and mysterious mood, crime drama, blinds shadow pattern across face, grainy texture, low-key lighting, in the style of Gregg Toland and George Hurrell, 8k resolution, hyperrealistic photographic detail, Reminiscent of Saul Leiter’s 50mm lens depth of field compositions, Style of Brassaï, by classic noir directors like Billy Wilder and John Huston. ((inspired by Sin City.))
+    negative = [input.negative], anime, manga, cartoon, illustration, drawing, sketch, painting, 3D render, low-res, blurry, fantasy elements, digital painting, oil painting, watercolor, concept art, CGI, low-poly, voxel, game art, pixelated, low-res, artifacts, overexposed, underexposed, washed-out, unrealistic proportions, uncanny valley, doll-like skin, magical effects, sci-fi aesthetics
+
+  Photorealism
+    prompt = (masterpiece:1.3), (best quality:1.4), (award-winning photograph:1.2), ultra high resolution, hyper-detailed, high clarity, perfect white balance, ray-traced reflections, precise specular highlights, ambient occlusion, [input.description], fine fabric detail, realistic hair strands, accurate shadow casting, lens imperfections, light diffraction, (extreme photorealism:1.5), (real-life texture:1.5), ultra detailed skin pores, micro-skin texture, (real human skin tones), (natural eye reflections), (anatomically accurate), realistic lighting, sub-surface scattering, volumetric light, cinematic shadows, (8k uhd:1.4), (sharp focus:1.3), high dynamic range, perfect depth of field, full color grading, (color-accurate:1.2),(insanely detailed:1.4), (hyper-sharp focus), (film grain:0.4), high detailed skin, (DSLR RAW capture), (cinematic shot), (photo taken with Nikon D850), 8K, Fujifilm_Xt3, Photography by David LaChapelle, Annie Leibovitz, Martin Parr, Peter Coulson, Helmut Newton, Mario Testino, Herb Ritts, Holly Randall, Alex Hewitt, Peter Zelei, Steve McCurry, Edward Steichen, Bob Guccione and Gertrude Käsebier.
+    negative = [input.negative], (worst quality:2), (low quality:2), (lowres:2), (blurry:2), (out of focus:1.5), (watermark:2), (signature:2), (text:2), (logo:2), (cartoon:2), (anime:2), (3d render:2), (cgi:2), (illustration:2), (painting:2), (digital art:2), (artstation:2), (sketch:2), (line art:2), (deformed:2), (bad anatomy:2), (mutated:2), (extra limbs:2), (cloned face:2), (disfigured:2), (unnatural skin texture:2), (plastic skin:2), (wax figure:2), (bad hands:2), (missing fingers:2), (extra fingers:2), (overexposed:2), (underexposed:2), (noisy:2), (grainy:1.5), (distorted:2)
+    meta:tags = [({photorealism:100, hyperrealism:90, portrait:80, cinematic:70, dslr:60, high_detailed_skin:90, ultra_high_resolution:100, skin_texture:90, hair_detail:80, eye_detail:90, anatomy:80, lighting:90, shadows:80, reflections:70, subsurface_scattering:60, volumetric_lighting:50, depth_of_field:80, bokeh:70, film_grain:60, hdr:70, color_grading:60, cinematic_angle:50, fujifilm_xt3:75})]
+
+  Pencil_realism
+    prompt = Score_9, Absurdres, Hyper-real fashion illustration sketch, ateliercore, raw construction energy, draft realism, moody monochrome, museum sketchbook quality, ([input.description]), Emphasis on anatomical accuracy and realistic human proportions. Visible clavicles, rib cage suggestion, abdominal structure, hip alignment, and leg muscle definition. No stylization distortion. Rendered using high-contrast graphite and charcoal. Sharp contour lines with subtle tonal gradients. Cross-contour shading around breasts, abdomen, and thighs. Soft charcoal blending on softer forms: stomach, inner thigh, glutes. Sharp shadows under jawline, breasts, and between thighs. Fine detail on hands, collarbones, and sternum. Hard single-source from upper left casting dramatic directional shadows and defined highlights. Shadow falloff on background. Rim edges slightly illuminated for shape clarity. No soft fantasy glow. (Artist: Egon Schiele, Diego Fazio, Helmut Newton, Kim Jung Gi, Paul Cadden, Kelvin Okafor, Andrew Loomis, J.C. Leyendecker.)
+    negative = [input.negative], anime, cartoon, caricature, stylized head scaling, plastic skin, pop aesthetic, sparkling effects, oversaturated, washed out, duplicate face, text, watermark, signature, 
+    meta:tags = [({pencil_realism:100, hyperrealism:90, portrait:80, monochrome:70, anatomical_accuracy:90, graphite:80, charcoal:70, cross_contour_shading:60, dramatic_lighting:70, single_source_light:60, fine_detail:80, hand_detail:70, facial_detail:80, body_detail:70, shadow_detail:60, highlight_detail:50, rim_lighting:40, museum_quality:90, sketchbook_style:80, ateliercore:70})]
+
+  Adult_ova_anime_2000s
+    prompt = (masterpiece:1.2), (best quality:1.1), (early-2000s hentai OVA style:1.3), cel shading, digital anime painting, [input.description], (glossy skin:1.2), (flushed cheeks:1.1), sweat droplets, expressive large anime eyes, dramatic foreshortening, low-angle shot, shallow depth of field, warm saturated palette, bold outlines, soft bloom highlights, halftone paper texture, slight chromatic aberration, cinematic close-up, dynamic foreshortening, shallow depth of field, warm saturated palette, (Sumie Takayanagi style:1.2), (Ken Akamatsu OVA shading:1.1), (Masato Natsumoto blush:1.1), (ARMS-style cell shading:1.1), (Yuji Moriyama skin gloss:1.1), accurate anatomy, voluptuous curves, dynamic pose, explicit NSFW content.
+    negative = [input.negative], lowres, bad anatomy, blurry, jpeg artifact, out of focus, bad hands, bad face, deformed, mutated, unnatural limbs, extra limbs, unnatural proportions, flat shading, CGI, 3d render, dull palette, over glossy plastic skin, watermark, text, extra fingers, glitch,          
+    meta:tags = [({hentai_ova:100, twenty_first_century_aesthetic:90, cel_shading:80, bold_outlines:90, glossy_skin:80, expressive_eyes:70, dynamic_pose:60, explicit_content:100, anime_realism:70, cinematic_angle:50, shallow_depth_of_field:60, warm_palette:70, halftone_texture:50, chromatic_aberration:40, sumie_takayanagi:80, ken_akamatsu:70, masato_natsumoto:60, arms_style:70})]
+
+  Photo_oilpaint_integration
+    prompt = (Digitally Illustrated Photo-Oilpaint Hybrid Style:1.4), (Ultra-Hyperreal Painterly Finish:1.35), (Cinematic Erotic Aesthetic:1.25), [input.description], (Seductive Body Language Emphasis:1.35), (Weight Shifted, Hips Engaged, Shoulders Relaxed:1.25), (Intoxicating Eye Contact:1.35), (Photographic Anatomy Accuracy with Intentional Exposure:1.25), (Subtle Oil Gloss on Warm Flesh:1.3), (High-Fidelity Skin Texture:1.25), (Visible Pores, Natural Imperfection:1.2), teasing as hell, goddamn tantalizing, (Magnetic, irresistible body presence:1.3), (Volumetric Light Bloom and Subtle Lens Flare:1.2), (Cinematic Chiaroscuro Lighting:1.3), (Specular Highlights Emphasizing Form:1.25), (Visual Tension, Charged Stillness:1.3), (Beautiful, Dangerous Allure:1.3), (Museum-Grade Erotic Art Finish:1.3), (Painterly Mid-Tone Fill with Sharp Highlights of Graphlex Speed Graphic Precision::1.2), details_XL, NaturalHand2-3500, BehanceHD, artstation, Patreon reward, commission work, Adobe-MIT-5k, (Artistic Oil-Paint Touch with Photoreal Base:1.25),
+    negative = sdxl_cyberrealistic_simpleneg, [input.negative], (worst quality:2), (low quality:2), (flat lighting), blurry, lowres, (dead eyes), (blank expression), (stiff pose), (barbie doll skin), (plastic skin), (over-smoothed), (excessive airbrushing), (flat anatomy), (bad proportions), (photo distortions), (pencil sketch), (open-mouth exaggerated), (amateur framing), (over-smoothed erotica), (cartoony proportions), (painterly brush strokes), (low contrast), (muddy colors), (stiff, unengaging posture), (no tension), (static composition), (low detail on eyes, lips, skin), (lifeless background), zPDXL-neg, (badhandv4:1.2),
+    meta:tags = [({photo_oil_paint_hybrid:100, hyperrealism:90, erotic_art:80, cinematic_lighting:70, chiaroscuro:60, volumetric_lighting:50, specular_highlights:40, painterly:30, photorealistic:20, museum_quality:10})]
+
+  Mixed_media_illustration
+    prompt = ((Mixed-media illustrations art style: 1.3)) , ([input.description]) , (Textured layering techniques) , (found object integration) , (surreal narrative compositions) , (abstract collage elements) , (hand-painted digital hybrids) , (dimensional paper sculptures) , (High-detail textures) , (Fluid motion lines) , (Bold contouring) , (Provocative thematic twists) , (recycled material assemblages), (expressive ink overlays) , (fragmented storytelling visuals) , (Shadow-play realism) , (High-contrast figure studies) , (organic-geometric fusion pieces) , (Architectural silhouette precision) , (Cinematic noir cutouts) , (Backlit subject mastery) , (Artist: Julie Mehretu, Wangechi Mutu, Kara Walker, Mark Bradford, El Anatsui, Doris Salced) ,  –no (collage:1.1) –no (panels:1) –no (textual gibberish) –no (deformation:1.2) –no (sketchy kitsch) –highvram
+    negative = [input.negative] , Flat digital art , minimalist clean designs , literal realism , uniform compositions , pure traditional painting , 2D vector graphics , new material usage , smooth inkless finishes , linear chronological narratives , rigid geometric-only works , Literal depictions , Low-detail flatness , Rigid stiffness , Soft blending , Conventional themes , Flat lighting , Low-detail sketches , Crowded compositions , Distorted perspectives , distorted isolationism , Geometric rigidity ,
+    meta:tags = [({mixed_media:100, surrealism:90, perfect_details:80, abstract:70, hand_painted:60, dimensional:50, high_detail:40, fluid_motion:30, bold_contouring:20, provocative:10})]
+
+  Mythological_nazarene_illustrative
+    prompt = ((Nazarene_movement_art_style:1.3)), [input.description], (Biblical_revivalism), (medieval-inspired_frescoes), (Romantic_religious_themes), (sharp_linear_precision), (luminous_color_palettes), (dramatic_chiaroscuro_effects), (Mediterranean_color_palettes), (altar-piece_compositions), (Gothic_architectural_framing), (idealized_facial_expressions), (Harmonious_balance), (Subtle_tonal_gradations), (Architectural_Byzantine_purity), (narrative_tableaux_storytelling), (Aegean_light_techniques), (Timeless_proportions), (Idealized_Hellenistic_fluid_forms), (Ceramic_pattern_modernism),
+    negative = [input.negative] , ((Biblical_cynicism, distorted_proportions, modernist_abstraction, secular_minimalism, blurred_impressionism, muted_earth_tones, flat_uniform_lighting, secular_portraiture, brutalist_geometry, grotesque_realism, fragmented_surrealism, cluttered_complexity, Discordant_imbalance, Harsh_tonal_contrasts, Chaotic_fragmentation, Avant-garde_experimentation, Dull_monochrome_schemes, Plain_unadorned_surfaces,))
+    meta:tags = [({nazarene_movement:100, biblical_revivalism:90, medieval_frescoes:80, romantic_religious_themes:70, sharp_linear_precision:60, luminous_color_palettes:50, dramatic_chiaroscuro_effects:40, mediterranean_color_palettes:30, altar_piece_compositions:20, gothic_architectural_framing:10})]
+
+
+// SUB lists
+
+    smPhotoStyle
+      label = Photography
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smPhotoStyleList]
+      visible() =>
+        return input.artStyle2 == "Art Styles ➕️"
+
+    smStyle
+      label = 3D
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smStyleList]
+      visible() =>
+        return input.artStyle2 == "Art Styles ➕️"
+
+    smAnimeStyle
+      label = Anime
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smAnimeStyleList]
+      visible() =>
+        return input.artStyle2 == "Art Styles ➕️"
+
+    smIllustrationStyle
+      label = Illustration
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smIllustrationStyleList]
+      visible() =>
+        return input.artStyle2 == "Art Styles ➕️"
+
+    smPaintingStyle
+      label = Painting
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smPaintingStyleList]
+      visible() =>
+        return input.artStyle2 == "Art Styles ➕️"
+
+    smVintageStyle
+      label = Vintage art
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smVintageStyleList]
+      visible() =>
+        return input.artStyle2 == "Art Styles ➕️"
+
+    smIconsStyle
+      label = Icons & Stickers
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smIconsStyleList]
+      visible() =>
+        return input.artStyle2 == "Art Styles ➕️"
+
+    smArtistStyle
+      label = Artist
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smArtistStyleList]
+      visible() =>
+        return input.artStyle2 == "Art Styles ➕️"
+
+    smGenreStyle
+      label = Genre
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smGenreStyleList]
+      visible() =>
+        return input.artStyle2 == "Art Styles ➕️"
+
+    smThemeStyle
+      label = Theme
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smThemeStyleList]
+      visible() =>
+        return input.artStyle2 == "Art Styles ➕️"
+
+    smFigurineStyle
+      label = Figurines/dolls/sculptures
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smFigurineStyleList]
+      visible() =>
+        return input.artStyle2 == "Art Styles ➕️"
+
+    smVarStyle
+      label = Various
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smVarStyleList]
+      visible() =>
+        return input.artStyle2 == "Art Styles ➕️"
+
+    charadesa
+      id = charadesa
+      label = 🧚‍♀️ Character Design
+      type = select
+      remember = false
+      options
+        👁Show/Hide list
+          prompt = [input.description2]
+        Character Design ➕
+          prompt = [aiag.smPrompt]
+          
+    smAnimedesaStyle
+      label = Anime
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smAnimedesaStyleList]
+      visible() =>
+        return input.charadesa == "Character Design ➕"
+
+    smCartoondesaStyle
+      label = Cartoon
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smCartoondesaStyleList]
+      visible() =>
+        return input.charadesa == "Character Design ➕"
+
+    sm3danidesaStyle
+      label = 3D Animation
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.sm3danidesaStyleList]
+      visible() =>
+        return input.charadesa == "Character Design ➕"
+
+    sm3dgdesaStyle
+      label = 3D Video Games
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.sm3dgdesaStyleList]
+      visible() =>
+        return input.charadesa == "Character Design ➕"
+
+    sm2dgdesaStyle
+      label = 2D Video Games
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.sm2dgdesaStyleList]
+      visible() =>
+        return input.charadesa == "Character Design ➕"
+
+    smAnimegdesaStyle
+      label = Anime Video Games
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smAnimegdesaStyleList]
+      visible() =>
+        return input.charadesa == "Character Design ➕"
+
+    chara
+      id = chara
+      label = 🧝‍♂️ Characters List
+      type = select
+      remember = false
+      options
+        👁Show/Hide list
+          prompt = [input.description2]
+        Characters List ➕
+          prompt = [aiag.smPrompt]
+          
+    smMarvelStyle
+      label = Marvel
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smMarvelStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smDcStyle
+      label = DC
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smDcStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smDisneyStyle
+      label = Disney (A-L)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smDisneyStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smDisney2Style
+      label = Disney (M-Z)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smDisney2StyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smPixarStyle
+      label = PIXAR/DISNEY
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smPixarStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smDreamworksStyle
+      label = DreamWorks
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smDreamworksStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smWarnerStyle
+      label = Warner Bros.
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smWarnerStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smAnimechStyle
+      label = Anime (A-F)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smAnimechStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smAnimech2Style
+      label = Anime (G-K)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smAnimech2StyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smAnimech3Style
+      label = Anime (L-Q)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smAnimech3StyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smAnimech4Style
+      label = Anime (R-S)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smAnimech4StyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smAnimech5Style
+      label = Anime (T-Z)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smAnimech5StyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smCartoonchStyle
+      label = Cartoon (A-F)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smCartoonchStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smCartoonch2Style
+      label = Cartoon (G-M)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smCartoonch2StyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smCartoonch3Style
+      label = Cartoon (N-Z)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smCartoonch3StyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smGamesStyle
+      label = Video Games (A-C)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smGamesStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smGames2Style
+      label = Video Games (D-J)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smGames2StyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smGames3Style
+      label = Video Games (K-Q)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smGames3StyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smGames4Style
+      label = Video Games (R-Z)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smGames4StyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smMoviesStyle
+      label = Movies & Shows (A-G)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smMoviesStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smMovies2Style
+      label = Movies & Shows (H-O)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smMovies2StyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smMovies3Style
+      label = Movies & Shows (P-Y)
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smMovies3StyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smBrandStyle
+      label = Brands/Mascots
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smBrandStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smMHAStyle
+      label = My Hero Academia
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smMHAStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smFinalfStyle
+      label = Final Fantasy
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smFinalfStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smGenshinStyle
+      label = Genshin Impact
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smGenshinStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smLOLStyle
+      label = League of Legends/Arcane
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smLOLStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smMarioStyle
+      label = Super Mario
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smMarioStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smPokeStyle
+      label = Pokémon
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smPokeStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smRamStyle
+      label = Rick and Morty
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smRamStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+
+    smVocalStyle
+      label = Vocaloid
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smVocalStyleList]
+      visible() =>
+        return input.chara == "Characters List ➕"
+        
+    body
+      id = body
+      label = 👤 Body
+      type = select
+      remember = false
+      options
+        👁Show/Hide list
+          prompt = [input.description2]
+        Body ➕️
+          prompt = [aiag.smPrompt]
+          
+    smBodytypeStyle
+      label = 💪 Body type
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smBodytypeStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smSkinStyle
+      label = 🖤 Skin color
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smSkinStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smEthnicityStyle
+      label = 🌍 Nationality/Ethnicity
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smEthnicityStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smSpeciesStyle
+      label = 🧜‍♀️ Species
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smSpeciesStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smOccupationStyle
+      label = 👩‍🚒 Occupation
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smOccupationStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smHairStyle
+      label = 💇‍♀️ Hair Style
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smHairStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smHaircolorStyle
+      label = 🌈 Hair Color
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smHaircolorStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smEyesStyle
+      label = 👀 Eyes
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smEyesStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smEyescolorStyle
+      label = 👁 Eyes Color
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smEyescolorStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smFacialhairStyle
+      label = 🧔 Facial Hair
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smFacialhairStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smFacialStyle
+      label = 🧒 Facial features
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smFacialStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smHornsStyle
+      label = 🦄 Horns
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smHornsStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smEarsStyle
+      label = 🐰 Ears
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smEarsStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smWingsStyle
+      label = 🦋 Wings
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smWingsStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smTailStyle
+      label = 🐬 Tail
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smTailStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smPoseStyle
+      label = 🕺 Pose
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smPoseStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smActionStyle
+      label = 🏇 Action
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smActionStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    smExpressionStyle
+      label = 😁 Expression
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smExpressionStyleList]
+      visible() =>
+        return input.body == "Body ➕️"
+
+    attire
+      id = attire
+      label = 👗 Attire
+      type = select
+      remember = false
+      options
+        👁Show/Hide list
+          prompt = [input.description2]
+        Attire ➕️
+          prompt = [aiag.smPrompt]
+          
+    smHeadwearStyle
+      label = 👒 Headwear
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smHeadwearStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smGlassesStyle
+      label = 😎 Glasses
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smGlassesStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smMasksStyle
+      label = 💀 Masks
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smMasksStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smMakeupStyle
+      label = 🤡 Makeup
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smMakeupStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smNeckwearStyle
+      label = 🧣 Neckwear
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smNeckwearStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smClothesStyle
+      label = 👘 Clothes
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smClothesStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smTopwearStyle
+      label = 🧥 Topwear
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smTopwearStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smBottomwearStyle
+      label = 👖 Bottomwear
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smBottomwearStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smGlovesStyle
+      label = 🧤 Gloves
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smGlovesStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smLegwearStyle
+      label = 🧦 Legwear
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smLegwearStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smFootwearStyle
+      label = 👢 Footwear
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smFootwearStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smJewelryStyle
+      label = 💍 Jewelry
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smJewelryStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smPropsStyle
+      label = ⚔️ Props
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smPropsStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    smExtrasStyle
+      label = 😇 Extras
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smExtrasStyleList]
+      visible() =>
+        return input.attire == "Attire ➕️"
+
+    background
+      id = background
+      label = 🏖 Background
+      type = select
+      remember = false
+      options
+        👁Show/Hide list
+          prompt = [input.description2]
+        Background ➕️️️
+          prompt = [aiag.smPrompt]
+          
+    smBackgroundStyle
+      label = ⭐ Background
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smBackgroundStyleList]
+      visible() =>
+        return input.background == "Background ➕️️️"
+
+    smLocationStyle
+      label = 🗽 Location
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smLocationStyleList]
+      visible() =>
+        return input.background == "Background ➕️️️"
+
+    smWeatherStyle
+      label = ⛈️ Weather
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smWeatherStyleList]
+      visible() =>
+        return input.background == "Background ➕️️️"
+
+    smSeasonStyle
+      label = ❄ Season
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smSeasonStyleList]
+      visible() =>
+        return input.background == "Background ➕️️️"
+
+    smTimeStyle
+      label = ⌚ Time
+      type = select // <-- drop-down select menu
+      remember = false
+      options = [aiag.smTimeStyleList]
+      visible() =>
+        return input.background == "Background ➕️️️"
+
+
+
+        
+output
+  {This|That} [animal] is so [adjective]!
+  I wish I could [verb] that [animal].
+  Aren't [animal.pluralForm] just so [adjective]?
+  There must be at least {1-10} [animal]{s} [location]!
+  THE [animal.upperCase]! It's eating the {import:common-noun}!
+  {A} [animal] is a bit like {a} {import:common-noun}. // {A} and {a} will automatically choose "a" and "an" as appropriate
+
+
+	
+
+// Tips:
+//  - Highlight multiple lines and press Tab or Shift+Tab to indent and un-indent them all an once
+//  - You can change the URL of your generator by clicking the "settings" button in
+something = {import:yv49wuj5d6}
+//  - You can use the sparkle button in the lower-right of the screen to ask the AI to adjust the visual design of your generator.
+//  - Add background images, fonts, and other stuff with plugins:  perchance.org/plugins
+//  - Here are some generators you might like to import:  perchance.org/useful-generators
+//  - Read this page after reading the tutorial:  perchance.org/examples
+//  - There's a gear button in the top-left which you can use to make the lines wrap around when they reach the edge of the screen, and to change the font size. Also, if you add   $output=[this.joinItems("<br>")]   as the first or last item in your list, then writing [yourListName] will magically output all of the items joined together with <br> (which means "line break" in HTML - i.e. a line separator), rather than outputting a random item from the "yourListName" list.
+//  - Ask our friendly community members if you need help:  lemmy.world/c/perchance
+
+
